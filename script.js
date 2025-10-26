@@ -8,7 +8,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     initNavScroll();
     initScrollAnimations();
-    initServiceHighlighter();
     initFormHandler();
     initSmoothScroll();
     initParallax();
@@ -36,13 +35,13 @@ function initNavScroll() {
 }
 
 // ===================================
-// Scroll-Triggered Animations (Kreo-Style)
+// Scroll-Triggered Animations (Faster & Smoother)
 // ===================================
 
 function initScrollAnimations() {
     const observerOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     };
 
     // Create intersection observer
@@ -60,88 +59,13 @@ function initScrollAnimations() {
 
     // Add fade-in-up class to sections automatically
     const autoFadeElements = document.querySelectorAll(
-        '.process-step, .feature-item, .service-card, .contact-content, .process .section-title, .features .section-title, .services .section-title'
+        '.process-step, .feature-item, .service-mini-card, .contact-content, .section-title'
     );
     
     autoFadeElements.forEach(el => {
         el.classList.add('fade-in-up');
         observer.observe(el);
     });
-}
-
-// ===================================
-// Service Highlighter (Horizontal Card Interaction)
-// ===================================
-
-function initServiceHighlighter() {
-    const serviceCards = document.querySelectorAll('.service-card');
-    const floorFill = document.getElementById('floor-area');
-    const officeGroup = document.getElementById('office-areas');
-    const windowGroup = document.getElementById('window-areas');
-    const sanitizationGroup = document.getElementById('sanitization-areas');
-
-    // Service animation mapping
-    const serviceAnimations = {
-        'office': officeGroup,
-        'windows': windowGroup,
-        'floor': floorFill,
-        'sanitization': sanitizationGroup
-    };
-
-    // Function to activate a service
-    function activateService(serviceType) {
-        // Remove active class from all cards
-        serviceCards.forEach(card => card.classList.remove('active'));
-        
-        // Remove active class from all blueprint groups
-        if (floorFill) floorFill.classList.remove('active');
-        if (officeGroup) officeGroup.classList.remove('active');
-        if (windowGroup) windowGroup.classList.remove('active');
-        if (sanitizationGroup) sanitizationGroup.classList.remove('active');
-        
-        // Add active class to selected card
-        const activeCard = document.querySelector(`.service-card[data-service="${serviceType}"]`);
-        if (activeCard) {
-            activeCard.classList.add('active');
-        }
-        
-        // Activate corresponding blueprint animation
-        const activeAnimation = serviceAnimations[serviceType];
-        if (activeAnimation) {
-            activeAnimation.classList.add('active');
-        }
-    }
-
-    // Add click handlers to service cards
-    serviceCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const serviceType = card.getAttribute('data-service');
-            activateService(serviceType);
-        });
-
-        // Add hover preview (optional - shows animation on hover)
-        card.addEventListener('mouseenter', () => {
-            const serviceType = card.getAttribute('data-service');
-            const animation = serviceAnimations[serviceType];
-            if (animation && !card.classList.contains('active')) {
-                animation.style.opacity = '0.5';
-            }
-        });
-
-        card.addEventListener('mouseleave', () => {
-            const serviceType = card.getAttribute('data-service');
-            const animation = serviceAnimations[serviceType];
-            if (animation && !card.classList.contains('active')) {
-                animation.style.opacity = '1';
-            }
-        });
-    });
-
-    // Activate first service by default
-    if (serviceCards.length > 0) {
-        const firstService = serviceCards[0].getAttribute('data-service');
-        activateService(firstService);
-    }
 }
 
 // ===================================
@@ -323,17 +247,17 @@ function initMouseGlow() {
 function addStaggeredDelays() {
     const processSteps = document.querySelectorAll('.process-step');
     processSteps.forEach((step, index) => {
-        step.style.transitionDelay = `${index * 0.1}s`;
+        step.style.transitionDelay = `${index * 0.05}s`;
     });
     
     const featureItems = document.querySelectorAll('.feature-item');
     featureItems.forEach((item, index) => {
-        item.style.transitionDelay = `${index * 0.08}s`;
+        item.style.transitionDelay = `${index * 0.04}s`;
     });
     
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach((card, index) => {
-        card.style.transitionDelay = `${index * 0.1}s`;
+    const serviceMiniCards = document.querySelectorAll('.service-mini-card');
+    serviceMiniCards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.05}s`;
     });
 }
 
