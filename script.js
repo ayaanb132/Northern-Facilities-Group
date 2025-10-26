@@ -138,35 +138,14 @@ function initSmoothScroll() {
 }
 
 // ===================================
-// Parallax Effect for Hero Blueprint (Kreo-Style)
+// Parallax Effect for Hero Blueprint - REMOVED
+// All animations pre-loaded, no scroll effects
 // ===================================
 
 function initParallax() {
-    const heroAnimation = document.querySelector('.hero-animation');
-    
-    if (!heroAnimation) return;
-    
-    let ticking = false;
-    
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                const scrolled = window.pageYOffset;
-                const rate = scrolled * 0.25;
-                
-                // Subtle parallax movement
-                heroAnimation.style.transform = `translate(-50%, calc(-50% + ${rate}px))`;
-                
-                // Fade out as you scroll
-                const opacity = Math.max(0.2 - scrolled / 1000, 0.05);
-                heroAnimation.style.opacity = opacity;
-                
-                ticking = false;
-            });
-            
-            ticking = true;
-        }
-    });
+    // Parallax scroll effects removed as per requirements
+    // All content is now pre-loaded and visible
+    return;
 }
 
 // ===================================
