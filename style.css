@@ -123,9 +123,7 @@ img {
     letter-spacing: -0.03em;
 }
 
-/* ===================================
-   Scroll-Triggered Animations
-   =================================== */
+/* Removed scroll-triggered fade animations - all elements pre-loaded */
 
 .fade-in-up {
     opacity: 1;
@@ -185,40 +183,61 @@ img {
 
 @media (max-width: 768px) {
     .nav-container {
-        padding: 0 var(--spacing-md);
+        padding: 0 var(--spacing-sm);
+        flex-wrap: wrap;
     }
     
     .nav-logo {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        flex: 0 0 auto;
     }
     
     .nav-menu {
-        gap: var(--spacing-sm);
-        font-size: 0.75rem;
+        gap: var(--spacing-md);
+        font-size: 0.85rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        flex: 1 1 auto;
     }
     
-    .nav-menu li:first-child,
-    .nav-menu li:nth-child(2) {
-        display: none;
+    .nav-menu li {
+        flex-shrink: 0;
     }
     
     .nav-cta {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
     }
 }
 
 @media (max-width: 480px) {
+    .nav {
+        padding: var(--spacing-sm) 0;
+    }
+    
+    .nav-container {
+        padding: 0 var(--spacing-sm);
+    }
+    
     .nav-logo {
-        font-size: 0.85rem;
+        font-size: 0.75rem;
+        max-width: 50%;
+        line-height: 1.2;
     }
     
     .nav-menu {
-        gap: 0.4rem;
+        gap: var(--spacing-xs);
+        font-size: 0.7rem;
     }
     
-    .nav-menu li:nth-child(3) {
-        display: none;
+    .nav-menu li a {
+        font-size: 0.7rem;
+    }
+    
+    .nav-cta {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.7rem;
     }
 }
 
@@ -320,7 +339,7 @@ img {
 
 .hero {
     min-height: 85vh;
-    background: linear-gradient(135deg, var(--color-midnight) 0%, var(--color-deep-navy) 100%);
+    background: linear-gradient(135deg, #0a1929 0%, #001529 50%, #0a1f3d 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -336,8 +355,27 @@ img {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 50%, rgba(0, 163, 255, 0.05) 0%, transparent 50%);
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(0, 163, 255, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(48, 197, 255, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(0, 163, 255, 0.05) 0%, transparent 60%);
     pointer-events: none;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 163, 255, 0.03) 2px, rgba(0, 163, 255, 0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 163, 255, 0.03) 2px, rgba(0, 163, 255, 0.03) 4px);
+    background-size: 100px 100px;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .hero-container {
@@ -411,8 +449,7 @@ img {
     z-index: 2;
     text-align: center;
     padding: var(--spacing-4xl) 0;
-    opacity: 0;
-    animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.8s forwards;
+    opacity: 1;
 }
 
 .hero-title {
@@ -439,16 +476,7 @@ img {
     line-height: 1.6;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+/* Removed fadeInUp animation - all content now pre-loaded */
 
 /* ===================================
    Process Section
