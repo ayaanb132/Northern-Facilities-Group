@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northern Facilities Group | Modern Office Cleaning, Managed Effortlessly</title>
+    <meta name="description" content="Premium office cleaning with full transparency. Track schedules, submit requests, and view quality reports through our online dashboard.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">Northern Facilities Group</div>
+            <ul class="nav-menu">
+                <li><a href="#value-props">Why Us</a></li>
+                <li><a href="#dashboard-demo">Dashboard</a></li>
+                <li><a href="#cta" class="nav-cta">Get Free Quote</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Section 1: Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-animation">
+                <svg id="blueprint-hero" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Office Floor Plan Blueprint -->
+                    <!-- Outer building outline -->
+                    <path class="blueprint-line" d="M 100 100 L 1100 100 L 1100 700 L 100 700 Z" />
+                    
+                    <!-- Main entrance -->
+                    <path class="blueprint-line" d="M 550 700 L 550 750 L 650 750 L 650 700" />
+                    
+                    <!-- Office rooms - left side -->
+                    <path class="blueprint-line" d="M 100 250 L 400 250" />
+                    <path class="blueprint-line" d="M 100 400 L 400 400" />
+                    <path class="blueprint-line" d="M 100 550 L 400 550" />
+                    <path class="blueprint-line" d="M 250 100 L 250 700" />
+                    
+                    <!-- Office rooms - right side -->
+                    <path class="blueprint-line" d="M 800 250 L 1100 250" />
+                    <path class="blueprint-line" d="M 800 400 L 1100 400" />
+                    <path class="blueprint-line" d="M 800 550 L 1100 550" />
+                    <path class="blueprint-line" d="M 950 100 L 950 700" />
+                    
+                    <!-- Central corridor -->
+                    <path class="blueprint-line" d="M 400 100 L 400 700" />
+                    <path class="blueprint-line" d="M 800 100 L 800 700" />
+                    
+                    <!-- Conference room (center top) -->
+                    <path class="blueprint-line" d="M 450 100 L 450 300 L 750 300 L 750 100" />
+                    <circle class="blueprint-circle" cx="600" cy="200" r="60" />
+                    
+                    <!-- Desks - left offices -->
+                    <rect class="blueprint-line" x="120" y="120" width="60" height="100" />
+                    <rect class="blueprint-line" x="120" y="270" width="60" height="100" />
+                    <rect class="blueprint-line" x="120" y="420" width="60" height="100" />
+                    <rect class="blueprint-line" x="120" y="570" width="60" height="100" />
+                    
+                    <!-- Desks - right offices -->
+                    <rect class="blueprint-line" x="1020" y="120" width="60" height="100" />
+                    <rect class="blueprint-line" x="1020" y="270" width="60" height="100" />
+                    <rect class="blueprint-line" x="1020" y="420" width="60" height="100" />
+                    <rect class="blueprint-line" x="1020" y="570" width="60" height="100" />
+                    
+                    <!-- Windows - marked with double lines -->
+                    <path class="blueprint-line window-line" d="M 100 150 L 250 150" />
+                    <path class="blueprint-line window-line" d="M 100 300 L 250 300" />
+                    <path class="blueprint-line window-line" d="M 100 450 L 250 450" />
+                    <path class="blueprint-line window-line" d="M 100 600 L 250 600" />
+                    
+                    <path class="blueprint-line window-line" d="M 950 150 L 1100 150" />
+                    <path class="blueprint-line window-line" d="M 950 300 L 1100 300" />
+                    <path class="blueprint-line window-line" d="M 950 450 L 1100 450" />
+                    <path class="blueprint-line window-line" d="M 950 600 L 1100 600" />
+                    
+                    <!-- Floor indicators (for floor care) -->
+                    <path class="blueprint-line floor-area" d="M 420 320 L 780 320 L 780 680 L 420 680 Z" />
+                    
+                    <!-- Sanitization stations -->
+                    <circle class="blueprint-circle sanitization-area" cx="420" cy="400" r="20" />
+                    <circle class="blueprint-circle sanitization-area" cx="780" cy="400" r="20" />
+                    <circle class="blueprint-circle sanitization-area" cx="600" cy="680" r="20" />
+                </svg>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">Precision Cleaning.<br>Revealed.</h1>
+                <p class="hero-subtitle">We bring high-tech precision and reliability to facility services, revealing the pristine workspace within.</p>
+                <a href="#contact" class="btn btn-primary btn-large">Get Your Custom Plan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <h2 class="section-title">Our Process</h2>
+            <div class="process-steps">
+                <div class="process-step" data-step="1">
+                    <div class="process-number">01</div>
+                    <h3 class="process-title">Get Quote</h3>
+                    <p class="process-description">Submit your facility details through our streamlined online form. We'll analyze your space requirements.</p>
+                </div>
+                <div class="process-step" data-step="2">
+                    <div class="process-number">02</div>
+                    <h3 class="process-title">Custom Plan</h3>
+                    <p class="process-description">We design a precise cleaning blueprint tailored to your needs, schedule, and budget.</p>
+                </div>
+                <div class="process-step" data-step="3">
+                    <div class="process-number">03</div>
+                    <h3 class="process-title">Execute & Manage</h3>
+                    <p class="process-description">Our trained professionals execute the plan, managed seamlessly through your online dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Services Section -->
+    <section class="services" id="services">
+        <div class="services-container">
+            <div class="services-header">
+                <h2 class="section-title">Our Services</h2>
+                <p class="services-subtitle">Watch each cleaning process in action</p>
+            </div>
+            
+            <!-- 4 Mini Animated Services Side-by-Side -->
+            <div class="services-grid">
+                <!-- Service 1: Commercial Office -->
+                <div class="service-mini-card">
+                    <div class="service-mini-animation">
+                        <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="officeGlow">
+                                    <stop offset="0%" stop-color="rgba(0, 163, 255, 0)" />
+                                    <stop offset="50%" stop-color="rgba(0, 163, 255, 0.5)" />
+                                    <stop offset="100%" stop-color="rgba(0, 163, 255, 0)" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Room outline -->
+                            <rect class="mini-base" x="10" y="10" width="180" height="130" rx="2" />
+                            <!-- Desks with pulsing animation -->
+                            <g class="office-mini-group">
+                                <rect class="office-mini-desk" x="25" y="25" width="45" height="30" rx="2" />
+                                <rect class="office-mini-desk" x="25" y="65" width="45" height="30" rx="2" />
+                                <rect class="office-mini-desk" x="25" y="105" width="45" height="30" rx="2" />
+                                <rect class="office-mini-desk" x="80" y="25" width="45" height="30" rx="2" />
+                                <rect class="office-mini-desk" x="80" y="65" width="45" height="30" rx="2" />
+                                <rect class="office-mini-desk" x="80" y="105" width="45" height="30" rx="2" />
+                                <rect class="office-mini-desk" x="135" y="25" width="45" height="30" rx="2" />
+                                <rect class="office-mini-desk" x="135" y="65" width="45" height="30" rx="2" />
+                                <circle class="office-mini-common" cx="155" cy="115" r="15" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="service-mini-content">
+                        <div class="service-mini-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M9 3v18M15 3v18M3 9h18M3 15h18"/>
+                            </svg>
+                        </div>
+                        <h3>Commercial Office</h3>
+                        <p>Daily cleaning of workstations, common areas, and facilities</p>
+                    </div>
+                </div>
+
+                <!-- Service 2: Window & Glass -->
+                <div class="service-mini-card">
+                    <div class="service-mini-animation">
+                        <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="shineEffect" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="rgba(255, 255, 255, 0)" />
+                                    <stop offset="50%" stop-color="rgba(255, 255, 255, 0.9)" />
+                                    <stop offset="100%" stop-color="rgba(255, 255, 255, 0)" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Room outline -->
+                            <rect class="mini-base" x="10" y="10" width="180" height="130" rx="2" />
+                            <!-- Windows -->
+                            <g class="window-mini-group">
+                                <rect class="window-mini-pane" x="15" y="30" width="12" height="40" />
+                                <rect class="window-mini-pane" x="15" y="80" width="12" height="40" />
+                                <rect class="window-mini-pane" x="173" y="30" width="12" height="40" />
+                                <rect class="window-mini-pane" x="173" y="80" width="12" height="40" />
+                                <!-- Glass partitions -->
+                                <line class="window-mini-partition" x1="100" y1="15" x2="100" y2="65" />
+                                <line class="window-mini-partition" x1="60" y1="75" x2="140" y2="75" />
+                                <!-- Shine overlay -->
+                                <g class="window-mini-shine">
+                                    <rect class="shine-mini-rect" x="15" y="30" width="12" height="40" />
+                                    <rect class="shine-mini-rect" x="15" y="80" width="12" height="40" />
+                                    <rect class="shine-mini-rect" x="173" y="30" width="12" height="40" />
+                                    <rect class="shine-mini-rect" x="173" y="80" width="12" height="40" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="service-mini-content">
+                        <div class="service-mini-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M12 3v18M3 12h18"/>
+                                <path d="M7 7l4 4M13 7l4 4M7 17l4-4M13 17l4-4"/>
+                            </svg>
+                        </div>
+                        <h3>Window & Glass</h3>
+                        <p>Streak-free cleaning for crystal-clear windows and partitions</p>
+                    </div>
+                </div>
+
+                <!-- Service 3: Floor Care -->
+                <div class="service-mini-card">
+                    <div class="service-mini-animation">
+                        <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="floorSweep">
+                                    <stop offset="0%" stop-color="rgba(0, 163, 255, 0)" />
+                                    <stop offset="50%" stop-color="rgba(0, 163, 255, 0.4)" />
+                                    <stop offset="100%" stop-color="rgba(0, 163, 255, 0)" />
+                                    <animate attributeName="x1" values="-100%;200%" dur="2.5s" repeatCount="indefinite" />
+                                    <animate attributeName="x2" values="0%;300%" dur="2.5s" repeatCount="indefinite" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Room outline -->
+                            <rect class="mini-base" x="10" y="10" width="180" height="130" rx="2" />
+                            <!-- Floor area with sweep effect -->
+                            <rect class="floor-mini-fill" x="12" y="12" width="176" height="126" rx="1" fill="url(#floorSweep)" />
+                            <!-- Floor tiles -->
+                            <g class="floor-mini-lines">
+                                <line x1="10" y1="47" x2="190" y2="47" />
+                                <line x1="10" y1="84" x2="190" y2="84" />
+                                <line x1="10" y1="121" x2="190" y2="121" />
+                                <line x1="56" y1="10" x2="56" y2="140" />
+                                <line x1="100" y1="10" x2="100" y2="140" />
+                                <line x1="144" y1="10" x2="144" y2="140" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="service-mini-content">
+                        <div class="service-mini-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M3 12h18M3 6h18M3 18h18"/>
+                                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            </svg>
+                        </div>
+                        <h3>Floor Care</h3>
+                        <p>Professional carpet, hardwood, and tile maintenance</p>
+                    </div>
+                </div>
+
+                <!-- Service 4: Deep Sanitization -->
+                <div class="service-mini-card">
+                    <div class="service-mini-animation">
+                        <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Room outline -->
+                            <rect class="mini-base" x="10" y="10" width="180" height="130" rx="2" />
+                            <!-- Sanitization areas -->
+                            <g class="sanitization-mini-group">
+                                <!-- Restroom -->
+                                <rect class="restroom-mini-outline" x="20" y="20" width="50" height="70" rx="2" />
+                                <!-- Touch points with radar pings -->
+                                <circle class="touch-mini-point" cx="50" cy="50" r="0" />
+                                <circle class="touch-mini-point" cx="100" cy="40" r="0" />
+                                <circle class="touch-mini-point" cx="150" cy="35" r="0" />
+                                <circle class="touch-mini-point" cx="170" cy="70" r="0" />
+                                <circle class="touch-mini-point" cx="140" cy="100" r="0" />
+                                <circle class="touch-mini-point" cx="90" cy="110" r="0" />
+                                <circle class="touch-mini-point" cx="50" cy="120" r="0" />
+                                <circle class="touch-mini-point" cx="120" cy="60" r="0" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="service-mini-content">
+                        <div class="service-mini-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="9"/>
+                                <path d="M12 6v6l3 3"/>
+                                <path d="M16.24 7.76l-2.12 2.12M7.76 16.24l2.12-2.12"/>
+                            </svg>
+                        </div>
+                        <h3>Deep Sanitization</h3>
+                        <p>Hospital-grade disinfection of high-touch surfaces</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">What Sets Us Apart</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                            <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/>
+                        </svg>
+                    </div>
+                    <h3>Flexible Scheduling</h3>
+                    <p>We work around your business hours with early morning, evening, and weekend options.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 11l3 3L22 4"/>
+                            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                        </svg>
+                    </div>
+                    <h3>Quality Control</h3>
+                    <p>Regular inspections and quality checks ensure consistent, exceptional results every time.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                            <path d="M6 8h12M6 12h8"/>
+                        </svg>
+                    </div>
+                    <h3>Online Dashboard</h3>
+                    <p>Real-time access to scheduling, service reports, and billing through our client portal.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Trained Professionals</h3>
+                    <p>Fully vetted, insured, and trained cleaning specialists committed to excellence.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3>All Supplies Included</h3>
+                    <p>We bring all eco-friendly cleaning products and equipment—no extra cost to you.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Custom Solutions</h3>
+                    <p>Every facility is unique. We design cleaning plans tailored to your specific needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/Quote Form Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title">Get Your Custom Cleaning Plan</h2>
+                <p class="contact-subtitle">Tell us about your facility and we'll design a precise cleaning blueprint tailored to your needs.</p>
+            </div>
+            <form class="contact-form" id="quoteForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="facility-size">Facility Size (sq ft)</label>
+                    <input type="number" id="facility-size" name="facility-size" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="services">Services Needed</label>
+                    <select id="services" name="services" required>
+                        <option value="">Select a service</option>
+                        <option value="commercial">Commercial Office Cleaning</option>
+                        <option value="windows">Window & Glass Cleaning</option>
+                        <option value="floor">Floor Care & Maintenance</option>
+                        <option value="sanitization">Deep Sanitization</option>
+                        <option value="all">All Services</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Additional Details</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-large">Request Quote</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Northern Facilities Group</h4>
+                    <p>The Blueprint for a Pristine Workspace</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Services</h5>
+                    <ul>
+                        <li><a href="#services">Office Cleaning</a></li>
+                        <li><a href="#services">Window Cleaning</a></li>
+                        <li><a href="#services">Floor Care</a></li>
+                        <li><a href="#services">Sanitization</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="#process">Our Process</a></li>
+                        <li><a href="#features">Why Choose Us</a></li>
+                        <li><a href="#contact">Get Quote</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact</h5>
+                    <p>Email: info@northernfacilitiesgroup.ca</p>
+                    <p>Phone: (XXX) XXX-XXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Northern Facilities Group. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

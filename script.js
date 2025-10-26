@@ -1,15 +1,17 @@
 // ===================================
 // NORTHERN FACILITIES GROUP
 // Premium Interactive JavaScript
-// Inspired by: kreo.net
+// SaaS Dark-Mode Design
 // ===================================
 
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
     initNavScroll();
-    initFormHandler();
+    initModalHandlers();
     initSmoothScroll();
-    initParallax();
+    initScrollAnimations();
+    initDashboardDemo();
+    initHeroAnimation();
 });
 
 // ===================================
@@ -18,97 +20,112 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initNavScroll() {
     const nav = document.querySelector('.nav');
-    let lastScroll = 0;
-
+    
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-
-        if (currentScroll > 100) {
+        if (window.pageYOffset > 50) {
             nav.classList.add('scrolled');
         } else {
             nav.classList.remove('scrolled');
         }
-
-        lastScroll = currentScroll;
     });
 }
 
 // ===================================
-// Form Handler with Enhanced Feedback
+// Modal Handlers
 // ===================================
 
-function initFormHandler() {
-    const form = document.getElementById('quoteForm');
+function initModalHandlers() {
+    const modal = document.getElementById('contactModal');
+    const heroBtn = document.getElementById('heroCtaBtn');
+    const finalBtn = document.getElementById('finalCtaBtn');
+    const modalClose = document.getElementById('modalClose');
+    const modalOverlay = document.querySelector('.modal-overlay');
+    const contactForm = document.getElementById('contactForm');
     
-    if (!form) return;
+    // Open modal
+    const openModal = () => {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
     
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-        
-        // Log form data (in production, send to server)
-        console.log('Form submitted:', data);
-        
-        // Show success message
-        showFormSuccess();
-        
-        // Reset form
-        form.reset();
+    // Close modal
+    const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+    
+    // Event listeners
+    if (heroBtn) heroBtn.addEventListener('click', openModal);
+    if (finalBtn) finalBtn.addEventListener('click', openModal);
+    if (modalClose) modalClose.addEventListener('click', closeModal);
+    if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+    
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
     });
     
-    // Add focus effects to form fields
-    const formInputs = form.querySelectorAll('input, select, textarea');
-    formInputs.forEach(input => {
-        input.addEventListener('focus', (e) => {
-            e.target.parentElement.style.transform = 'translateY(-2px)';
+    // Form submission
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+            
+            console.log('Form submitted:', data);
+            
+            // Show success message
+            showSuccessMessage();
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Close modal after 2 seconds
+            setTimeout(closeModal, 2000);
         });
-        
-        input.addEventListener('blur', (e) => {
-            e.target.parentElement.style.transform = 'translateY(0)';
-        });
-    });
+    }
 }
 
-function showFormSuccess() {
-    const form = document.getElementById('quoteForm');
-    const successMessage = document.createElement('div');
+function showSuccessMessage() {
+    const modalContent = document.querySelector('.modal-content');
+    const successDiv = document.createElement('div');
     
-    successMessage.style.cssText = `
-        padding: 2rem;
-        background: linear-gradient(135deg, rgba(0, 163, 255, 0.1) 0%, rgba(48, 197, 255, 0.1) 100%);
-        border: 2px solid var(--color-electric-blue);
+    successDiv.style.cssText = `
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(125, 211, 252, 0.2) 100%);
+        border: 2px solid var(--color-accent);
         border-radius: 12px;
-        color: #fff;
+        padding: 2rem;
         text-align: center;
-        margin-top: 2rem;
-        animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 0 30px rgba(0, 163, 255, 0.3);
+        width: 90%;
+        animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+        z-index: 10;
     `;
     
-    successMessage.innerHTML = `
+    successDiv.innerHTML = `
         <div style="font-size: 3rem; margin-bottom: 1rem;">✓</div>
-        <strong style="font-size: 1.5rem; display: block; margin-bottom: 0.5rem;">Quote Request Submitted!</strong>
-        <span style="font-size: 1.0625rem; color: var(--color-text-secondary);">
-            We'll contact you within 24 hours with your custom cleaning plan.
+        <strong style="font-size: 1.5rem; display: block; margin-bottom: 0.5rem; color: var(--color-text-primary);">Request Submitted!</strong>
+        <span style="font-size: 1rem; color: var(--color-text-secondary);">
+            We'll contact you within 24 hours.
         </span>
     `;
     
-    form.parentElement.insertBefore(successMessage, form.nextSibling);
+    modalContent.appendChild(successDiv);
     
-    // Remove message after 6 seconds
     setTimeout(() => {
-        successMessage.style.opacity = '0';
-        successMessage.style.transform = 'translateY(-20px)';
-        successMessage.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        setTimeout(() => successMessage.remove(), 500);
-    }, 6000);
+        successDiv.remove();
+    }, 2000);
 }
 
 // ===================================
-// Smooth Scroll for Navigation Links
+// Smooth Scroll
 // ===================================
 
 function initSmoothScroll() {
@@ -118,8 +135,10 @@ function initSmoothScroll() {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
             
-            // Skip if it's just "#"
-            if (href === '#') return;
+            if (href === '#' || href === '#contact-modal') {
+                e.preventDefault();
+                return;
+            }
             
             e.preventDefault();
             
@@ -138,6 +157,7 @@ function initSmoothScroll() {
 }
 
 // ===================================
+<<<<<<< HEAD
 // Parallax Effect for Hero Blueprint - REMOVED
 // All animations pre-loaded, no scroll effects
 // ===================================
@@ -146,56 +166,155 @@ function initParallax() {
     // Parallax scroll effects removed as per requirements
     // All content is now pre-loaded and visible
     return;
+=======
+// Scroll-Triggered Animations
+// ===================================
+
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all fade-in-up elements
+    const fadeElements = document.querySelectorAll('.fade-in-up');
+    fadeElements.forEach(el => observer.observe(el));
 }
 
 // ===================================
-// Mouse Move Glow Effect (Premium Touch)
+// Interactive Dashboard Demo (Scroll-Driven)
 // ===================================
 
-function initMouseGlow() {
-    const hero = document.querySelector('.hero');
+function initDashboardDemo() {
+    const demoContainer = document.querySelector('.demo-container');
+    const demoSteps = document.querySelectorAll('.demo-step');
+    const dashboardStates = document.querySelectorAll('.dashboard-state');
     
-    if (!hero) return;
+    if (!demoContainer || demoSteps.length === 0) return;
     
-    let mouseX = 0;
-    let mouseY = 0;
-    let currentX = 0;
-    let currentY = 0;
+    let currentState = 1;
     
-    hero.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
+    const updateDashboardState = (stateNumber) => {
+        if (currentState === stateNumber) return;
+        
+        currentState = stateNumber;
+        
+        // Update step opacity
+        demoSteps.forEach((step, index) => {
+            if (index + 1 === stateNumber) {
+                step.classList.add('active');
+            } else {
+                step.classList.remove('active');
+            }
+        });
+        
+        // Update dashboard visual state
+        dashboardStates.forEach(state => {
+            if (parseInt(state.dataset.state) === stateNumber) {
+                state.classList.add('active');
+            } else {
+                state.classList.remove('active');
+            }
+        });
+    };
+    
+    // Scroll event listener with throttling
+    let ticking = false;
+    
+    const checkScroll = () => {
+        const containerRect = demoContainer.getBoundingClientRect();
+        const containerTop = containerRect.top;
+        const containerHeight = containerRect.height;
+        const viewportHeight = window.innerHeight;
+        
+        // Calculate scroll progress (0 to 1)
+        const scrollProgress = Math.max(0, Math.min(1, 
+            (viewportHeight / 2 - containerTop) / (containerHeight - viewportHeight / 2)
+        ));
+        
+        // Determine which state should be active based on scroll progress
+        if (scrollProgress < 0.33) {
+            updateDashboardState(1);
+        } else if (scrollProgress < 0.66) {
+            updateDashboardState(2);
+        } else {
+            updateDashboardState(3);
+        }
+        
+        ticking = false;
+    };
+    
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(checkScroll);
+            ticking = true;
+        }
     });
     
-    function animateGlow() {
-        // Smooth interpolation
-        currentX += (mouseX - currentX) * 0.1;
-        currentY += (mouseY - currentY) * 0.1;
-        
-        hero.style.setProperty('--mouse-x', `${currentX}px`);
-        hero.style.setProperty('--mouse-y', `${currentY}px`);
-        
-        requestAnimationFrame(animateGlow);
-    }
-    
-    animateGlow();
+    // Initial check
+    checkScroll();
+>>>>>>> a233724 (complerlty rehauled the site to show dashboard more)
 }
 
-// Optional: Enable mouse glow effect
-// initMouseGlow();
-
 // ===================================
-// Intersection Observer Polyfill Check
+// Hero Animation Loop
 // ===================================
 
-// Not needed anymore - all elements visible on load
+function initHeroAnimation() {
+    // The checklist animation is handled via CSS
+    // This function can be extended for additional hero animations
+    
+    const checklistItems = document.querySelectorAll('.checklist-item');
+    
+    if (checklistItems.length === 0) return;
+    
+    // Loop the animation
+    const animationDuration = 5500; // Total animation cycle
+    
+    setInterval(() => {
+        checklistItems.forEach((item, index) => {
+            const checkbox = item.querySelector('.checkbox');
+            const checkmark = item.querySelector('.checkmark');
+            
+            // Reset
+            setTimeout(() => {
+                checkbox.style.animation = 'none';
+                checkmark.style.animation = 'none';
+                checkbox.offsetHeight; // Trigger reflow
+                checkbox.style.animation = '';
+                checkmark.style.animation = '';
+            }, index * 1000);
+        });
+    }, animationDuration);
+}
 
 // ===================================
-// Performance Optimization: Preload Critical Assets
+// Performance Monitoring
 // ===================================
 
 if ('requestIdleCallback' in window) {
     requestIdleCallback(() => {
         console.log('Northern Facilities Group - Premium Experience Loaded');
+        console.log('Performance metrics:', {
+            loadTime: performance.now(),
+            navigation: performance.getEntriesByType('navigation')[0]
+        });
     });
+}
+
+// ===================================
+// Mobile Menu Toggle (if needed)
+// ===================================
+
+// For future mobile hamburger menu implementation
+function initMobileMenu() {
+    // Placeholder for mobile menu functionality
 }
