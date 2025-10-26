@@ -157,16 +157,6 @@ function initSmoothScroll() {
 }
 
 // ===================================
-<<<<<<< HEAD
-// Parallax Effect for Hero Blueprint - REMOVED
-// All animations pre-loaded, no scroll effects
-// ===================================
-
-function initParallax() {
-    // Parallax scroll effects removed as per requirements
-    // All content is now pre-loaded and visible
-    return;
-=======
 // Scroll-Triggered Animations
 // ===================================
 
@@ -261,7 +251,6 @@ function initDashboardDemo() {
     
     // Initial check
     checkScroll();
->>>>>>> a233724 (complerlty rehauled the site to show dashboard more)
 }
 
 // ===================================

@@ -90,7 +90,6 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: var(--spacing-2xl);
     text-align: center;
     letter-spacing: -0.03em;
-<<<<<<< HEAD
 }
 
 /* Removed scroll-triggered fade animations - all elements pre-loaded */
@@ -103,9 +102,8 @@ h1, h2, h3, h4, h5, h6 {
 .fade-in-up.is-visible {
     opacity: 1;
     transform: translateY(0);
-=======
+
     color: var(--color-text-primary);
->>>>>>> a233724 (complerlty rehauled the site to show dashboard more)
 }
 
 /* ===================================
@@ -152,7 +150,6 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     gap: var(--spacing-xl);
     align-items: center;
-<<<<<<< HEAD
     flex-wrap: nowrap;
 }
 
@@ -214,9 +211,10 @@ h1, h2, h3, h4, h5, h6 {
         padding: 0.35rem 0.7rem;
         font-size: 0.7rem;
     }
-=======
+}
+
+.nav-menu {
     list-style: none;
->>>>>>> a233724 (complerlty rehauled the site to show dashboard more)
 }
 
 .nav-menu a {
@@ -286,12 +284,7 @@ h1, h2, h3, h4, h5, h6 {
    =================================== */
 
 .hero {
-<<<<<<< HEAD
-    min-height: 85vh;
-    background: linear-gradient(135deg, #0a1929 0%, #001529 50%, #0a1f3d 100%);
-=======
     min-height: 100vh;
->>>>>>> a233724 (complerlty rehauled the site to show dashboard more)
     display: flex;
     align-items: center;
     padding-top: 100px;
@@ -305,17 +298,10 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     top: 0;
     right: 0;
-<<<<<<< HEAD
     bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 30%, rgba(0, 163, 255, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(48, 197, 255, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(0, 163, 255, 0.05) 0%, transparent 60%);
-=======
     width: 50%;
     height: 100%;
     background: radial-gradient(circle at 80% 50%, rgba(56, 189, 248, 0.1) 0%, transparent 50%);
->>>>>>> a233724 (complerlty rehauled the site to show dashboard more)
     pointer-events: none;
 }
 
@@ -346,15 +332,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-content {
-<<<<<<< HEAD
     position: relative;
     z-index: 2;
-    text-align: center;
-    padding: var(--spacing-4xl) 0;
-    opacity: 1;
-=======
+    opacity: 0;
     animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
->>>>>>> a233724 (complerlty rehauled the site to show dashboard more)
 }
 
 .hero-title {
@@ -380,9 +361,9 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0;
 }
 
-<<<<<<< HEAD
+
 /* Removed fadeInUp animation - all content now pre-loaded */
-=======
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -393,7 +374,6 @@ h1, h2, h3, h4, h5, h6 {
         transform: translateY(0);
     }
 }
->>>>>>> a233724 (complerlty rehauled the site to show dashboard more)
 
 @keyframes fadeInRight {
     from {
