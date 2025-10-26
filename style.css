@@ -128,9 +128,8 @@ img {
    =================================== */
 
 .fade-in-up {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .fade-in-up.is-visible {
@@ -174,34 +173,52 @@ img {
     font-weight: var(--font-weight-bold);
     color: var(--color-text-light);
     letter-spacing: -0.5px;
+    white-space: nowrap;
 }
 
 .nav-menu {
     display: flex;
     gap: var(--spacing-xl);
     align-items: center;
+    flex-wrap: nowrap;
 }
 
 @media (max-width: 768px) {
+    .nav-container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .nav-logo {
+        font-size: 0.95rem;
+    }
+    
     .nav-menu {
-        gap: var(--spacing-md);
-        font-size: 0.85rem;
+        gap: var(--spacing-sm);
+        font-size: 0.75rem;
+    }
+    
+    .nav-menu li:first-child,
+    .nav-menu li:nth-child(2) {
+        display: none;
     }
     
     .nav-cta {
-        padding: var(--spacing-xs) var(--spacing-md);
-        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
     }
 }
 
 @media (max-width: 480px) {
-    .nav-menu {
-        gap: var(--spacing-sm);
-        font-size: 0.8rem;
+    .nav-logo {
+        font-size: 0.85rem;
     }
     
-    .nav-logo {
-        font-size: 1rem;
+    .nav-menu {
+        gap: 0.4rem;
+    }
+    
+    .nav-menu li:nth-child(3) {
+        display: none;
     }
 }
 
@@ -568,6 +585,7 @@ img {
     overflow: hidden;
     transition: all var(--transition-normal);
     position: relative;
+    will-change: transform;
 }
 
 .service-mini-card:hover {
@@ -586,12 +604,15 @@ img {
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid var(--color-border);
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .service-mini-animation svg {
     width: 100%;
     height: auto;
     max-height: 150px;
+    transform: translateZ(0);
 }
 
 /* Base elements for all mini animations */
@@ -608,6 +629,7 @@ img {
     stroke: var(--color-electric-blue);
     stroke-width: 1;
     animation: officeMiniPulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    will-change: fill-opacity;
 }
 
 @keyframes officeMiniPulse {
@@ -627,6 +649,7 @@ img {
 .window-mini-shine {
     opacity: 0;
     animation: windowMiniShine 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    will-change: opacity, transform;
 }
 
 .shine-mini-rect {
@@ -641,6 +664,7 @@ img {
 /* Floor Mini Animation */
 .floor-mini-fill {
     opacity: 0.4;
+    will-change: opacity;
 }
 
 .floor-mini-lines line {
@@ -660,6 +684,7 @@ img {
     stroke: var(--color-electric-blue-bright);
     stroke-width: 1.5;
     animation: touchMiniPing 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    will-change: transform;
 }
 
 .touch-mini-point:nth-child(2) { animation-delay: 0.2s; }
@@ -1006,16 +1031,12 @@ img {
 }
 
 @media (max-width: 768px) {
-    .nav-menu {
-        gap: var(--spacing-md);
-    }
-    
     .hero-title {
-        font-size: 2.75rem;
+        font-size: 2.5rem;
     }
     
     .hero-subtitle {
-        font-size: 1.125rem;
+        font-size: 1rem;
     }
     
     .form-row {
@@ -1033,33 +1054,37 @@ img {
     .services-container {
         gap: var(--spacing-2xl);
     }
+    
+    .service-mini-animation {
+        min-height: 150px;
+        padding: var(--spacing-md);
+    }
 }
 
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 2.25rem;
-    }
-    
-    .section-title {
         font-size: 2rem;
     }
     
-    .nav-logo {
-        font-size: 1rem;
-    }
-    
-    .nav-menu {
-        gap: var(--spacing-sm);
-        font-size: 0.875rem;
+    .section-title {
+        font-size: 1.75rem;
     }
     
     .hero-content {
-        padding: var(--spacing-3xl) 0;
+        padding: var(--spacing-2xl) 0;
     }
     
-    .contact-form,
-    .services-blueprint-sticky {
-        padding: var(--spacing-xl);
+    .contact-form {
+        padding: var(--spacing-lg);
+    }
+    
+    .service-mini-animation {
+        min-height: 120px;
+        padding: var(--spacing-sm);
+    }
+    
+    .service-mini-animation svg {
+        max-height: 100px;
     }
 }
 

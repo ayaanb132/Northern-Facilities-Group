@@ -7,7 +7,6 @@
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
     initNavScroll();
-    initScrollAnimations();
     initFormHandler();
     initSmoothScroll();
     initParallax();
@@ -31,40 +30,6 @@ function initNavScroll() {
         }
 
         lastScroll = currentScroll;
-    });
-}
-
-// ===================================
-// Scroll-Triggered Animations (Faster & Smoother)
-// ===================================
-
-function initScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    // Create intersection observer
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
-        });
-    }, observerOptions);
-
-    // Observe all fade-in-up elements
-    const fadeElements = document.querySelectorAll('.fade-in-up');
-    fadeElements.forEach(el => observer.observe(el));
-
-    // Add fade-in-up class to sections automatically
-    const autoFadeElements = document.querySelectorAll(
-        '.process-step, .feature-item, .service-mini-card, .contact-content, .section-title'
-    );
-    
-    autoFadeElements.forEach(el => {
-        el.classList.add('fade-in-up');
-        observer.observe(el);
     });
 }
 
@@ -241,40 +206,10 @@ function initMouseGlow() {
 // initMouseGlow();
 
 // ===================================
-// Add Staggered Animation Delays
-// ===================================
-
-function addStaggeredDelays() {
-    const processSteps = document.querySelectorAll('.process-step');
-    processSteps.forEach((step, index) => {
-        step.style.transitionDelay = `${index * 0.05}s`;
-    });
-    
-    const featureItems = document.querySelectorAll('.feature-item');
-    featureItems.forEach((item, index) => {
-        item.style.transitionDelay = `${index * 0.04}s`;
-    });
-    
-    const serviceMiniCards = document.querySelectorAll('.service-mini-card');
-    serviceMiniCards.forEach((card, index) => {
-        card.style.transitionDelay = `${index * 0.05}s`;
-    });
-}
-
-// Initialize staggered delays
-addStaggeredDelays();
-
-// ===================================
 // Intersection Observer Polyfill Check
 // ===================================
 
-if (!('IntersectionObserver' in window)) {
-    console.warn('IntersectionObserver not supported. Loading fallback...');
-    // Fallback: make all elements visible immediately
-    document.querySelectorAll('.fade-in-up').forEach(el => {
-        el.classList.add('is-visible');
-    });
-}
+// Not needed anymore - all elements visible on load
 
 // ===================================
 // Performance Optimization: Preload Critical Assets
