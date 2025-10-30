@@ -20,25 +20,22 @@ class NavigationLoader {
    *  - one-level subpages:       "/site/services/page.html"
    */
   calculateBasePath() {
-    const path = window.location.pathname;
-    const parts = path.split('/').filter(Boolean); // remove empty segments
+  const path = window.location.pathname;
+  const parts = path.split('/').filter(Boolean);
+  const last = parts[parts.length - 1] || '';
+  const lastIsFile = last.includes('.');
 
-    const last = parts[parts.length - 1] || '';
-    const lastIsFile = last.includes('.');
+  let depth = 0;
+  if (lastIsFile) depth = Math.max(0, parts.length - 2);
+  else depth = Math.max(0, parts.length - 1);
 
-    // depth = how many directories above the current page we must go
-    // If URL ends with a file, ignore that file when computing depth
-    // If URL ends with a trailing slash ("folder/"), treat that folder as the current page container
-    let depth = 0;
-    if (lastIsFile) {
-      depth = Math.max(0, parts.length - 2);
-    } else {
-      depth = Math.max(0, parts.length - 1);
-    }
-
-    // Convert to a relative base path. Use './' when depth==0 for safety across hosts (incl. GH Pages subpaths)
-    return depth === 0 ? './' : '../'.repeat(depth);
+  // Fix for GitHub Pages subpath hosting
+  if (window.location.hostname.includes('github.io')) {
+    return './';
   }
+
+  return depth === 0 ? './' : '../'.repeat(depth);
+}
 
   /**
    * Adjust all paths in the HTML to be relative to current page location
