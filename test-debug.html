@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Test</title>
+    <script src="nav-loader.js"></script>
+</head>
+<body>
+    <h1>Debug Test</h1>
+    <div id="nav-placeholder"></div>
+    
+    <script>
+        // Test the navigation loading
+        async function testLoadNav() {
+            try {
+                const res = await fetch('./partials/nav.html/nav.html');
+                console.log('Fetch response status:', res.status);
+                const html = await res.text();
+                console.log('HTML loaded successfully, length:', html.length);
+                const mount = document.getElementById('nav-root');
+                if (mount) {
+                    mount.innerHTML = html;
+                    console.log('Nav loaded successfully');
+                    const nav = document.querySelector('.nav');
+                    console.log('Nav element found:', !!nav);
+                } else {
+                    console.error('Mount point not found');
+                }
+            } catch (e) {
+                console.error('Failed to load nav:', e);
+            }
+        }
+        
+        testLoadNav();
+    </script>
+</body>
+</html>

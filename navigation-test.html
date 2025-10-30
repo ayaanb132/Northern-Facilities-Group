@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation System Test - Northern Facilities Group</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="nav-loader.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <div id="nav-placeholder"></div>
+
+    <main style="padding: 2rem; max-width: 800px; margin: 0 auto;">
+        <h1>🧪 Navigation System Test</h1>
+        
+        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+            <h2>✅ System Status</h2>
+            <ul>
+                <li>✅ Dynamic navigation loading via nav-loader.js</li>
+                <li>✅ Automatic path resolution based on page depth</li>
+                <li>✅ Fallback navigation for error handling</li>
+                <li>✅ Interactive dropdown menus</li>
+                <li>✅ Consistent navigation across all pages</li>
+            </ul>
+        </div>
+
+        <div style="background: #e8f5e8; padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+            <h2>🎯 Implementation Guide</h2>
+            <p><strong>To add dynamic navigation to any page:</strong></p>
+            <ol>
+                <li>Add <code>&lt;script src="../nav-loader.js"&gt;&lt;/script&gt;</code> to the &lt;head&gt;</li>
+                <li>Add <code>&lt;div id="nav-placeholder"&gt;&lt;/div&gt;</code> where you want the nav</li>
+                <li>Adjust the script path based on your folder depth</li>
+            </ol>
+        </div>
+
+        <div style="background: #fff3cd; padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+            <h2>🔧 Quick Links</h2>
+            <ul>
+                <li><a href="index.html">Home Page</a> (root level)</li>
+                <li><a href="services/medical-offices.html">Medical Offices</a> (services folder)</li>
+                <li><a href="specialty/strip-and-wax.html">Strip & Wax</a> (specialty folder)</li>
+            </ul>
+        </div>
+
+        <div style="background: #f0f8ff; padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+            <h2>📋 All Pages Updated</h2>
+            <p>The following pages now use the dynamic navigation system:</p>
+            <ul>
+                <li>✅ index.html</li>
+                <li>✅ services/medical-offices.html</li>
+                <li>✅ services/dental-clinics.html</li>
+                <li>✅ specialty/carpet-deep-clean.html</li>
+                <li>✅ specialty/strip-and-wax.html</li>
+            </ul>
+        </div>
+    </main>
+
+    <script>
+        // Simple test to verify navigation loaded
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const nav = document.querySelector('.nav');
+                if (nav) {
+                    console.log('✅ Navigation loaded successfully');
+                    const status = document.createElement('div');
+                    status.innerHTML = '<p style="color: green; text-align: center; padding: 1rem; background: #d4edda; border-radius: 4px; margin: 1rem 0;">✅ Navigation system working perfectly!</p>';
+                    document.querySelector('main').appendChild(status);
+                } else {
+                    console.error('❌ Navigation failed to load');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -106,141 +106,115 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-text-primary);
 }
 
-/* ===================================
-   Navigation
-   =================================== */
+/* =========================
+   NAVIGATION (drop-in block)
+   ========================= */
 
-.nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    z-index: 1000;
-    padding: var(--spacing-md) 0;
-    border-bottom: 1px solid var(--color-border);
-    transition: all var(--transition-fast);
+/* Nav height variable + page offset so hero isn't hidden under fixed nav */
+:root{
+  --nav-h: 84px;                /* desktop nav height with large logo */
+}
+body{ padding-top: var(--nav-h); }
+
+/* --- NAV BAR (fixed, blurred) --- */
+.nav{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background-color: rgba(15, 23, 42, 0.80);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  transition: all var(--transition-fast);
+  /* layout */
+  display: flex;
+  align-items: center;
+  min-height: var(--nav-h);
+  padding: 14px 0;             /* comfortable default padding */
 }
 
-.nav.scrolled {
-    padding: var(--spacing-sm) 0;
-    background-color: rgba(15, 23, 42, 0.95);
-    box-shadow: var(--shadow-md);
+/* Compact state when scrolled */
+.nav.scrolled{
+  background-color: rgba(15, 23, 42, 0.95);
+  box-shadow: var(--shadow-md);
+  min-height: 72px;
+  padding: 6px 0;
 }
 
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* --- NAV CONTAINER --- */
+.nav-container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.nav-logo {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--color-text-primary);
-    letter-spacing: -0.5px;
+/* --- LOGO (clickable home) --- */
+.nav .nav-logo{
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;                      /* prevent flex from shrinking logo */
+  text-decoration: none;
+  margin-right: clamp(16px, 3vw, 32px);
+}
+.nav .nav-logo img{
+  width: clamp(220px, 18vw, 300px);    /* adjust max to taste (e.g., 320px) */
+  height: auto !important;
+  max-height: none !important;
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+  
 }
 
-.nav-menu {
-    display: flex;
-    gap: var(--spacing-xl);
-    align-items: center;
-    flex-wrap: nowrap;
+/* keyboard focus */
+.nav .nav-logo:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(90,168,255,.45);
+  border-radius: 10px;
 }
 
-@media (max-width: 768px) {
-    .nav-container {
-        padding: 0 var(--spacing-sm);
-        flex-wrap: wrap;
-    }
-    
-    .nav-logo {
-        font-size: 0.9rem;
-        flex: 0 0 auto;
-    }
-    
-    .nav-menu {
-        gap: var(--spacing-md);
-        font-size: 0.85rem;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        flex: 1 1 auto;
-    }
-    
-    .nav-menu li {
-        flex-shrink: 0;
-    }
-    
-    .nav-cta {
-        padding: 0.5rem 1rem;
-        font-size: 0.85rem;
-        white-space: nowrap;
-    }
+/* --- MENU ROW --- */
+.nav-menu{
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.6vw, 28px);       /* spacing between items */
+  margin-left: auto;
+  flex-wrap: nowrap;
+}
+.nav-menu > li{ position: relative; }
+
+/* Links */
+.nav-link{
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  padding: 10px 6px;                   /* bigger click target */
+  text-decoration: none;
+  border-radius: 8px;
+}
+@media (hover:hover){
+  .nav-link:hover{ background: rgba(124,92,255,.12); }
 }
 
-@media (max-width: 480px) {
-    .nav {
-        padding: var(--spacing-sm) 0;
-    }
-    
-    .nav-container {
-        padding: 0 var(--spacing-sm);
-    }
-    
-    .nav-logo {
-        font-size: 0.75rem;
-        max-width: 50%;
-        line-height: 1.2;
-    }
-    
-    .nav-menu {
-        gap: var(--spacing-xs);
-        font-size: 0.7rem;
-    }
-    
-    .nav-menu li a {
-        font-size: 0.7rem;
-    }
-    
-    .nav-cta {
-        padding: 0.35rem 0.7rem;
-        font-size: 0.7rem;
-    }
+/* --- DROPDOWN PANELS (baseline; keep your existing detailed styles) --- */
+.nav-dropdown .dropdown-panel.mega{
+  left: 0; right: 0; width: 100%;
 }
 
-.nav-menu {
-    list-style: none;
+/* --- RESPONSIVE TWEAKS --- */
+@media (max-width: 768px){
+  :root{ --nav-h: 72px; }              /* adjusts page offset too */
+  .nav .nav-logo img{ width: 180px; }
+  .nav-menu{ gap: 14px; }
 }
-
-.nav-menu a {
-    color: var(--color-text-secondary);
-    font-weight: 500;
-    font-size: 0.9375rem;
-    transition: color var(--transition-fast);
-    text-decoration: none;
-}
-
-.nav-menu a:hover {
-    color: var(--color-accent-bright);
-}
-
-.nav-cta {
-    background-color: var(--color-accent);
-    color: var(--color-text-primary) !important;
-    padding: var(--spacing-xs) var(--spacing-md);
-    border-radius: var(--radius-sm);
-    transition: all var(--transition-fast);
-}
-
-.nav-cta:hover {
-    background-color: var(--color-accent-bright);
-    box-shadow: var(--shadow-glow);
-    transform: translateY(-2px);
+@media (max-width: 480px){
+  :root{ --nav-h: 64px; }
+  .nav .nav-logo img{ width: 150px; }
+  .nav-menu{ gap: 10px; }
 }
 
 /* ===================================
@@ -1535,4 +1509,1667 @@ h1, h2, h3, h4, h5, h6 {
     50% {
         transform: translateY(8px);
     }
+}
+/* ====== Full-Width Services Mega Menu (Edge-to-edge, hover-sticky) ====== */
+.nav-dropdown { position: relative; }
+
+.nav-dropdown .nav-dropdown-toggle {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: transparent; border: 0; color: var(--color-text-secondary);
+  font: inherit; cursor: pointer; padding: 0;
+}
+.nav-dropdown .nav-dropdown-toggle:hover { color: var(--color-accent-bright); }
+.nav-dropdown .chev { transition: transform var(--transition-fast); }
+.nav-dropdown.open .chev { transform: rotate(180deg); }
+
+/* Full viewport width panel */
+.dropdown-panel.mega {
+  position: fixed;               /* span screen width */
+  left: 0; right: 0;             /* edge-to-edge */
+  /* top is set via JS to sit exactly under the fixed .nav */
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  opacity: 0; transform: translateY(8px);
+  pointer-events: none; z-index: 1200;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+/* Keep it open while hovering the trigger OR the panel, no click needed */
+@media (hover:hover) and (pointer:fine) {
+  .nav-dropdown:hover .dropdown-panel.mega,
+  .dropdown-panel.mega:hover {
+    opacity: 1; transform: translateY(0); pointer-events: auto;
+  }
+  .nav-dropdown:hover .chev { transform: rotate(180deg); }
+}
+
+/* Inner fills the width neatly (no max-width constraint) */
+.mega-inner {
+  width: 100%;
+  padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-2xl);
+}
+
+/* Title row */
+.mega-header { 
+  margin: 0 auto var(--spacing-lg);
+  padding: 0 var(--spacing-sm);
+}
+.mega-header h4 {
+  margin: 0 0 6px; font-size: 1.25rem; color: var(--color-text-primary); font-weight: 800;
+}
+.mega-header p {
+  margin: 0; color: var(--color-text-muted);
+}
+
+/* Grid: auto-fit across screen width, never one long column */
+.mega-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--spacing-sm);
+  padding: 0 var(--spacing-sm);
+}
+
+/* Links */
+.dropdown-link {
+  display: block; padding: 12px 14px;
+  color: var(--color-text-secondary); text-decoration: none;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: rgba(51,65,85,0.25);
+  transition: transform var(--transition-fast), background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+  white-space: nowrap;            /* keep items readable */
+  overflow: hidden; text-overflow: ellipsis;
+}
+.dropdown-link:hover {
+  color: var(--color-text-primary);
+  background: rgba(148,163,184,0.15);
+  transform: translateY(-2px);
+  border-color: var(--color-border);
+}
+.dropdown-link.primary {
+  grid-column: 1 / -1;           /* headline row spans all columns */
+  font-weight: 700;
+  color: var(--color-text-primary);
+  background: rgba(56,189,248,0.08);
+  border: 1px solid rgba(56,189,248,0.18);
+  margin-bottom: 6px;
+}
+
+/* JS-opened state (mobile or click) */
+.nav-dropdown.open .dropdown-panel.mega {
+  opacity: 1; transform: translateY(0); pointer-events: auto;
+}
+
+/* If the menu is taller than the viewport, allow internal scroll */
+.dropdown-panel.mega {
+  /* JS will set max-height precisely; this is a safe fallback */
+  max-height: calc(100vh - 72px);
+  overflow-y: auto;
+}
+
+/* Small screens */
+@media (max-width: 640px) {
+  .mega-inner { padding: var(--spacing-lg); }
+  .mega-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+}
+
+/* Optimize for specialty dropdown with many items */
+@media (min-width: 1200px) {
+  .mega-grid { 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+/* ====== Full-Width Services & Specialty Mega Menus (edge-to-edge, hover-sticky) ====== */
+.nav-dropdown { position: relative; }
+
+.nav-dropdown .nav-dropdown-toggle {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: transparent; border: 0; color: var(--color-text-secondary);
+  font: inherit; cursor: pointer; padding: 0;
+}
+.nav-dropdown .nav-dropdown-toggle:hover { color: var(--color-accent-bright); }
+.nav-dropdown .chev { transition: transform var(--transition-fast); }
+.nav-dropdown.open .chev { transform: rotate(180deg); }
+
+/* Full viewport width panel */
+.dropdown-panel.mega {
+  position: fixed;
+  left: 0; right: 0;
+  /* top is set in JS to sit exactly under the fixed .nav */
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  opacity: 0; transform: translateY(8px);
+  pointer-events: none; z-index: 1200;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+/* Hover keeps it open (no click needed on desktop) */
+@media (hover:hover) and (pointer:fine) {
+  .nav-dropdown:hover .dropdown-panel.mega,
+  .dropdown-panel.mega:hover {
+    opacity: 1; transform: translateY(0); pointer-events: auto;
+  }
+  .nav-dropdown:hover .chev { transform: rotate(180deg); }
+}
+
+/* Inner layout */
+.mega-inner {
+  width: 100%;
+  padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-2xl);
+}
+
+/* Title row */
+.mega-header {
+  margin: 0 auto var(--spacing-lg);
+  padding: 0 var(--spacing-sm);
+}
+.mega-header h4 {
+  margin: 0 0 6px; font-size: 1.25rem; color: var(--color-text-primary); font-weight: 800;
+}
+.mega-header p {
+  margin: 0; color: var(--color-text-muted);
+}
+
+/* Horizontal grid: spreads items across screen, never one long column */
+.mega-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--spacing-sm);
+  padding: 0 var(--spacing-sm);
+}
+
+/* Links */
+.dropdown-link {
+  display: block; padding: 12px 14px;
+  color: var(--color-text-secondary); text-decoration: none;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: rgba(51,65,85,0.25);
+  transition: transform var(--transition-fast), background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+  white-space: nowrap;            /* keep items readable on one line */
+  overflow: hidden; text-overflow: ellipsis;
+}
+.dropdown-link:hover {
+  color: var(--color-text-primary);
+  background: rgba(148,163,184,0.15);
+  transform: translateY(-2px);
+  border-color: var(--color-border);
+}
+.dropdown-link.primary {
+  grid-column: 1 / -1;           /* headline row spans all columns */
+  font-weight: 700;
+  color: var(--color-text-primary);
+  background: rgba(56,189,248,0.08);
+  border: 1px solid rgba(56,189,248,0.18);
+  margin-bottom: 6px;
+}
+
+/* Open state (JS toggles .open, useful for mobile/touch) */
+.nav-dropdown.open .dropdown-panel.mega {
+  opacity: 1; transform: translateY(0); pointer-events: auto;
+}
+
+/* If taller than the viewport, scroll INSIDE the panel (page stays still) */
+.dropdown-panel.mega {
+  max-height: calc(100vh - 72px); /* JS will update this value to match nav height */
+  overflow-y: auto;
+}
+
+/* Small screens */
+@media (max-width: 640px) {
+  .mega-inner { padding: var(--spacing-lg); }
+  .mega-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+}
+/* ===== Service Page Template ===== */
+.page-hero {
+  padding: 80px 0 40px;
+  border-bottom: 1px solid var(--color-border);
+  background: linear-gradient(180deg, rgba(56,189,248,0.06), rgba(56,189,248,0.0));
+}
+.breadcrumb {
+  display: flex; gap: 8px; align-items: center;
+  color: var(--color-text-muted); font-size: .9rem; margin-bottom: 12px;
+}
+.breadcrumb a { color: var(--color-text-secondary); text-decoration: none; }
+.breadcrumb a:hover { color: var(--color-text-primary); text-decoration: underline; }
+
+.page-grid {
+  display: grid; grid-template-columns: 1.8fr .9fr; gap: 24px;
+  padding: 40px 0; border-bottom: 1px solid var(--color-border);
+}
+@media (max-width: 900px){ .page-grid { grid-template-columns: 1fr; } }
+
+.section-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 20px; margin-bottom: 16px;
+}
+
+.list-check { list-style: none; margin: 10px 0 0; padding: 0; }
+.list-check li { margin: 8px 0; color: var(--color-text-secondary); }
+.list-check li::before { content: "✔"; margin-right: 8px; color: var(--color-accent-bright); }
+
+.faq { border-top: 1px solid var(--color-border); }
+.faq-item { border-bottom: 1px solid var(--color-border); }
+.faq-q { width: 100%; text-align: left; background: transparent; border:0; color: var(--color-text-primary); padding: 16px; cursor: pointer; font-size: 1rem; display:flex; justify-content: space-between; align-items:center; }
+.faq-a { display: none; padding: 0 16px 16px; color: var(--color-text-secondary); }
+.faq-item.open .faq-a { display:block; }
+
+.sidebar .cta {
+  position: sticky; top: 90px;
+  display: grid; gap: 10px;
+}
+.sidebar .cta .btn { width: 100%; }
+.meta-block { font-size: .9rem; color: var(--color-text-muted); }
+/* ==== Upscale Service Page visuals ==== */
+.hero-med {
+  position: relative;
+  background: #0b1220 url('https://images.unsplash.com/photo-1587370560942-ad2a04eabb6d?q=80&w=1800&auto=format&fit=crop') center/cover no-repeat;
+}
+.hero-med .hero-overlay {
+  background: linear-gradient(180deg, rgba(11,18,32,.65), rgba(11,18,32,.85));
+  padding: 92px 0 56px;
+}
+.hero-content { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.stat-bar { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: 10px; margin-top: 18px; }
+.stat { background: var(--color-bg-secondary, #101828); border: 1px solid var(--color-border, #22304a); border-radius: 12px; padding: 12px; text-align: center; }
+.stat span { display:block; font-weight:800; font-size:1.15rem; }
+.stat small { color: var(--color-text-muted, #a8b3c7); }
+
+/* Breathing room + grids */
+.section-card { margin-bottom: 20px; }
+.list-check.grid-2 { columns: 2; column-gap: 24px; }
+@media (max-width: 900px){ .list-check.grid-2 { columns: 1; } }
+
+/* Process steps */
+.process .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.process .steps li { display:flex; gap:12px; align-items:flex-start; }
+.process .steps li span {
+  width: 28px; height: 28px; border-radius: 50%; display:inline-grid; place-items:center;
+  background: rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.3); font-weight:700;
+}
+
+/* Carousel */
+.carousel { position: relative; overflow: hidden; border-radius: 14px; }
+.carousel .car-track { display: flex; transition: transform .45s ease; }
+.carousel img { width: 100%; height: 360px; object-fit: cover; flex: 0 0 100%; }
+.car-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,.35); border: 1px solid var(--color-border,#22304a); color: #fff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; }
+.car-btn.prev { left: 10px; }
+.car-btn.next { right: 10px; }
+.car-dots { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; }
+.car-dots button { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.5); border:0; cursor:pointer; }
+.car-dots button.active { background: #fff; }
+
+/* CTA band */
+.cta-band { border-top: 1px solid var(--color-border,#22304a); border-bottom: 1px solid var(--color-border,#22304a); background: linear-gradient(180deg, rgba(56,189,248,0.06), rgba(56,189,248,0.0)); }
+.cta-band-inner { display:flex; align-items:center; justify-content: space-between; gap: 16px; padding: 32px 0; }
+@media (max-width: 800px){ .cta-band-inner { flex-direction: column; align-items: flex-start; } }
+
+/* Reveal on scroll */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.show { opacity: 1; transform: translateY(0); }
+/* ==== Colorful service visuals ==== */
+:root{
+  /* safe fallbacks in case your tokens aren't set */
+  --accent1: #5aa8ff;           /* brand */
+  --accent2: #7c5cff;           /* purple */
+  --accent3: #23d5ab;           /* teal */
+  --grad-1: radial-gradient(1200px 600px at 20% -10%, rgba(90,168,255,.25), transparent),
+            radial-gradient(1000px 500px at 90% 10%, rgba(124,92,255,.22), transparent);
+}
+
+/* Spacing helpers */
+.section-spaced { padding: 42px 0; }
+
+/* Gradient text */
+.gradient-text{
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  -webkit-background-clip:text; background-clip:text; color: transparent;
+}
+
+/* Hero with colorful gradient + parallax */
+.hero-color{
+  position: relative;
+  background:
+    var(--grad-1),
+    linear-gradient(180deg, #0b1220 0%, #0f1729 40%, #0b1220 100%);
+}
+.hero-color .hero-overlay{ padding: 96px 0 62px; }
+.hero-content{ max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.chip-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+.chip{ background: rgba(90,168,255,.14); border:1px solid rgba(90,168,255,.28); padding:6px 10px; border-radius:999px; font-size:.9rem; color:#eaf2ff;}
+.wave{ display:block; width:100%; height:110px; }
+.wave path{ fill:#0f1729; opacity:.9; }
+
+/* Icon cards + gradient borders */
+.gradient-border{
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#121a2c,#121a2c) padding-box,
+    linear-gradient(135deg, rgba(90,168,255,.6), rgba(124,92,255,.6)) border-box;
+  border-radius: 16px;
+}
+.feature-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; }
+.icon-card{ padding:18px; box-shadow: var(--shadow-lg); }
+.icon-circle{
+  width:42px; height:42px; border-radius:50%;
+  display:grid; place-items:center; margin-bottom:8px;
+  background: linear-gradient(135deg, rgba(90,168,255,.25), rgba(124,92,255,.25));
+  border: 1px solid rgba(124,92,255,.35);
+}
+
+/* Mosaic gallery */
+.mosaic{
+  display:grid; gap:10px;
+  grid-template-columns: 2fr 1.2fr;
+  grid-template-rows: 170px 170px;
+}
+.mosaic img{ width:100%; height:100%; object-fit:cover; border-radius:14px; }
+.mosaic img:nth-child(1){ grid-row: 1 / 3; }
+@media (max-width: 800px){
+  .mosaic{ grid-template-columns: 1fr 1fr; grid-template-rows: 140px 140px; }
+  .mosaic img:nth-child(1){ grid-row:auto; }
+}
+
+/* Section titles */
+.section-title{ margin-bottom:10px; border-left:3px solid var(--accent1); padding-left:10px; }
+
+/* Carousel (brighter) */
+.carousel{ position:relative; overflow:hidden; border-radius:14px; }
+.carousel .car-track{ display:flex; transition: transform .45s ease; }
+.carousel img{ width:100%; height:360px; object-fit:cover; flex:0 0 100%; }
+.car-btn{
+  position:absolute; top:50%; transform:translateY(-50%);
+  background: linear-gradient(135deg, rgba(90,168,255,.35), rgba(124,92,255,.35));
+  border: 1px solid rgba(124,92,255,.4); color:#fff; width:36px; height:36px; border-radius:50%; cursor:pointer;
+}
+.car-btn.prev{ left:10px; } .car-btn.next{ right:10px; }
+.car-dots{ position:absolute; bottom:8px; left:50%; transform:translateX(-50%); display:flex; gap:6px; }
+.car-dots button{
+  width:9px; height:9px; border-radius:50%; border:0; cursor:pointer;
+  background: rgba(255,255,255,.45);
+}
+.car-dots button.active{ background:#fff; }
+
+/* Reveal animation */
+.reveal{ opacity:0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.show{ opacity:1; transform: translateY(0); }
+
+/* Grid & lists already in your CSS; extend the 2-col list */
+.list-check.grid-2{ columns:2; column-gap:24px; }
+@media (max-width: 900px){ .list-check.grid-2{ columns:1; } }
+/* ============== CLEAN SERVICE THEME ============== */
+:root{
+  --c-bg-1:#0b1220;
+  --c-bg-2:#0f1729;
+  --c-tx:#eaf2ff;
+  --c-muted:#a7b3c9;
+  --c-accent-1:#5aa8ff;  /* blue */
+  --c-accent-2:#7c5cff;  /* purple */
+  --c-accent-3:#23d5ab;  /* teal */
+}
+
+/* Layout helpers */
+.section-compact { padding: 44px 0; }
+.display { font-size: clamp(2rem, 4.5vw, 3.2rem); line-height:1.1; letter-spacing:-0.01em; margin: 6px 0 10px; color: var(--c-tx); }
+.lede { color: var(--c-muted); max-width: 780px; }
+.h2 { font-size: clamp(1.25rem, 2.4vw, 1.6rem); margin: 0 0 10px; color: var(--c-tx); }
+
+.soft-gradient{
+  background:
+    radial-gradient(1200px 700px at 10% -10%, rgba(90,168,255,.25), transparent 60%),
+    radial-gradient(1000px 600px at 90% 0%, rgba(124,92,255,.25), transparent 60%),
+    linear-gradient(180deg, var(--c-bg-1), var(--c-bg-2));
+}
+.clean-hero { position: relative; color: var(--c-tx); }
+.clean-hero-inner{ max-width:1100px; margin:0 auto; padding: 92px 20px 56px; }
+.clean-wave{ width:100%; height:110px; display:block; }
+.clean-wave path{ fill:#0f1729; opacity:.9; }
+
+/* Animated accent line under hero */
+.accent-line{ height: 4px; overflow: hidden; }
+.accent-line span{
+  display:block; height:100%;
+  background: linear-gradient(90deg, var(--c-accent-1), var(--c-accent-2), var(--c-accent-3));
+  background-size: 200% 100%;
+  animation: slide-accent 6s linear infinite;
+}
+@keyframes slide-accent {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Pills (lighter weight than chips) */
+.pill-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+.pill{
+  color:#dfe9ff; font-size:.92rem;
+  background: rgba(124,92,255,.14);
+  border:1px solid rgba(124,92,255,.28);
+  padding:6px 10px; border-radius:999px;
+}
+
+/* Promise bar (thin line with items) */
+.promise-bar{ background: linear-gradient(180deg, #0f1729, #0f192f); border-top:1px solid rgba(255,255,255,.06); border-bottom:1px solid rgba(255,255,255,.06); }
+.promise-inner{ max-width:1100px; margin:0 auto; padding: 12px 20px; display:flex; align-items:center; gap:10px; color:#cbd6ee; }
+.promise-item{ white-space:nowrap; }
+.promise-dot{ width:6px; height:6px; border-radius:50%; background: rgba(124,92,255,.75); flex:0 0 auto; }
+
+/* Two-column split (text only) */
+.split{ display:grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+@media (max-width: 900px){ .split{ grid-template-columns:1fr; } }
+
+/* Simple check list (no icons, no cards) */
+.simple-checks{ list-style: none; padding:0; margin:0; }
+.simple-checks li{
+  position:relative; padding: 8px 0 8px 24px; color:#dfe7ff;
+}
+.simple-checks li::before{
+  content:""; position:absolute; left:0; top:13px; width:10px; height:10px; border-radius:2px;
+  background: linear-gradient(135deg, var(--c-accent-1), var(--c-accent-2));
+  box-shadow: 0 0 0 2px rgba(124,92,255,.2);
+}
+
+/* Horizontal steps line (compact, animated) */
+.steps-line{
+  margin: 8px 0 0; padding:0; list-style:none;
+  display:grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
+  position: relative;
+}
+.steps-line::after{
+  content:""; position:absolute; left:0; right:0; top: 18px; height:2px; background: rgba(255,255,255,.08);
+}
+.steps-line li{
+  position:relative; color:#cfe2ff; font-size:.95rem; padding-top:26px; text-align:center;
+}
+.steps-line li span{
+  position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:26px; height:26px; border-radius:50%;
+  background: #121a2c; border:1px solid rgba(255,255,255,.22); color:#fff;
+  display:grid; place-items:center; font-size:.9rem;
+}
+.steps-line li span::after{
+  /* pulsing dot */
+  content:""; position:absolute; inset:-4px; border-radius:50%;
+  background: radial-gradient(circle at center, rgba(124,92,255,.5), transparent 60%);
+  animation: pulse 2.8s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity:.35; transform: scale(1); }
+  50% { opacity:.8; transform: scale(1.06); }
+}
+
+/* Glassy CTA band */
+.cta-glass{
+  margin: 42px 0 0;
+  background:
+    radial-gradient(800px 400px at 10% 0%, rgba(90,168,255,.18), transparent 60%),
+    radial-gradient(700px 400px at 90% 10%, rgba(124,92,255,.16), transparent 60%),
+    linear-gradient(180deg, #0e1530, #0c1428);
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.cta-glass-inner{
+  max-width:1100px; margin:0 auto; padding: 28px 20px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+}
+.muted{ color:#aeb9d1; }
+
+/* Reveal (reuse your existing .reveal.show; ensure these exist) */
+.reveal{ opacity:0; transform: translateY(12px); transition: opacity .45s ease, transform .45s ease; }
+.reveal.show{ opacity:1; transform: translateY(0); }
+
+/* Optional subtle gradient animation on hero background (performance-safe) */
+.soft-gradient{ animation: hueShift 20s linear infinite; }
+@keyframes hueShift{
+  0%{ filter:hue-rotate(0deg) saturate(1); }
+  50%{ filter:hue-rotate(10deg) saturate(1.05); }
+  100%{ filter:hue-rotate(0deg) saturate(1); }
+}
+/* ========== NinjaOne-inspired clean layout (no images) ========== */
+.tech-hero{ color:#eaf2ff; position:relative; }
+.tech-hero-inner{ max-width:1100px; margin:0 auto; padding: 88px 20px 48px; }
+.hero-cta{ display:flex; gap:12px; margin-top:16px; flex-wrap:wrap; }
+.btn.ghost{ background:transparent; border:1px solid rgba(255,255,255,.18); color:#dfe8ff; }
+.badge-row{ display:flex; gap:10px; align-items:center; color:#b9c6de; margin-top:14px; flex-wrap:wrap; }
+.badge{ padding:4px 10px; border:1px solid rgba(255,255,255,.18); border-radius:999px; font-size:.9rem; }
+.badge-row .dot{ opacity:.5 }
+
+.subnav{ position:sticky; top:0; z-index:50; background:rgba(10,15,26,.7); backdrop-filter: blur(8px); border-bottom:1px solid rgba(255,255,255,.06); }
+.subnav-inner{ max-width:1100px; margin:0 auto; padding: 10px 20px; display:flex; gap:14px; overflow:auto; }
+.subnav-link{ color:#cfe2ff; text-decoration:none; padding:8px 12px; border-radius:8px; font-size:.95rem; white-space:nowrap; }
+.subnav-link:hover{ background:rgba(124,92,255,.15); }
+.subnav-link.cta{ margin-left:auto; background:linear-gradient(90deg,#5aa8ff,#7c5cff); color:#0e1220; font-weight:600; }
+.subnav.is-pinned{ box-shadow: 0 6px 24px rgba(0,0,0,.2); }
+
+.section-compact{ padding: 44px 0; }
+.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+@media (max-width: 900px){ .grid-2{ grid-template-columns:1fr; } }
+
+.panel{
+  background: linear-gradient(180deg,#0f1729,#0f192f);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 14px;
+  padding: 18px 16px;
+}
+.mt8{ margin-top:8px; }
+
+.list-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; }
+@media (max-width: 700px){ .list-grid{ grid-template-columns:1fr; } }
+
+.kpi-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media (max-width: 800px){ .kpi-grid{ grid-template-columns:1fr; } }
+.kpi{
+  text-align:center; padding:18px 10px; border-radius:14px;
+  background: radial-gradient(400px 200px at 50% -30%, rgba(90,168,255,.18), transparent 60%),
+              radial-gradient(400px 200px at 70% 120%, rgba(124,92,255,.16), transparent 60%),
+              linear-gradient(180deg,#0f1729,#0f192f);
+  border:1px solid rgba(255,255,255,.06);
+}
+.kpi .num{ font-size: clamp(1.6rem, 3.6vw, 2.2rem); font-weight:700; color:#ffffff; letter-spacing:-.02em; }
+.kpi .label{ color:#b4c2dc }
+
+.accordion{ display:grid; gap:8px; }
+.acc-q{
+  text-align:left; width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.08);
+  background:#0e1530; color:#eaf2ff; font-weight:600; cursor:pointer;
+}
+.acc-a{ display:none; padding:10px 14px; color:#cfe2ff; border-left:3px solid #7c5cff; }
+.acc-a.open{ display:block; }
+
+.display{ font-size: clamp(2rem, 4.6vw, 3.3rem); line-height:1.1; letter-spacing:-0.01em; margin: 6px 0 8px; color:#fff; }
+.lede{ color:#b9c6de; max-width: 860px; }
+
+.simple-checks{ list-style:none; padding:0; margin:0; }
+.simple-checks li{ position:relative; padding:7px 0 7px 22px; color:#dfe7ff; }
+.simple-checks li::before{
+  content:""; position:absolute; left:0; top:12px; width:10px; height:10px; border-radius:2px;
+  background: linear-gradient(135deg,#5aa8ff,#7c5cff);
+  box-shadow: 0 0 0 2px rgba(124,92,255,.22);
+}
+
+/* Steps line (compact) */
+.steps-line{
+  margin: 10px 0 0; padding:0; list-style:none;
+  display:grid; gap:8px;
+  grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
+  position:relative;
+}
+.steps-line li{ position:relative; color:#cfe2ff; font-size:.95rem; padding-top:26px; text-align:center; }
+.steps-line li span{
+  position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:26px; height:26px; border-radius:50%; background:#121a2c; border:1px solid rgba(255,255,255,.22);
+  color:#fff; display:grid; place-items:center; font-size:.9rem;
+}
+.steps-6::after{
+  content:""; position:absolute; left:0; right:0; top: 18px; height:2px; background: rgba(255,255,255,.08);
+}
+
+.soft-gradient{
+  background:
+    radial-gradient(1200px 700px at 10% -10%, rgba(90,168,255,.20), transparent 60%),
+    radial-gradient(1000px 600px at 90% 0%, rgba(124,92,255,.20), transparent 60%),
+    linear-gradient(180deg, #0b1220, #0f1729);
+}
+.accent-line{ height:4px; overflow:hidden; }
+.accent-line span{
+  display:block; height:100%;
+  background: linear-gradient(90deg,#5aa8ff,#7c5cff,#23d5ab);
+  background-size: 200% 100%;
+  animation: slide-accent 8s linear infinite;
+}
+@keyframes slide-accent { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+/* ===== Clean service template (photo-free) ===== */
+.svc-hero { color:#eaf2ff; position:relative; }
+.svc-hero-inner { max-width:1100px; margin:0 auto; padding: 92px 20px 52px; }
+.hero-cta { display:flex; gap:12px; margin-top:16px; flex-wrap:wrap; }
+.btn.ghost{ background:transparent; border:1px solid rgba(255,255,255,.18); color:#dfe8ff; }
+
+.subnav{ position:sticky; top:0; z-index:50; background:rgba(10,15,26,.7); backdrop-filter: blur(8px); border-bottom:1px solid rgba(255,255,255,.06); }
+.subnav-inner{ max-width:1100px; margin:0 auto; padding: 10px 20px; display:flex; gap:14px; overflow:auto; }
+.subnav-link{ color:#cfe2ff; text-decoration:none; padding:8px 12px; border-radius:8px; font-size:.95rem; white-space:nowrap; }
+.subnav-link:hover{ background:rgba(124,92,255,.15); }
+.subnav-link.cta{ margin-left:auto; background:linear-gradient(90deg,#5aa8ff,#7c5cff); color:#0e1220; font-weight:600; }
+.subnav.is-pinned{ box-shadow: 0 6px 24px rgba(0,0,0,.2); }
+
+.section-compact{ padding: 44px 0; }
+.svc-grid2{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+@media (max-width: 900px){ .svc-grid2{ grid-template-columns:1fr; } }
+
+.svc-panel{
+  background: linear-gradient(180deg,#0f1729,#0f192f);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 14px;
+  padding: 20px 16px;
+}
+
+.list-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; }
+@media (max-width: 700px){ .list-grid{ grid-template-columns:1fr; } }
+
+.kpi-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media (max-width: 800px){ .kpi-grid{ grid-template-columns:1fr; } }
+.kpi{
+  text-align:center; padding:18px 10px; border-radius:14px;
+  background:
+    radial-gradient(400px 200px at 50% -30%, rgba(90,168,255,.18), transparent 60%),
+    radial-gradient(400px 200px at 70% 120%, rgba(124,92,255,.16), transparent 60%),
+    linear-gradient(180deg,#0f1729,#0f192f);
+  border:1px solid rgba(255,255,255,.06);
+}
+.kpi .num{ font-size: clamp(1.6rem, 3.6vw, 2.2rem); font-weight:700; color:#ffffff; letter-spacing:-.02em; }
+.kpi .label{ color:#b4c2dc }
+
+/* Steps line */
+.steps-line{
+  margin: 10px 0 0; padding:0; list-style:none;
+  display:grid; gap:8px;
+  grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
+  position:relative;
+}
+.steps-line li{ position:relative; color:#cfe2ff; font-size:.95rem; padding-top:26px; text-align:center; }
+.steps-line li span{
+  position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:26px; height:26px; border-radius:50%; background:#121a2c; border:1px solid rgba(255,255,255,.22);
+  color:#fff; display:grid; place-items:center; font-size:.9rem;
+}
+.steps-6::after{
+  content:""; position:absolute; left:0; right:0; top: 18px; height:2px; background: rgba(255,255,255,.08);
+}
+
+/* Accent gradient line */
+.accent-line{ height:4px; overflow:hidden; }
+.accent-line span{
+  display:block; height:100%;
+  background: linear-gradient(90deg,#5aa8ff,#7c5cff,#23d5ab);
+  background-size: 200% 100%;
+  animation: svc-accent 8s linear infinite;
+}
+@keyframes svc-accent{ 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+
+/* Calmer reveal */
+.reveal{ opacity:0; transform: translateY(10px); transition: opacity .45s ease, transform .45s ease; }
+.reveal.show{ opacity:1; transform: translateY(0); }
+/* ===== Professional service layout (photo-free) ===== */
+.svc-hero { color:#eaf2ff; position:relative; }
+.svc-hero-inner { max-width:1100px; margin:0 auto; padding: 92px 20px 52px; }
+.hero-cta { display:flex; gap:12px; margin-top:16px; flex-wrap:wrap; }
+.btn.ghost{ background:transparent; border:1px solid rgba(255,255,255,.18); color:#dfe8ff; }
+
+.subnav{ position:sticky; top:0; z-index:50; background:rgba(10,15,26,.7); backdrop-filter: blur(8px); border-bottom:1px solid rgba(255,255,255,.06); }
+.subnav-inner{ max-width:1100px; margin:0 auto; padding: 10px 20px; display:flex; gap:14px; overflow:auto; }
+.subnav-link{ color:#cfe2ff; text-decoration:none; padding:8px 12px; border-radius:8px; font-size:.95rem; white-space:nowrap; }
+.subnav-link:hover{ background:rgba(124,92,255,.15); }
+.subnav-link.cta{ margin-left:auto; background:linear-gradient(90deg,#5aa8ff,#7c5cff); color:#0e1220; font-weight:600; }
+.subnav.is-pinned{ box-shadow: 0 6px 24px rgba(0,0,0,.2); }
+
+.section-compact{ padding: 44px 0; }
+.svc-grid2{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.svc-grid3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; }
+@media (max-width: 1100px){ .svc-grid3{ grid-template-columns:1fr 1fr; } }
+@media (max-width: 780px){ .svc-grid2, .svc-grid3{ grid-template-columns:1fr; } }
+
+.svc-panel{
+  background: linear-gradient(180deg,#0f1729,#0f192f);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 14px;
+  padding: 20px 16px;
+}
+
+.list-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; }
+@media (max-width: 700px){ .list-grid{ grid-template-columns:1fr; } }
+
+.kpi-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.kpi-grid.tight{ gap:10px; }
+@media (max-width: 900px){ .kpi-grid{ grid-template-columns:1fr; } }
+.kpi{
+  text-align:center; padding:18px 10px; border-radius:14px;
+  background:
+    radial-gradient(400px 200px at 50% -30%, rgba(90,168,255,.18), transparent 60%),
+    radial-gradient(400px 200px at 70% 120%, rgba(124,92,255,.16), transparent 60%),
+    linear-gradient(180deg,#0f1729,#0f192f);
+  border:1px solid rgba(255,255,255,.06);
+}
+.kpi .num{ font-size: clamp(1.6rem, 3.6vw, 2.2rem); font-weight:700; color:#ffffff; letter-spacing:-.02em; }
+.kpi .label{ color:#b4c2dc }
+
+.callout{ border-left:3px solid #7c5cff; padding-left:12px; }
+.mt8{ margin-top:8px; } .mt12{ margin-top:12px; }
+
+.grid-notes{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:12px; color:#cfe2ff; }
+@media (max-width: 900px){ .grid-notes{ grid-template-columns:1fr; } }
+
+/* Steps line */
+.steps-line{
+  margin: 10px 0 0; padding:0; list-style:none;
+  display:grid; gap:8px;
+  grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
+  position:relative;
+}
+.steps-line li{ position:relative; color:#cfe2ff; font-size:.95rem; padding-top:26px; text-align:center; }
+.steps-line li span{
+  position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:26px; height:26px; border-radius:50%; background:#121a2c; border:1px solid rgba(255,255,255,.22);
+  color:#fff; display:grid; place-items:center; font-size:.9rem;
+}
+.steps-6::after{
+  content:""; position:absolute; left:0; right:0; top: 18px; height:2px; background: rgba(255,255,255,.08);
+}
+
+/* Tier tabs */
+.tier-tabs{ display:flex; gap:8px; border-bottom:1px solid rgba(255,255,255,.08); margin-top:8px; }
+.tier-tab{
+  background:#0e1530; color:#eaf2ff; border:1px solid rgba(255,255,255,.12);
+  border-bottom:none; padding:8px 12px; border-radius:8px 8px 0 0; cursor:pointer;
+}
+.tier-tab.active{ background:linear-gradient(90deg,#5aa8ff,#7c5cff); color:#0b1220; border-color:transparent; }
+.tier-panels{ border:1px solid rgba(255,255,255,.12); border-radius: 0 12px 12px 12px; padding:12px; background:#0f1729; }
+.tier-panel{ display:none; }
+.tier-panel.show{ display:block; }
+
+/* Reveal */
+.reveal{ opacity:0; transform: translateY(10px); transition: opacity .45s ease, transform .45s ease; }
+.reveal.show{ opacity:1; transform: translateY(0); }
+/* NAV LOGO — size + prevent flex shrinking */
+.nav .nav-logo{
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;                 /* <-- don't let flexbox shrink it */
+  margin-right: var(--spacing-lg);
+  text-decoration: none;
+}
+
+.nav .nav-logo img{
+  width: clamp(200px, 18vw, 280px); /* <-- try 220–280px desktop size */
+  height: auto !important;
+  max-height: none !important;      /* <-- ignore any global max-height */
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Make the logo feel like a button when tabbed */
+.nav .nav-logo:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(90,168,255,.45);
+  border-radius: 10px;
+}
+
+/* Optional: grow slightly on hover for a premium feel */
+@media (hover:hover){
+  .nav .nav-logo:hover img{
+    transform: translateY(-0.5px);
+  }
+  .nav .nav-logo img{
+    transition: transform .18s ease;
+  }
+}
+
+/* If your nav is tight on small screens, shrink logo a bit */
+@media (max-width: 480px){
+  .nav .nav-logo img{ height: 24px; }
+}
+@media (max-width: 768px){
+  .nav .nav-logo img{ width: 160px; }
+}
+@media (max-width: 480px){
+  .nav .nav-logo img{ width: 130px; }
+}
+/* --- NAV SYSTEM VARS & PAGE OFFSET --- */
+:root{
+  --nav-h: 84px;               /* desktop nav height with bigger logo */
+}
+
+/* push page content below the fixed nav */
+body { padding-top: var(--nav-h); }
+/* ===== NAV HOTFIX (override) ===== */
+
+/* 1) Reset list bullets/spacing in the menu */
+.nav .nav-menu,
+.nav .nav-menu > li {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 2) Proper flex row and spacing between items */
+.nav .nav-menu {
+  display: flex !important;
+  align-items: center !important;
+  gap: clamp(16px, 2.6vw, 28px) !important;
+  margin-left: auto !important;
+  flex-wrap: nowrap !important;
+}
+
+/* 3) Link styling inside the nav (catch-all) */
+.nav .nav-menu a,
+.nav .nav-menu .nav-link {
+  color: #cfe2ff !important;           /* your light nav color */
+  text-decoration: none !important;     /* kill underline */
+  display: inline-flex !important;
+  align-items: center !important;
+  line-height: 1 !important;
+  padding: 10px 6px !important;         /* clickable area */
+  border-radius: 8px !important;
+}
+
+@media (hover:hover){
+  .nav .nav-menu a:hover,
+  .nav .nav-menu .nav-link:hover {
+    background: rgba(124,92,255,.12) !important;
+    color: #ffffff !important;
+  }
+}
+
+/* 4) Keep the big logo, prevent shrinking */
+.nav .nav-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  flex: 0 0 auto !important;
+  margin-right: clamp(16px, 3vw, 32px) !important;
+  text-decoration: none !important;
+}
+.nav .nav-logo img {
+  width: clamp(220px, 18vw, 300px) !important; /* adjust max if you want larger */
+  height: auto !important;
+  max-height: none !important;
+  display: block !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+}
+
+/* 5) Fixed nav offset so hero isn't hidden */
+:root { --nav-h: 84px; }                /* adjust if your bar is taller */
+body { padding-top: var(--nav-h) !important; }
+
+/* 6) Ensure the bar’s min-height & layout are set */
+.nav {
+  min-height: var(--nav-h) !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 14px 0 !important;
+}
+.nav.scrolled {
+  min-height: 72px !important;
+  padding: 6px 0 !important;
+}
+
+/* 7) Responsive tidy */
+@media (max-width: 768px){
+  :root{ --nav-h: 72px; }
+  .nav .nav-logo img{ width: 180px !important; }
+  .nav .nav-menu{ gap: 14px !important; }
+}
+@media (max-width: 480px){
+  :root{ --nav-h: 64px; }
+  .nav .nav-logo img{ width: 150px !important; }
+  .nav .nav-menu{ gap: 10px !important; }
+}
+/* === NAV PATCH (minimal, non-destructive) === */
+
+/* 1) Keep the logo big, but don’t let flex shrink it */
+.nav .nav-logo{
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  margin-right: 24px;              /* breathing room before menu */
+}
+.nav .nav-logo img{
+  width: 240px;                    /* adjust: 220–300px as you prefer */
+  height: auto;
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* 2) Restore clean spacing between menu items */
+.nav .nav-menu{
+  display: flex;                   /* ensure row layout */
+  align-items: center;
+  gap: 24px;                       /* spacing between items */
+  margin-left: auto;               /* keep menu to the right of the logo */
+}
+
+/* 3) Remove any accidental bullets/underlines */
+.nav .nav-menu,
+.nav .nav-menu > li{ list-style: none; margin: 0; padding: 0; }
+.nav .nav-menu a{ text-decoration: none; }
+
+/* 4) Optional: slightly tighter on small screens (only if needed) */
+@media (max-width: 768px){
+  .nav .nav-logo img{ width: 180px; }
+  .nav .nav-menu{ gap: 16px; }
+}
+@media (max-width: 480px){
+  .nav .nav-logo img{ width: 150px; }
+  .nav .nav-menu{ gap: 12px; }
+}
+/* ===== NAV HEIGHT + CENTER FIX ===== */
+
+.nav {
+  min-height: 88px;                   /* taller nav bar to match big logo */
+  display: flex;
+  align-items: center;
+  padding: 12px 0;                    /* more breathing room top/bottom */
+  transition: all 0.3s ease;
+}
+
+.nav.scrolled {
+  min-height: 70px;                   /* slight shrink on scroll */
+  padding: 8px 0;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* keeps the logo centered vertically */
+.nav-logo img {
+  height: 48px;                       /* balanced logo height inside 88px bar */
+  width: auto;
+  object-fit: contain;
+}
+
+/* fix alignment of menu links */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-left: auto;
+}
+
+/* center text in Get Free Quote button */
+.nav .btn.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+}
+/* ===== FINAL NAV HEIGHT OVERRIDE (force wins) ===== */
+
+/* 1) Target heights — change these two numbers to taste */
+:root{
+  --nav-h-desktop: 72px;   /* try 64–80px */
+  --nav-h-scrolled: 60px;  /* height after scroll class kicks in */
+}
+
+/* 2) Bar height + vertical centering */
+.nav{
+  min-height: var(--nav-h-desktop) !important;
+  padding: 8px 0 !important;                 /* top/bottom cushion inside bar */
+  display: flex !important;
+  align-items: center !important;
+}
+.nav.scrolled{
+  min-height: var(--nav-h-scrolled) !important;
+  padding: 6px 0 !important;
+}
+
+/* 3) Container alignment + side padding */
+.nav-container{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 32px !important;                /* side padding of the bar */
+  width: 100% !important;
+}
+
+/* 4) Keep big logo but cap to the bar height so it never stretches it */
+.nav .nav-logo{
+  display: inline-flex !important;
+  align-items: center !important;
+  flex: 0 0 auto !important;
+  margin-right: 24px !important;
+}
+.nav .nav-logo img{
+  height: calc(var(--nav-h-desktop) - 16px) !important; /* fits within bar */
+  width: auto !important;
+  max-height: calc(var(--nav-h-desktop) - 16px) !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* 5) Menu spacing (keeps items from crowding) */
+.nav .nav-menu{
+  display: flex !important;
+  align-items: center !important;
+  gap: 24px !important;
+  margin-left: auto !important;
+}
+.nav .nav-menu, .nav .nav-menu > li{
+  list-style: none !important; margin:0 !important; padding:0 !important;
+}
+.nav .nav-menu a{ text-decoration: none !important; }
+
+/* 6) CTA button stays vertically centered */
+.nav .btn.cta{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 10px 16px !important;
+  border-radius: 10px !important;
+  line-height: 1 !important;
+}
+
+/* 7) Optional: match height on small screens */
+@media (max-width: 768px){
+  :root{ --nav-h-desktop: 64px; --nav-h-scrolled: 56px; }
+  .nav-container{ padding: 0 20px !important; }
+  .nav .nav-menu{ gap: 16px !important; }
+}
+@media (max-width: 480px){
+  :root{ --nav-h-desktop: 58px; --nav-h-scrolled: 52px; }
+  .nav .nav-menu{ gap: 12px !important; }
+}
+/* === NAV: minimal final patch (12 lines) === */
+.nav{min-height:72px!important;padding:8px 0!important;display:flex!important;align-items:center!important;}
+.nav-container{display:flex!important;align-items:center!important;justify-content:space-between!important;}
+.nav-logo{display:inline-flex!important;align-items:center!important;flex:0 0 auto!important;margin-right:24px!important;}
+.nav-logo img{height:40px!important;width:auto!important;display:block!important;object-fit:contain!important;}
+.nav-menu{display:flex!important;align-items:center!important;gap:24px!important;margin-left:auto!important;flex-wrap:nowrap!important;}
+.nav .btn.cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;}
+/* === FINAL: lock navbar height & centering (single source of truth) === */
+:root { --navH: 76px;  /* change to 72 / 80 to taste */  --logoH: 44px; }
+
+/* 1) Bar height = exact, not min-height */
+.nav{ height:var(--navH) !important; padding:0 !important; display:flex !important; }
+
+/* 2) Container fills the bar and centers contents */
+.nav-container{ height:100% !important; display:flex !important; align-items:center !important; justify-content:space-between !important; }
+
+/* 3) Logo size, no shrinking */
+.nav-logo{ display:inline-flex !important; align-items:center !important; flex:0 0 auto !important; margin-right:24px !important; }
+.nav-logo img{ height:var(--logoH) !important; width:auto !important; display:block !important; object-fit:contain !important; }
+
+/* 4) Menu sits to the right, items vertically centered to bar height */
+.nav-menu{ height:100% !important; display:flex !important; align-items:center !important; gap:24px !important; margin-left:auto !important; }
+.nav-menu, .nav-menu>li{ list-style:none !important; margin:0 !important; padding:0 !important; }
+.nav-menu>li>a,
+.nav-menu>li>button,
+.nav-menu>li>.nav-link{ height:100% !important; display:inline-flex !important; align-items:center !important; padding:0 8px !important; line-height:1 !important; text-decoration:none; }
+
+/* 5) Page offset so hero isn't under the fixed bar */
+body{ padding-top:var(--navH) !important; }
+/* ===== READABILITY + SPACING TUNE (Medical Offices page only) ===== */
+
+/* Wider reading width on this page */
+main.typo .container,
+.svc-hero .container,
+.subnav .container {
+  max-width: 1320px;            /* was 1200 */
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+/* Larger, friendlier body type */
+.typo { --measure: 74ch; --lh: 1.85; }
+.typo p { font-size: 1.04rem; line-height: var(--lh); color: #d8e6ff; }
+.typo .muted { color: #c6d6f3; }
+
+/* Headings and subhead space */
+.h2 { font-size: clamp(1.35rem, 2.1vw, 1.6rem); }
+.display { margin-bottom: 6px; }
+.eyebrow { margin-bottom: 8px; }
+.rule { margin: 12px 0 18px; opacity: .9; }
+
+/* Cards feel airier */
+.svc-panel { padding: 28px 24px; border-radius: 18px; }
+@media (min-width: 1100px){
+  .svc-panel { padding: 32px 28px; }
+}
+
+/* Three-up overview grid: more room between columns */
+.svc-grid3 { 
+  display: grid;
+  grid-template-columns: repeat(3, minmax(320px, 1fr)); /* wider mins */
+  gap: 28px;                                /* was tighter */
+}
+@media (min-width: 1280px){
+  .svc-grid3 { gap: 32px; }
+}
+
+/* Two-up grid spacing */
+.svc-grid2 { gap: 28px; }
+
+/* Bullet lists: taller lines + vertical rhythm */
+.simple-checks li { 
+  line-height: 1.85; 
+  padding: 10px 0 10px 30px; 
+}
+.simple-checks li + li { margin-top: 2px; }
+
+/* KPI chips: add space inside and between */
+.kpi-grid { gap: 16px; }
+.kpi { padding: 20px 14px; }
+
+/* Tier tabs and panels: more legible text blocks */
+.tier-tabs { margin-top: 10px; }
+.tier-panels { padding: 14px; }
+.tier-panel .simple-checks li { line-height: 1.9; }
+
+/* Scope section’s two-column list: prevent squish on large screens */
+.list-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(340px, 1fr));
+  gap: 18px 28px;
+}
+
+/* Make the right column paragraph blocks easier to scan */
+.lede, .lede-strong { line-height: 1.85; }
+
+/* CTA band: loosen up */
+.cta-glass .container { align-items: center; }
+.cta-glass .muted { line-height: 1.7; max-width: 70ch; }
+
+/* Subnav: a touch wider hit targets (mobile too) */
+.subnav-link { padding: 10px 14px; }
+/* =========================
+   1) HERO POLISH (subtle wow)
+   ========================= */
+
+/* Headline: richer gradient, soft glow, elegant underline */
+.display{
+  background: linear-gradient(92deg,#7bbcff 0%,#7c5cff 55%,#7bbcff 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow: 0 6px 22px rgba(123,188,255,.08);
+  letter-spacing:-.01em;
+}
+.display::after{
+  content:"";
+  display:block; height:2px; width:min(220px,40%);
+  margin:10px 0 0;
+  background: linear-gradient(90deg, rgba(98,178,255,.65), rgba(138,108,255,.55));
+  border-radius:3px;
+  box-shadow: 0 0 18px rgba(124,92,255,.25);
+}
+
+/* Eyebrow: sleeker pill w/ micro-shimmer */
+.eyebrow{
+  border:1px solid rgba(148,163,184,.22);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)),
+    radial-gradient(250px 80px at 20% 0%, rgba(124,92,255,.22), transparent 70%);
+}
+
+/* Lede: a hair brighter and wider line-height for warmth */
+.lede{
+  color:#eaf2ff; 
+  line-height:1.9;
+  max-width: 72ch;
+}
+
+/* CTAs: bolder hover for primary; subtle outline for ghost */
+.hero-cta .btn.primary{
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 10px 28px rgba(98,178,255,.24);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.hero-cta .btn.primary:hover{ transform: translateY(-1px); filter: saturate(1.07); }
+
+.hero-cta .btn.ghost{
+  border:1px solid rgba(148,163,184,.26);
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+}
+.hero-cta .btn.ghost:hover{
+  border-color: rgba(124,92,255,.45);
+  background: linear-gradient(180deg, rgba(124,92,255,.12), rgba(98,178,255,.08));
+}
+
+/* Subnav bar: thinner and slightly brighter line so top feels crisp */
+.accent-line span{ opacity:.85; }
+
+/* =========================
+   2) KPI TILES (refine scale)
+   ========================= */
+
+/* Tile body: softer gradient & inner glow for depth */
+.kpi{
+  padding: 18px 14px;
+  background:
+    radial-gradient(420px 220px at 50% -30%, rgba(90,168,255,.18), transparent 60%),
+    radial-gradient(420px 220px at 70% 120%, rgba(124,92,255,.14), transparent 60%),
+    linear-gradient(180deg, #122037, #0f1b2f);
+  border:1px solid rgba(148,163,184,.22);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 10px 22px rgba(0,0,0,.28);
+  border-radius: 14px;
+}
+
+/* Numbers: slightly smaller, tighter tracking; looks less “poster-ish” */
+.kpi .num{
+  font-size: clamp(1.35rem, 2.6vw, 1.75rem);    /* smaller */
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color:#ffffff;
+}
+
+/* Labels: clearer hierarchy and spacing */
+.kpi .label{
+  color:#cfe0ff;
+  font-size:.95rem;
+  letter-spacing:.01em;
+  margin-top: 6px;
+}
+
+/* Row spacing between chips */
+.kpi-grid{ gap: 14px; }
+
+/* OPTIONAL: lighten the section title above KPIs */
+#overview .svc-panel:nth-child(2) .h2{
+  background: linear-gradient(90deg,#8fc5ff,#a18bff);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+/* ====== CARD & KPI ANIMATIONS + FIT ====== */
+
+/* Subtle border shimmer on panels (very faint) */
+@keyframes panelShimmer {
+  0% { opacity:.35; }
+  50% { opacity:.75; }
+  100% { opacity:.35; }
+}
+.svc-panel::before {
+  animation: panelShimmer 9s ease-in-out infinite;
+}
+
+/* Slide-up on first reveal */
+@keyframes cardIn {
+  0% { opacity:0; transform: translateY(16px) scale(.985); }
+  60%{ opacity:1; transform: translateY(0) scale(1.002); }
+  100%{ opacity:1; transform: translateY(0) scale(1); }
+}
+/* Use the .reveal.show that you already toggle */
+.svc-panel.reveal.show { animation: cardIn .6s cubic-bezier(.2,.8,.2,1) both; }
+
+/* Micro hover lift (desktop only) */
+@media (hover:hover){
+  .svc-panel:hover { transform: translateY(-3px); transition: transform .25s ease; }
+}
+
+/* KPI row fades in a touch later for rhythm */
+.kpi-grid { animation: cardIn .6s .05s cubic-bezier(.2,.8,.2,1) both; }
+
+/* ---- KPI number layout: auto-fit range + small unit ---- */
+.kpi .num{
+  display: inline-flex;             /* lets us size parts independently */
+  align-items: baseline;
+  gap: 6px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  font-size: clamp(1.15rem, 2.1vw, 1.55rem);  /* slightly smaller = nicer fit */
+}
+/* the JS will wrap trailing letters (h, %, etc.) in .unit */
+.kpi .num .unit{
+  font-size: .58em;
+  opacity: .9;
+  transform: translateY(-0.04em);
+}
+
+/* If it’s a range (24–48), nudge tracking a hair tighter */
+.kpi .num.range .value{ letter-spacing: 0; }
+
+/* KPI tile hover depth */
+@media (hover:hover){
+  .kpi{ transition: transform .2s ease, box-shadow .2s ease; }
+  .kpi:hover{
+    transform: translateY(-2px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 12px 28px rgba(0,0,0,.32);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .svc-panel.reveal.show, .kpi-grid { animation: none !important; }
+  .svc-panel:hover, .kpi:hover { transform: none !important; }
+}
+/* ====== INTERACTIVE HOVER HIGHLIGHTS ====== */
+
+/* Soft outer glow + accent border when hovered */
+.svc-panel {
+  position: relative;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.3s ease;
+  border: 1px solid rgba(148,163,184,0.2);
+}
+.svc-panel:hover {
+  border-color: rgba(124,92,255,0.55);
+  box-shadow:
+    0 0 20px rgba(124,92,255,0.18),
+    0 0 40px rgba(98,178,255,0.12);
+  transform: translateY(-3px);
+}
+
+/* Animated gradient edge on hover */
+.svc-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(120deg, rgba(98,178,255,.4), rgba(124,92,255,.4), rgba(98,178,255,.4));
+  background-size: 300% 300%;
+  transition: opacity .4s ease;
+  z-index: 1;
+  animation: panelEdge 6s linear infinite;
+}
+.svc-panel:hover::after { opacity: 0.4; }
+@keyframes panelEdge {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* KPI chip hover glow */
+.kpi {
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.kpi:hover {
+  transform: translateY(-2px);
+  border-color: rgba(124,92,255,0.45);
+  box-shadow:
+    0 0 18px rgba(124,92,255,0.25),
+    0 0 30px rgba(98,178,255,0.15);
+}
+/* ======== HERO TEXT VISUAL TUNE-UP ======== */
+
+/* Headline – same gradient, just slightly brighter base for definition */
+.display {
+  background: linear-gradient(92deg, #8fc8ff 0%, #9e8cff 55%, #8fc8ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35); /* subtle grounding shadow */
+}
+
+/* Lede paragraph – brighter + softer color for visibility */
+.lede {
+  color: #dce8ff;                 /* brighter than before */
+  font-weight: 400;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  line-height: 1.85;
+  max-width: 68ch;
+}
+
+/* Breadcrumb links – slightly dim background and lighter text */
+.breadcrumb a {
+  color: #a7c9ff;
+  transition: color 0.25s ease;
+}
+.breadcrumb a:hover {
+  color: #d1e2ff;
+}
+
+/* Eyebrow label (HEALTHCARE ENVIRONMENTS) – stronger pill contrast */
+.eyebrow {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  color: #e5edff;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* Buttons – ensure legibility on dark backgrounds */
+.hero-cta .btn.primary {
+  background: linear-gradient(90deg, #3cb9ff, #7e67ff);
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.hero-cta .btn.primary:hover {
+  filter: brightness(1.1);
+}
+
+.hero-cta .btn.ghost {
+  border: 1px solid rgba(180, 200, 255, 0.35);
+  color: #d9e6ff;
+}
+.hero-cta .btn.ghost:hover {
+  background: rgba(180, 200, 255, 0.08);
+  border-color: rgba(130, 160, 255, 0.5);
+  color: #ffffff;
+}
+
+/* Optional: Gradient overlay for more readable mid-section text */
+.svc-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.25) 0%, rgba(15, 23, 42, 0.65) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+.svc-hero .svc-hero-inner { position: relative; z-index: 2; }
+/* full-bleed section helper */
+.full-bleed {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+}
+
+/* keep the inner content at your site width */
+.full-bleed .cta-glass-inner {
+  max-width: 1200px;         /* match your .container/site width */
+  margin: 0 auto;
+}
+
+/* optional: slightly brighter gradient so copy pops on dark */
+.cta-glass {
+  background:
+    radial-gradient(900px 420px at 10% 10%, rgba(56,189,248,0.18), transparent 60%),
+    radial-gradient(900px 420px at 40% 0%,  rgba(124,92,255,0.14), transparent 60%),
+    linear-gradient(180deg, #0e1526, #0b1220);
+  border-top: 1px solid rgba(255,255,255,.05);
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  padding: 36px 0;
+}
+
+/* subtle card hover for the button’s parent to draw the eye */
+.cta-glass-inner:hover {
+  filter: drop-shadow(0 0 18px rgba(90,168,255,.15));
+  transition: filter .25s ease;
+}
+/* Row layout uses your existing grid gap; this just keeps pills aligned */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  gap: 18px;
+}
+
+/* Pill styling: compact, readable, with soft gradient and hover ring */
+.kpi-pill {
+  position: relative;
+  padding: 16px 14px 14px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(17,28,48,.85), rgba(17,28,48,.55));
+  border: 1px solid rgba(148,163,184,.14);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+/* glow ring on hover */
+.kpi-pill:hover {
+  transform: translateY(-2px);
+  border-color: rgba(90,168,255,.35);
+  box-shadow:
+    0 6px 22px rgba(56,189,248,.12),
+    0 0 0 1px rgba(90,168,255,.18) inset;
+}
+
+/* Number line: keep unit as a superscript via ::after */
+.kpi-num {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-weight: 800;
+  font-size: clamp(1.75rem, 2.4vw, 2.15rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;                 /* keeps 24–48 on one line */
+}
+
+/* unit superscript pulled from data-unit attribute */
+.kpi-pill[data-unit] .kpi-num::after {
+  content: attr(data-unit);
+  font-size: 0.6em;
+  opacity: .85;
+  position: relative;
+  top: -0.25em;                        /* subtle “superscript” raise */
+}
+
+/* Secondary copy with better rhythm */
+.kpi-sub {
+  margin-top: 10px;
+  color: var(--color-text-secondary);
+  font-size: .95rem;
+  line-height: 1.25;
+}
+
+/* Slightly brighter top edge to help readability on dark */
+.kpi-pill::before {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
+  pointer-events: none;
+}
+/* ===== MEDICAL PAGE HOTFIX (CTA + KPI) — paste at end of CSS ===== */
+
+/* --- FULL-WIDTH CTA: remove the 50vw hack and use a background pseudo --- */
+.full-bleed { position: relative; left: auto; right: auto; margin-left: 0; margin-right: 0; width: auto; }
+.cta-glass { position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,.05); border-bottom: 1px solid rgba(255,255,255,.05); padding: 36px 0; }
+.cta-glass::before{
+  content:"";
+  position:absolute; inset:0 auto 0 50%;
+  transform: translateX(-50%);
+  width:100vw; z-index:-1;
+  background:
+    radial-gradient(900px 420px at 10% 10%, rgba(56,189,248,0.18), transparent 60%),
+    radial-gradient(900px 420px at 40% 0%,  rgba(124,92,255,0.14), transparent 60%),
+    linear-gradient(180deg, #0e1526, #0b1220);
+}
+.full-bleed .cta-glass-inner{ max-width:1200px; margin:0 auto; }
+
+/* --- KPI TILES: units inside number, tidy baseline --- */
+.kpi-row{ display:grid; grid-template-columns: repeat(3, minmax(220px, 1fr)); gap:18px; }
+.kpi-pill{
+  position:relative; padding:16px 14px 14px; border-radius:14px;
+  background: linear-gradient(180deg, #122037, #0f1b2f);
+  border:1px solid rgba(148,163,184,.25);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.kpi-pill:hover{ transform:translateY(-2px); border-color:rgba(90,168,255,.35); box-shadow:0 6px 22px rgba(56,189,248,.12), 0 0 0 1px rgba(90,168,255,.18) inset; }
+.kpi-num{
+  display:inline-flex; align-items:baseline; gap:6px;
+  font-weight:800; font-size:clamp(1.6rem,2.3vw,2.1rem); line-height:1;
+  letter-spacing:-0.02em; color:#fff; font-variant-numeric: tabular-nums; white-space:nowrap;
+}
+.kpi-num .unit{ font-size:.58em; opacity:.9; transform: translateY(-.25em); display:inline-block; }
+.kpi-sub{ margin-top:10px; color:#cfe0ff; font-size:.95rem; line-height:1.25; }
+
+/* kill the old data-attribute unit if it exists anywhere */
+.kpi-pill[data-unit] .kpi-num::after{ content:none !important; }
+/* ==== HOTFIX: restore 3rd block to standalone card ==== */
+
+/* keep grid spacing consistent so #3 doesn't tuck under #2 */
+.svc-grid3{ gap:24px !important; }
+
+/* make sure each panel in the grid is its own block with no inherited oddities */
+.svc-grid3 > .svc-panel{
+  margin: 0 !important;
+  position: relative !important;
+  z-index: 0;                    /* prevents previous card's outlines from overlapping */
+  overflow: clip;                /* your original setting */
+}
+
+/* specifically normalize the 3rd card's visuals to match default panels */
+.svc-grid3 > .svc-panel:nth-child(3){
+  background: linear-gradient(180deg, #141d2e, #101a2b) !important;
+  border: 1px solid rgba(148,163,184,.22) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,.32), 0 0 0 1px rgba(56,189,248,.05) inset !important;
+  border-radius: 16px !important;
+  padding: 24px 20px !important;
+}
+
+/* ensure the Outcomes card (2nd) doesn't visually “own” the space below it */
+.svc-grid3 > .svc-panel:nth-child(2){
+  margin-bottom: 0 !important;
+}
+
+/* guard rails: KPI container never collapses the following flow */
+.kpi-row{ margin-bottom: 0 !important; }
+/* ====== GRID LAYOUT FIX: place FIT beside Outcomes ====== */
+
+/* define consistent responsive grid */
+.svc-grid3{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+/* on wider screens, force the 2nd and 3rd cards into same column */
+@media (min-width: 1000px){
+  .svc-grid3{
+    grid-template-areas:
+      "why outcomes"
+      "why fit";
+  }
+  .svc-grid3 > .svc-panel:nth-child(1){ grid-area: why; }
+  .svc-grid3 > .svc-panel:nth-child(2){ grid-area: outcomes; }
+  .svc-grid3 > .svc-panel:nth-child(3){ grid-area: fit; }
+}
+
+/* optional: smooth reveal spacing */
+.svc-panel.reveal{ transition: transform .25s ease, box-shadow .25s ease; }
+/* --- Fix ONLY the 3rd KPI card (“Issue response SLA”) cutting off text --- */
+.kpi-row .kpi-pill:nth-child(3){ 
+  min-width: 0 !important;        /* allow the card to shrink within the row */
+  padding-right: 18px !important; /* add a little room on the right edge */
+  overflow: visible !important;   /* stop clipping the label */
+}
+
+.kpi-row .kpi-pill:nth-child(3) .kpi-sub{
+  white-space: normal !important; /* wrap the label */
+  word-break: break-word !important;
+  line-height: 1.25 !important;
+}
+/* Make the CTA truly full-width */
+.cta-glass {
+  position: relative !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 64px 0 !important; /* adjust if you want tighter/looser */
+}
+
+/* Keep its inner content centered and wide */
+.cta-glass .container,
+.cta-glass-inner {
+  max-width: 1400px !important;
+  width: 92% !important;
+  margin: 0 auto !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
 }

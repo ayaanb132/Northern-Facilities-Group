@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Window & Glass Cleaning | Northern Facilities Group Inc.</title>
+  <meta name="description" content="Interior/exterior window and glass cleaning for offices, retail, and facilities—mullions, frames, tracks, and partitions. Pole, lift, and fall‑arrest capable with hard‑water removal options." />
+  <link rel="stylesheet" href="../style.css" />
+  <script src="../nav-loader.js"></script>
+  <style>
+    /* same styling model as template */
+    :root{--tx-1:#f6fbff;--tx-2:#cedaf2;--tx-3:#a9b8d6;--card-bg-1:#141d2e;--card-bg-2:#101a2b;--border-1:rgba(148,163,184,.22);--accent-1:#62b2ff;--accent-2:#8a6cff;--check-svg:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23ffffff" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19l12-12-1.5-1.5z"/></svg>');}
+    .svc-hero.soft-gradient.hero-parallax{background:
+      radial-gradient(1000px 600px at 12% -8%, rgba(90,168,255,.18), transparent 60%),
+      radial-gradient(900px 540px at 90% 0%, rgba(124,92,255,.16), transparent 60%),
+      linear-gradient(180deg,#111a2b 0%,#0f192b 40%,#111827 100%);}    
+    .typo{--lh:1.75;--measure:68ch}.typo>*{max-width:var(--measure)}.typo p{line-height:var(--lh);color:var(--tx-2)}.typo p+p{margin-top:.7rem}
+    .eyebrow{display:inline-block;font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:#dfe7ff;opacity:.85;padding:4px 10px;border:1px solid rgba(148,163,184,.26);border-radius:999px;background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));margin-bottom:10px}
+    .h2,.display{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lede,.lede-strong{color:#e7f0ff;font-size:clamp(1.05rem,1.2vw,1.15rem);line-height:1.8}.lede-strong{font-weight:600}
+    .rule{height:1px;width:100%;background:linear-gradient(90deg, rgba(98,178,255,.35), rgba(138,108,255,.25), rgba(98,178,255,.35));border:0;margin:10px 0 14px;opacity:.8}
+    .svc-panel{background:linear-gradient(180deg,var(--card-bg-1),var(--card-bg-2));border:1px solid var(--border-1);box-shadow:0 10px 30px rgba(0,0,0,.32),0 0 0 1px rgba(56,189,248,.05) inset;border-radius:16px;padding:24px 20px;position:relative;overflow:clip}
+    .svc-panel::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));opacity:.5}
+    .simple-checks{list-style:none;padding:0;margin:0}.simple-checks li{position:relative;padding:10px 0 10px 30px;color:#eaf2ff;line-height:1.7}
+    .simple-checks li::before{content:"";position:absolute;left:0;top:12px;width:14px;height:14px;-webkit-mask-image:var(--check-svg);mask-image:var(--check-svg);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));box-shadow:0 0 0 2px rgba(124,92,255,.22);border-radius:3px}
+    .kpi-row{display:grid;grid-template-columns:repeat(3,minmax(180px,1fr));gap:18px}
+    .tier-tabs{border-bottom:1px solid rgba(148,163,184,.18)}.tier-tab{background:#0f1730;color:#eaf2ff;border:1px solid rgba(148,163,184,.18);border-bottom:none;border-radius:10px 10px 0 0;padding:10px 14px;font-weight:600}
+    .tier-tab.active{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#0b1220;border-color:transparent;box-shadow:0 8px 24px rgba(92,148,255,.25)}
+    .tier-panels{border:1px solid rgba(148,163,184,.22);border-radius:0 12px 12px 12px;background:#0f1729}
+    .full-bleed{position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;width:100vw}
+    .cta-glass{background:radial-gradient(900px 420px at 10% 10%, rgba(56,189,248,0.18), transparent 60%),radial-gradient(900px 420px at 40% 0%, rgba(124,92,255,0.14), transparent 60%),linear-gradient(180deg,#0e1526,#0b1220);border-block:1px solid rgba(255,255,255,.05);padding:36px 0}
+    .cta-glass .muted{color:#cbdaf6}
+    @media (max-width:900px){.typo>*{max-width:none}.display{font-size:clamp(2rem,6vw,2.6rem)}.kpi-row{grid-template-columns:1fr}}
+    .svc-grid3{display:grid;gap:28px}
+    /* place FIT on its own row at desktop */
+    @media (min-width:1060px){.svc-grid3{grid-template-columns:repeat(2,1fr);grid-template-areas:"why outcomes" "fit fit"} .svc-grid3>.svc-panel:nth-child(1){grid-area:why} .svc-grid3>.svc-panel:nth-child(2){grid-area:outcomes} .svc-grid3>.svc-panel:nth-child(3){grid-area:fit}}
+    .svc-grid2{display:grid;gap:28px}
+    @media(min-width:980px){.svc-grid2{grid-template-columns:repeat(2,1fr)}}
+    .list-grid{display:grid;gap:18px}
+    @media(min-width:900px){.list-grid{grid-template-columns:repeat(2,1fr)}}
+    .steps-line{counter-reset:step;display:grid;grid-template-columns:repeat(6,minmax(80px,1fr));gap:10px}
+    .steps-line li{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--tx-1);font-weight:600}
+    .steps-line li span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:999px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#0b1220;font-weight:800}
+    .grid-notes{display:grid;gap:14px;margin-top:12px}
+    @media(min-width:900px){.grid-notes{grid-template-columns:repeat(3,1fr)}}
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-container">
+    <div class="nav-logo">Northern Facilities Group</div>
+    <ul class="nav-menu">
+      <li class="nav-dropdown">
+        <button class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Services
+          <svg class="chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="dropdown-panel mega" role="menu" aria-label="Services menu">
+          <div class="mega-inner">
+            <div class="mega-header"><h4>Our Services</h4><p>End-to-end commercial cleaning across industries</p></div>
+            <div class="mega-grid">
+              <a class="dropdown-link" href="../services/office-cleaning.html">Commercial Office Cleaning</a>
+              <a class="dropdown-link" href="../services/medical-offices.html">Medical Offices</a>
+              <a class="dropdown-link" href="../services/dental-clinics.html">Dental Clinics</a>
+              <a class="dropdown-link" href="../services/condominiums.html">Condominiums / Strata</a>
+              <a class="dropdown-link" href="../services/retail-stores.html">Retail Stores</a>
+              <a class="dropdown-link" href="../services/restaurants.html">Restaurants</a>
+              <a class="dropdown-link" href="../services/gyms-fitness.html">Gyms & Fitness Centres</a>
+              <a class="dropdown-link" href="../services/schools-daycares.html">Schools & Daycares</a>
+              <a class="dropdown-link" href="../services/industrial-warehouses.html">Industrial / Warehouses</a>
+              <a class="dropdown-link" href="../services/car-dealerships.html">Car Dealerships</a>
+              <a class="dropdown-link" href="../services/post-construction.html">Post‑Construction</a>
+              <a class="dropdown-link" href="../services/move-in-move-out.html">Move‑In / Move‑Out</a>
+              <a class="dropdown-link" href="../services/government-municipal.html">Government & Municipal</a>
+              <a class="dropdown-link" href="../services/banks-financial.html">Banks & Financial</a>
+              <a class="dropdown-link" href="../services/event-venues.html">Event Venues</a>
+              <a class="dropdown-link primary" href="../services/window-glass.html">Window & Glass</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li><a class="nav-link" href="../index.html#dashboard-demo">Why Us</a></li>
+      <li><a class="nav-link" href="../index.html#contact">Contact</a></li>
+      <li><button id="openQuote" class="btn primary">Get a Free Quote</button></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="svc-hero soft-gradient hero-parallax">
+  <div class="container svc-hero-inner typo">
+    <span class="eyebrow">Specialty</span>
+    <nav class="breadcrumb"><a href="../index.html">Home</a> › <a href="../index.html#value-props">Services</a> › <span>Window & Glass</span></nav>
+    <h1 class="display">Window & Glass</h1>
+    <p class="lede">Interior/exterior glass, partitions, and frames—streak‑free finish with safety‑first access. Pole, lift, and fall‑arrest capable; tracks and mullions detailed, with hard‑water/stain removal options.</p>
+    <div class="hero-cta">
+      <a href="#program" class="btn primary">How We Work</a>
+      <a href="#tiers" class="btn ghost">Service Tiers</a>
+    </div>
+  </div>
+  <div class="accent-line"><span></span></div>
+</header>
+
+<div class="subnav" id="subnav">
+  <div class="container subnav-inner">
+    <a class="subnav-link" href="#overview">Overview</a>
+    <a class="subnav-link" href="#scope">Scope</a>
+    <a class="subnav-link" href="#protocols">Protocols</a>
+    <a class="subnav-link" href="#program">Program</a>
+    <a class="subnav-link" href="#reporting">Reporting</a>
+    <a class="subnav-link" href="#tiers">Tiers</a>
+    <a class="subnav-link cta" href="#quote">Get a Quote</a>
+  </div>
+</div>
+
+<main class="typo">
+
+  <section id="overview" class="container section-compact">
+    <div class="svc-grid3">
+      <div class="svc-panel reveal">
+        <span class="eyebrow">Why Us</span>
+        <h2 class="h2">Why facility teams pick us</h2>
+        <div class="rule"></div>
+        <ul class="simple-checks mt8">
+          <li>Streak‑free squeegee system; microfiber detail on edges</li>
+          <li>Frames, mullions, and tracks—no drip or residue</li>
+          <li>Safe access: pole, lift, and fall‑arrest capable</li>
+          <li>Consistent teams + Supervisor audits and access controls</li>
+        </ul>
+      </div>
+
+      <div class="svc-panel reveal">
+        <span class="eyebrow">Outcomes</span>
+        <h2 class="h2">Typical results</h2>
+        <div class="rule"></div>
+        <div class="kpi-row">
+          <div class="kpi-pill" data-unit="h"><div class="kpi-num">24–48</div><div class="kpi-sub">Proposal<br>turnaround</div></div>
+          <div class="kpi-pill" data-unit="%"><div class="kpi-num">99</div><div class="kpi-sub">Pane & partition<br>coverage target</div></div>
+          <div class="kpi-pill" data-unit="d"><div class="kpi-num">≤2</div><div class="kpi-sub">Exterior clean<br>booking lead</div></div>
+        </div>
+      </div>
+
+      <div class="svc-panel reveal">
+        <span class="eyebrow">Fit</span>
+        <h2 class="h2">Footprints we support</h2>
+        <div class="rule"></div>
+        <p class="lede-strong">Offices, retail fronts, clinics, showrooms, lobbies/atriums (access‑safe), schools, and venues.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="scope" class="container section-compact">
+    <div class="svc-panel reveal">
+      <span class="eyebrow">Deliverables</span>
+      <h2 class="h2">Scope of work</h2>
+      <div class="rule"></div>
+      <div class="list-grid">
+        <ul class="simple-checks">
+          <li>Interior glass & partitions: sills, edges, hardware wipe</li>
+          <li>Exterior glass (access permitting): pole/lift methods</li>
+          <li>Frames, mullions & tracks: dust, wipe, residue removal</li>
+        </ul>
+        <ul class="simple-checks">
+          <li>Spot removal: stickers/adhesive where safe</li>
+          <li>Hard‑water/mineral stain treatment (add‑on)</li>
+          <li>Lobby glass/doors: fingerprint & push‑plate focus</li>
+        </ul>
+      </div>
+      <p class="note mt12">Exclusions: rope access beyond certified scope; exterior cleans subject to weather/wind limits and site permissions.</p>
+    </div>
+  </section>
+
+  <section id="protocols" class="container section-compact">
+    <div class="svc-grid2">
+      <div class="svc-panel reveal">
+        <span class="eyebrow">Compliance</span>
+        <h2 class="h2">Protocols & safety</h2>
+        <div class="rule"></div>
+        <ul class="simple-checks">
+          <li>WHMIS‑aligned; SDS on site; PPE; fall‑protection plans</li>
+          <li>Lift‑certified staff where applicable; spotters assigned</li>
+          <li>Weather & wind thresholds respected for exterior work</li>
+          <li>Security: key control, access logs, barricade signage</li>
+          <li>WSIB coverage & liability insurance (certificates available)</li>
+        </ul>
+        <p class="muted mt8">Wet‑floor and public‑way signage deployed; work zones barricaded for egress safety.</p>
+      </div>
+
+      <div class="svc-panel reveal">
+        <span class="eyebrow">Scheduling</span>
+        <h2 class="h2">Scheduling & frequency</h2>
+        <div class="rule"></div>
+        <ul class="simple-checks">
+          <li>Quarterly lobby glass; monthly retail storefronts</li>
+          <li>Semi‑annual exterior cleans (spring/fall) recommended</li>
+          <li>Emergency spot cleans on request</li>
+          <li>Rotation detailing for partitions & atrium glass</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="program" class="container section-compact">
+    <div class="svc-panel reveal">
+      <span class="eyebrow">Method</span>
+      <h2 class="h2">Program flow</h2>
+      <div class="rule"></div>
+      <ol class="steps-line steps-6">
+        <li><span>1</span>Walkthrough</li>
+        <li><span>2</span>Scope &amp; Quote</li>
+        <li><span>3</span>Onboarding</li>
+        <li><span>4</span>Service</li>
+        <li><span>5</span>Supervisor QA</li>
+        <li><span>6</span>Review & Improve</li>
+      </ol>
+      <div class="grid-notes">
+        <div><strong>Onboarding.</strong> Site file, access, lift plans, escalation tree.</div>
+        <div><strong>QA.</strong> Photo logs, corrective actions tracked.</div>
+        <div><strong>Reviews.</strong> Seasonal plan for exterior & lobby glass.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reporting" class="container section-compact">
+    <div class="svc-panel reveal">
+      <span class="eyebrow">Visibility</span>
+      <h2 class="h2">Reporting & communication</h2>
+      <div class="rule"></div>
+      <div class="list-grid">
+        <ul class="simple-checks">
+          <li>Service logs with completed tasks & timestamps</li>
+          <li>Photo logs for detailing and corrective actions</li>
+          <li>Issue tracker with SLA timers</li>
+        </ul>
+        <ul class="simple-checks">
+          <li>Quarterly summary: panes cleaned, access notes, incidents</li>
+          <li>Single point of contact + supervisor contact</li>
+          <li>Consumables restock notes (squeegee pads, etc.)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="tiers" class="container section-compact">
+    <div class="svc-panel reveal">
+      <span class="eyebrow">Options</span>
+      <h2 class="h2">Service tiers</h2>
+      <div class="rule"></div>
+      <div class="tier-tabs" role="tablist">
+        <button class="tier-tab active" data-tab="standard" role="tab" aria-selected="true">Standard</button>
+        <button class="tier-tab" data-tab="plus" role="tab">Plus</button>
+        <button class="tier-tab" data-tab="pro" role="tab">Pro</button>
+      </div>
+      <div class="tier-panels">
+        <div class="tier-panel show" id="tab-standard" role="tabpanel">
+          <ul class="simple-checks mt8">
+            <li>Interior glass & partitions</li>
+            <li>Lobby doors & push‑plates</li>
+            <li>Monthly QA summary</li>
+          </ul>
+        </div>
+        <div class="tier-panel" id="tab-plus" role="tabpanel">
+          <ul class="simple-checks mt8">
+            <li>All Standard features</li>
+            <li>Exterior glass (pole/lift access)</li>
+            <li>Seasonal schedule (spring/fall)</li>
+          </ul>
+        </div>
+        <div class="tier-panel" id="tab-pro" role="tabpanel">
+          <ul class="simple-checks mt8">
+            <li>All Plus features</li>
+            <li>Fall‑arrest/complex access + safety plan</li>
+            <li>Hard‑water/mineral stain treatment pack</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quote" class="cta-glass full-bleed">
+    <div class="container cta-glass-inner">
+      <div>
+        <h3 class="h2">Crystal‑clear, every pane.</h3>
+        <p class="muted">Send pane count, access notes (pole/lift/rope), and preferred windows—tailored proposal in 24–48h.</p>
+      </div>
+      <button id="openQuote2" class="btn primary">Request Proposal</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer" id="contact">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Northern Facilities Group Inc. All rights reserved.</p>
+    <a href="#" id="openQuote4" class="footer-link">Request a Quote</a>
+  </div>
+</footer>
+
+<div id="quoteModal" class="modal" aria-hidden="true">
+  <div class="modal-overlay" data-close="true"></div>
+  <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="quoteTitle">
+    <button id="closeModal" class="modal-close" aria-label="Close">×</button>
+    <h3 id="quoteTitle">Get a Free Quote</h3>
+    <form id="quoteForm" class="form">
+      <label>Site / Building<input name="company" type="text" required /></label>
+      <label>Contact Name<input name="name" type="text" required /></label>
+      <label>Email<input name="email" type="email" required /></label>
+      <label>Phone<input name="phone" type="tel" /></label>
+      <label>Estimated Pane Count<input name="size" type="number" min="0" /></label>
+      <label>Notes<textarea name="notes" rows="4" placeholder="Interior/exterior, access (pole/lift), tracks/mullions, hard‑water treatment"></textarea></label>
+      <button type="submit" class="btn primary full">Submit</button>
+      <p id="formMsg" class="form-msg" hidden>Thanks! We’ll get back to you shortly.</p>
+    </form>
+  </div>
+</div>
+
+<script src="../script.js" defer></script>
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@type":"Service",
+  "name":"Window & Glass Cleaning",
+  "provider":{"@type":"LocalBusiness","name":"Northern Facilities Group Inc."},
+  "areaServed":"Greater Toronto Area",
+  "serviceType":"Window & Glass Cleaning",
+  "description":"Interior/exterior window and glass cleaning for offices, retail, and facilities—mullions, frames, tracks, and partitions. Pole, lift, and fall‑arrest capable with hard‑water removal options."
+}
+</script>
+</body>
+</html>
