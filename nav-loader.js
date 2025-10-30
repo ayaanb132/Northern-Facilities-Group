@@ -62,7 +62,7 @@ class NavigationLoader {
    */
   async loadNavigation() {
     try {
-      const navPath = `${this.basePath}partials/partials/nav.html`;
+      const navPath = `${this.basePath}partials/nav.html`;
       const response = await fetch(navPath);
 
       if (!response.ok) {
