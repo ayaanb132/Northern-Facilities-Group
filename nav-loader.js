@@ -12,28 +12,39 @@ class NavigationLoader {
   }
 
   /**
-   * Calculate the base path to the root directory
-   * Based on the current page's location depth
+   * Calculate the base path to the site root relative to the current page
+   * Works for:
+   *  - domain root:              "/"
+   *  - site root in subfolder:   "/site/" (trailing slash)
+   *  - explicit files:           "/site/index.html"
+   *  - one-level subpages:       "/site/services/page.html"
    */
   calculateBasePath() {
-    // Count directory depth by counting slashes (excluding the filename)
-    const pathParts = this.currentPath.split('/').filter(part => part !== '');
-    
-    // Remove the filename if it exists
-    if (pathParts.length > 0 && pathParts[pathParts.length - 1].includes('.')) {
-      pathParts.pop();
+    const path = window.location.pathname;
+    const parts = path.split('/').filter(Boolean); // remove empty segments
+
+    const last = parts[parts.length - 1] || '';
+    const lastIsFile = last.includes('.');
+
+    // depth = how many directories above the current page we must go
+    // If URL ends with a file, ignore that file when computing depth
+    // If URL ends with a trailing slash ("folder/"), treat that folder as the current page container
+    let depth = 0;
+    if (lastIsFile) {
+      depth = Math.max(0, parts.length - 2);
+    } else {
+      depth = Math.max(0, parts.length - 1);
     }
-    
-    // For each directory level, add '../' to go back to root
-    const depthLevel = pathParts.length;
-    return depthLevel === 0 ? './' : '../'.repeat(depthLevel);
+
+    // Convert to a relative base path. Use './' when depth==0 for safety across hosts (incl. GH Pages subpaths)
+    return depth === 0 ? './' : '../'.repeat(depth);
   }
 
   /**
    * Adjust all paths in the HTML to be relative to current page location
    */
   adjustPaths(html) {
-    // Replace absolute paths with relative paths
+    // Replace absolute paths with relative paths based on computed base
     return html
       // Fix asset paths
       .replace(/src="\/assets\//g, `src="${this.basePath}assets/`)
@@ -53,11 +64,11 @@ class NavigationLoader {
     try {
       const navPath = `${this.basePath}partials/partials/nav.html`;
       const response = await fetch(navPath);
-      
+
       if (!response.ok) {
         throw new Error(`Failed to load navigation: ${response.status} ${response.statusText}`);
       }
-      
+
       const navHtml = await response.text();
       return this.adjustPaths(navHtml);
     } catch (error) {
@@ -120,24 +131,24 @@ class NavigationLoader {
   initializeNavFeatures() {
     // Initialize dropdown toggles
     const dropdownToggles = this.navContainer.querySelectorAll('.nav-dropdown-toggle');
-    
+
     dropdownToggles.forEach(toggle => {
       toggle.addEventListener('click', (e) => {
         e.preventDefault();
         const dropdown = toggle.parentElement;
         const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-        
+
         // Close all other dropdowns
         dropdownToggles.forEach(otherToggle => {
           if (otherToggle !== toggle) {
             otherToggle.setAttribute('aria-expanded', 'false');
-            otherToggle.parentElement.classList.remove('active');
+            otherToggle.parentElement.classList.remove('open');
           }
         });
-        
-        // Toggle current dropdown
-        toggle.setAttribute('aria-expanded', !isExpanded);
-        dropdown.classList.toggle('active', !isExpanded);
+
+        // Toggle current dropdown (use .open to match CSS)
+        toggle.setAttribute('aria-expanded', (!isExpanded).toString());
+        dropdown.classList.toggle('open', !isExpanded);
       });
     });
 
@@ -146,7 +157,7 @@ class NavigationLoader {
       if (!e.target.closest('.nav-dropdown')) {
         dropdownToggles.forEach(toggle => {
           toggle.setAttribute('aria-expanded', 'false');
-          toggle.parentElement.classList.remove('active');
+          toggle.parentElement.classList.remove('open');
         });
       }
     });
