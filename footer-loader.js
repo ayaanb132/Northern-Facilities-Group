@@ -18,16 +18,25 @@ class FooterLoader {
 
     // GitHub Pages special case
     if (window.location.hostname.includes('github.io')) {
-      // Example: https://ayaanb132.github.io/Northern-Facilities-Group/
-      const repoName = '/Northern-Facilities-Group';
-      const parts = path.replace(repoName, '').split('/').filter(Boolean);
-      const depth = parts.length > 0 ? parts.length - 1 : 0;
-      return `${repoName}/${depth === 0 ? '' : '../'.repeat(depth)}`;
+      // For GitHub Pages, always use absolute path to repo root
+      // URL: https://ayaanb132.github.io/Northern-Facilities-Group/services/dental-clinics.html
+      // We want: /Northern-Facilities-Group/
+      return '/Northern-Facilities-Group/';
     }
 
     // Local testing (file:// or localhost)
     const parts = path.split('/').filter(Boolean);
-    const depth = parts.length > 0 ? parts.length - 1 : 0;
+    const lastPart = parts[parts.length - 1] || '';
+    const isFile = lastPart.includes('.');
+    
+    // Calculate depth from root
+    let depth = 0;
+    if (isFile) {
+      depth = Math.max(0, parts.length - 1);
+    } else {
+      depth = parts.length;
+    }
+    
     return depth === 0 ? './' : '../'.repeat(depth);
   }
 
@@ -52,6 +61,9 @@ class FooterLoader {
   async loadFooter() {
     try {
       const footerPath = `${this.basePath}footer.html`;
+      console.log("🔍 Current URL:", window.location.href);
+      console.log("🔍 Current pathname:", window.location.pathname);
+      console.log("🔍 Calculated basePath:", this.basePath);
       console.log("🔍 Fetching footer from:", footerPath);
 
       const response = await fetch(footerPath);
