@@ -19,8 +19,18 @@
     <a class="nav-logo" href="index.html" aria-label="Northern Facilities Group home">
       <img src="assets/brand/Horizontal.svg" alt="Northern Facilities Group Inc." />
     </a>
+    
+    <!-- Hamburger Mobile Menu Toggle -->
+     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primaryNav">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="nav-toggle-icon" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
 
-    <ul class="nav-menu">
+    <ul class="nav-menu" id="primaryNav">
       <!-- SERVICES -->
       <li class="nav-dropdown">
         <button class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
@@ -619,6 +629,57 @@
 
     <script src="script.js"></script>
     <script src="footer-loader.js"></script>
+    
+    <!-- Nav Responsive Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var nav = document.querySelector('.nav');
+      if (!nav) return;
+      var toggle = nav.querySelector('.nav-toggle');
+      var menu = nav.querySelector('.nav-menu');
+      if (!toggle || !menu) return;
+
+      var mq = window.matchMedia('(max-width: 900px)');
+      var setExpanded = function (open) {
+        nav.classList.toggle('menu-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+
+      toggle.addEventListener('click', function () {
+        var isOpen = nav.classList.contains('menu-open');
+        setExpanded(!isOpen);
+      });
+
+      menu.addEventListener('click', function (event) {
+        var target = event.target.closest('a, button');
+        if (!target || target.classList.contains('nav-dropdown-toggle')) return;
+        if (mq.matches) setExpanded(false);
+      });
+
+      document.addEventListener('click', function (event) {
+        if (!mq.matches) return;
+        if (!nav.contains(event.target) && nav.classList.contains('menu-open')) {
+          setExpanded(false);
+        }
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && nav.classList.contains('menu-open') && mq.matches) {
+          setExpanded(false);
+          toggle.focus();
+        }
+      });
+
+      var handleQueryChange = function (event) {
+        if (!event.matches) setExpanded(false);
+      };
+      if (typeof mq.addEventListener === 'function') {
+        mq.addEventListener('change', handleQueryChange);
+      } else if (typeof mq.addListener === 'function') {
+        mq.addListener(handleQueryChange);
+      }
+    });
+  </script>
 
 </body>
 </html>
