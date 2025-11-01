@@ -1527,10 +1527,6 @@ body{ padding-top: var(--nav-h); }
     .nav-menu {
         gap: var(--spacing-sm);
     }
-    
-    .nav-menu li:first-child {
-        display: none;
-    }
 }
 
 /* Fade-in animations */
