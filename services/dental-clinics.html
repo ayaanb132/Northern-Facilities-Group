@@ -4,241 +4,261 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dental Clinic Cleaning | Northern Facilities Group Inc.</title>
-  <meta name="description" content="Dental clinic cleaning with high-touch disinfection, operatory sanitization, reception detailing, PPE & privacy-aware staff. Fully insured & WSIB covered." />
+  <meta name="description" content="Dental clinic cleaning aligned with IPAC expectations: high-touch sequencing, DIN-registered disinfectants, operatory turnover support, and compliance-ready logs." />
   <link rel="stylesheet" href="../style.css" />
   <script src="../nav-loader.js"></script>
+
+  <style>
+    /* same styling model as template */
+    :root{--tx-1:#f6fbff;--tx-2:#cedaf2;--tx-3:#a9b8d6;--card-bg-1:#141d2e;--card-bg-2:#101a2b;--border-1:rgba(148,163,184,.22);--accent-1:#62b2ff;--accent-2:#8a6cff;--check-svg:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23ffffff" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19l12-12-1.5-1.5z"/></svg>');}
+    .svc-hero.soft-gradient.hero-parallax{background:
+      radial-gradient(1000px 600px at 12% -8%, rgba(90,168,255,.18), transparent 60%),
+      radial-gradient(900px 540px at 90% 0%, rgba(124,92,255,.16), transparent 60%),
+      linear-gradient(180deg,#111a2b 0%,#0f192b 40%,#111827 100%);}
+    .typo{--lh:1.75;--measure:68ch}.typo>*{max-width:var(--measure)}.typo p{line-height:var(--lh);color:var(--tx-2)}.typo p+p{margin-top:.7rem}
+    .eyebrow{display:inline-block;font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:#dfe7ff;opacity:.85;padding:4px 10px;border:1px solid rgba(148,163,184,.26);border-radius:999px;background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));margin-bottom:10px}
+    .h2,.display{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lede,.lede-strong{color:#e7f0ff;font-size:clamp(1.05rem,1.2vw,1.15rem);line-height:1.8}.lede-strong{font-weight:600}
+    .rule{height:1px;width:100%;background:linear-gradient(90deg, rgba(98,178,255,.35), rgba(138,108,255,.25), rgba(98,178,255,.35));border:0;margin:10px 0 14px;opacity:.8}
+    .svc-panel{background:linear-gradient(180deg,var(--card-bg-1),var(--card-bg-2));border:1px solid var(--border-1);box-shadow:0 10px 30px rgba(0,0,0,.32),0 0 0 1px rgba(56,189,248,.05) inset;border-radius:16px;padding:24px 20px;position:relative;overflow:clip}
+    .svc-panel::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));opacity:.5}
+    .simple-checks{list-style:none;padding:0;margin:0}.simple-checks li{position:relative;padding:10px 0 10px 30px;color:#eaf2ff;line-height:1.7}
+    .simple-checks li::before{content:"";position:absolute;left:0;top:12px;width:14px;height:14px;-webkit-mask-image:var(--check-svg);mask-image:var(--check-svg);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));box-shadow:0 0 0 2px rgba(124,92,255,.22);border-radius:3px}
+    .kpi-row{display:grid;grid-template-columns:repeat(3,minmax(180px,1fr));gap:18px}
+    .tier-tabs{border-bottom:1px solid rgba(148,163,184,.18)}.tier-tab{background:#0f1730;color:#eaf2ff;border:1px solid rgba(148,163,184,.18);border-bottom:none;border-radius:10px 10px 0 0;padding:10px 14px;font-weight:600}
+    .tier-tab.active{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#0b1220;border-color:transparent;box-shadow:0 8px 24px rgba(92,148,255,.25)}
+    .tier-panels{border:1px solid rgba(148,163,184,.22);border-radius:0 12px 12px 12px;background:#0f1729}
+    .full-bleed{position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;width:100vw}
+    .cta-glass{background:radial-gradient(900px 420px at 10% 10%, rgba(56,189,248,0.18), transparent 60%),radial-gradient(900px 420px at 40% 0%, rgba(124,92,255,0.14), transparent 60%),linear-gradient(180deg,#0e1526,#0b1220);border-block:1px solid rgba(255,255,255,.05);padding:36px 0}
+    .cta-glass .muted{color:#cbdaf6}
+    @media (max-width:900px){.typo>*{max-width:none}.display{font-size:clamp(2rem,6vw,2.6rem)}.kpi-row{grid-template-columns:1fr}}
+    .svc-grid3{display:grid;gap:28px}
+    @media (min-width:1060px){.svc-grid3{grid-template-columns:repeat(2,1fr);grid-template-areas:"why outcomes" "fit fit"} .svc-grid3>.svc-panel:nth-child(1){grid-area:why} .svc-grid3>.svc-panel:nth-child(2){grid-area:outcomes} .svc-grid3>.svc-panel:nth-child(3){grid-area:fit}}
+  </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-<nav class="nav">
-  <div class="nav-container">
-    <a class="nav-logo" href="../index.html" aria-label="Northern Facilities Group home">
-      <img src="../assets/brand/Horizontal.svg" alt="Northern Facilities Group Inc." />
-    </a>
+<div id="nav-placeholder"></div>
 
-    <ul class="nav-menu">
-      <!-- SERVICES -->
-      <li class="nav-dropdown">
-        <button class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-          Services
-          <svg class="chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
-
-        <div class="dropdown-panel mega" role="menu" aria-label="Services menu">
-          <div class="mega-inner">
-            <div class="mega-header">
-              <h4>Our Services</h4>
-              <p>End-to-end commercial cleaning across industries</p>
-            </div>
-
-            <div class="mega-grid">
-              <a class="dropdown-link primary" href="../services/office-cleaning.html">Commercial Office Cleaning</a>
-              <a class="dropdown-link" href="../services/medical-offices.html">Medical Offices</a>
-              <a class="dropdown-link" href="../services/dental-clinics.html">Dental Clinics</a>
-              <a class="dropdown-link" href="../services/condominiums.html">Condominiums / Strata</a>
-              <a class="dropdown-link" href="../services/retail-stores.html">Retail Stores</a>
-              <a class="dropdown-link" href="../services/restaurants.html">Restaurants</a>
-              <a class="dropdown-link" href="../services/schools-daycares.html">Schools & Daycares</a>
-              <a class="dropdown-link" href="../services/gyms-fitness.html">Gyms & Fitness Centres</a>
-              <a class="dropdown-link" href="../services/industrial-warehouses.html">Industrial / Warehouses</a>
-              <a class="dropdown-link" href="../services/car-dealerships.html">Car Dealerships</a>
-              <a class="dropdown-link" href="../services/post-construction.html">Post-Construction</a>
-              <a class="dropdown-link" href="../services/move-in-move-out.html">Move-In / Move-Out</a>
-              <a class="dropdown-link" href="../services/government-municipal.html">Government & Municipal</a>
-              <a class="dropdown-link" href="../services/banks-financial.html">Banks & Financial</a>
-              <a class="dropdown-link" href="../services/event-venues.html">Event Venues</a>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <!-- SPECIALTY -->
-      <li class="nav-dropdown">
-        <button class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-          Specialty
-          <svg class="chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
-
-        <div class="dropdown-panel mega" role="menu" aria-label="Specialty services menu">
-          <div class="mega-inner">
-            <div class="mega-header">
-              <h4>Specialty Services</h4>
-              <p>Targeted deep cleans and periodic maintenance</p>
-            </div>
-
-            <div class="mega-grid">
-              <a class="dropdown-link" href="../specialty/strip-and-wax.html">Strip &amp; Wax Floors</a>
-              <a class="dropdown-link" href="../specialty/carpet-deep-clean.html">Carpet Deep Clean</a>
-              <a class="dropdown-link" href="../specialty/floor-buffing-burnishing.html">Floor Buffing / Burnishing</a>
-              <a class="dropdown-link" href="../specialty/tile-grout-restoration.html">Tile &amp; Grout Restoration</a>
-              <a class="dropdown-link" href="../specialty/upholstery-fabric.html">Upholstery &amp; Fabric</a>
-              <a class="dropdown-link" href="../specialty/window-glass.html">Window &amp; Glass Cleaning</a>
-              <a class="dropdown-link" href="../specialty/exterior-window-washing.html">Exterior Window (Lift/Reach)</a>
-              <a class="dropdown-link" href="../specialty/pressure-washing.html">Pressure Washing</a>
-              <a class="dropdown-link" href="../specialty/steam-cleaning.html">Steam Cleaning</a>
-              <a class="dropdown-link" href="../specialty/high-dusting.html">High Dusting</a>
-              <a class="dropdown-link" href="../specialty/disinfection.html">Disinfection &amp; Electrostatic Fogging</a>
-              <a class="dropdown-link" href="../specialty/post-construction-detailing.html">Post-Construction Detailing</a>
-              <a class="dropdown-link" href="../specialty/graffiti-removal.html">Graffiti Removal</a>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <li><a class="nav-link" href="../index.html#value-props">Why Us</a></li>
-      <li><a class="nav-link" href="../index.html#dashboard-demo">Dashboard</a></li>
-      <li>
-        <button id="openQuote" class="btn cta nav-cta">Get Free Quote</button>
-      </li>
-    </ul>
+<header class="svc-hero soft-gradient hero-parallax">
+  <div class="container svc-hero-inner typo">
+    <span class="eyebrow">Healthcare Environments</span>
+    <nav class="breadcrumb"><a href="../index.html">Home</a> › <a href="../index.html#value-props">Services</a> › <span>Dental Clinics</span></nav>
+    <h1 class="display">Dental Clinic Cleaning</h1>
+    <p class="lede">IPAC-aligned cleaning for operatories and common areas. DIN-registered disinfectants, high-touch sequencing, operatory turnover support, and compliance-ready logs.</p>
+    <div class="hero-cta">
+      <a href="#program" class="btn primary">How We Work</a>
+      <a href="#tiers" class="btn ghost">Service Tiers</a>
+    </div>
   </div>
-</nav>
+  <div class="accent-line"><span></span></div>
+</header>
 
+<div class="subnav" id="subnav">
+  <div class="container subnav-inner">
+    <a class="subnav-link" href="#overview">Overview</a>
+    <a class="subnav-link" href="#scope">Scope</a>
+    <a class="subnav-link" href="#protocols">Protocols</a>
+    <a class="subnav-link" href="#program">Program</a>
+    <a class="subnav-link" href="#reporting">Reporting</a>
+    <a class="subnav-link" href="#tiers">Tiers</a>
+    <a class="subnav-link cta" href="#quote">Get a Quote</a>
+  </div>
+</div>
 
-   
-  <!-- Hero -->
-  <header class="page-hero hero-color hero-parallax reveal">
-    <div class="hero-overlay">
-      <div class="container hero-content">
-        <nav class="breadcrumb"><a href="../index.html">Home</a> › <a href="../index.html#value-props">Services</a> › <span>Dental Clinics</span></nav>
-        <h1 class="gradient-text">Dental Clinic Cleaning</h1>
-        <p class="meta-block">Operatory sanitization, reception detailing, and privacy-aware teams—clean, consistent, and compliant.</p>
-        <div class="chip-row">
-          <span class="chip">Operatory disinfection</span><span class="chip">Color-coded tools</span>
-          <span class="chip">DIN-approved options</span><span class="chip">WSIB & insured</span>
+<main class="typo">
+
+  <section id="overview" class="container section-compact">
+    <div class="svc-grid3">
+      <div class="svc-panel reveal">
+        <span class="eyebrow">Why Us</span>
+        <h2 class="h2">Why dental teams pick us</h2>
+        <div class="rule"></div>
+        <ul class="simple-checks mt8">
+          <li>Operatories cleaned with defined high-touch sequence</li>
+          <li>Waiting, reception, consult, sterilization room per policy</li>
+          <li>Consistent teams + Supervisor audits and access controls</li>
+          <li>After-hours windows with alarm/key control</li>
+        </ul>
+      </div>
+
+      <div class="svc-panel reveal">
+        <span class="eyebrow">Outcomes</span>
+        <h2 class="h2">Typical results</h2>
+        <div class="rule"></div>
+        <div class="kpi-row">
+          <div class="kpi-pill" data-unit="h"><div class="kpi-num">24–48</div><div class="kpi-sub">Proposal<br>turnaround</div></div>
+          <div class="kpi-pill" data-unit="%"><div class="kpi-num">99</div><div class="kpi-sub">Touch-point<br>coverage target</div></div>
+          <div class="kpi-pill" data-unit="h"><div class="kpi-num">≤24</div><div class="kpi-sub">Issue<br>response SLA</div></div>
         </div>
       </div>
-    </div>
-    <svg class="wave" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true"><path d="M0,60 C240,120 480,0 720,60 C960,120 1200,30 1440,90 L1440,110 L0,110 Z"></path></svg>
-  </header>
 
-  <!-- Highlights -->
-  <section class="container section-spaced reveal">
-    <div class="feature-grid">
-      <div class="icon-card gradient-border"><div class="icon-circle">🦷</div><h3>Operatories</h3><p>Chairs, lights, trays, counters—disinfected to spec with proper dwell times.</p></div>
-      <div class="icon-card gradient-border"><div class="icon-circle">🧪</div><h3>Products</h3><p>Healthcare-appropriate disinfectants; SDS available, logs on request.</p></div>
-      <div class="icon-card gradient-border"><div class="icon-circle">👥</div><h3>Reception</h3><p>Glass touch points, seating wipe-down, POS & handles sanitized.</p></div>
-      <div class="icon-card gradient-border"><div class="icon-circle">🔒</div><h3>Privacy</h3><p>PHI awareness, room boundaries, alarm/lockup training.</p></div>
+      <div class="svc-panel reveal">
+        <span class="eyebrow">Fit</span>
+        <h2 class="h2">Footprints we support</h2>
+        <div class="rule"></div>
+        <p class="lede-strong">Single- and multi-op practices, ortho, pediatric, perio/endo/oral surgery admin areas, and multi-tenant medical-dental buildings.</p>
+      </div>
     </div>
   </section>
 
-  <!-- Mosaic -->
-  <section class="container section-spaced reveal">
-    <div class="mosaic">
-      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1400&auto=format&fit=crop" alt="Dental operatory" />
-      <img src="https://images.unsplash.com/photo-1520013573795-38516d26617a?q=80&w=1400&auto=format&fit=crop" alt="Waiting area" />
-      <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&w=1400&auto=format&fit=crop" alt="Reception desk" />
-      <img src="https://images.unsplash.com/photo-1581594693700-5b9d5e5d5b8e?q=80&w=1400&auto=format&fit=crop" alt="Treatment room" />
+  <section id="scope" class="container section-compact">
+    <div class="svc-panel reveal">
+      <span class="eyebrow">Deliverables</span>
+      <h2 class="h2">Scope of work</h2>
+      <div class="rule"></div>
+      <div class="list-grid">
+        <ul class="simple-checks">
+          <li>Reception/waiting: counters, glass, seating wipe-down</li>
+          <li>Operatories: non-critical surfaces, chair bases, lights (externals), handles, switches</li>
+          <li>Floors: HEPA vac + damp mop; edges/baseboards on rotation</li>
+        </ul>
+        <ul class="simple-checks">
+          <li>Sterilization/lab rooms: counters, sinks, storage exteriors (no instrument processing)</li>
+          <li>Washrooms: full disinfect; consumables restock</li>
+          <li>Waste removal & liners; sharps remain per clinic policy</li>
+        </ul>
+      </div>
+      <p class="note mt12">Exclusions: instrument reprocessing, amalgam separator service, suction line disinfectants, biomedical waste hauling, and clinical device disassembly. We can coordinate partners on request.</p>
     </div>
   </section>
 
-  <!-- Main -->
-  <main class="container section-spaced">
-    <div class="page-grid">
-      <div>
-        <article class="section-card gradient-border reveal">
-          <h2 class="section-title">Overview</h2>
-          <p>Dental clinics need precise, repeatable routines. We focus on operatory touch-points, patient-facing areas, and compliant chemical use. From reception to treatment rooms, our teams follow site-specific scopes to ensure consistency and audit readiness.</p>
-        </article>
+  <section id="protocols" class="container section-compact">
+    <div class="svc-grid2">
+      <div class="svc-panel reveal">
+        <span class="eyebrow">Compliance</span>
+        <h2 class="h2">Protocols & safety</h2>
+        <div class="rule"></div>
+        <ul class="simple-checks">
+          <li>IPAC-aware approach; DIN-registered disinfectants with observed dwell times</li>
+          <li>Color-coded tools to prevent cross-contamination</li>
+          <li>SDS on site; PPE; slip-hazard controls and signage</li>
+          <li>Security: key control, access logs, alarm codes</li>
+          <li>WSIB coverage & liability insurance (certificates available)</li>
+        </ul>
+        <p class="muted mt8">We align with common IPAC clinic expectations for environmental cleaning of non-critical surfaces and shared spaces.</p>
+      </div>
 
-        <section class="section-card gradient-border reveal">
-          <h3 class="section-title">What’s Included</h3>
-          <ul class="list-check grid-2">
-            <li>Operatories: counters, chair bases, light handles, trays, sinks</li>
-            <li>Reception & waiting: surfaces, glass, seating wipe-downs</li>
-            <li>Washrooms: full disinfect; restock consumables</li>
-            <li>Floors: HEPA vacuum + damp mop with approved solutions</li>
-            <li>Staff areas: lunchroom counters, appliances exteriors</li>
-            <li>Waste removal; sharps coordination with your vendor</li>
-            <li>Monthly detailing: vents, baseboards, high-dusting</li>
-            <li>Optional photo logs & supervisor spot checks</li>
+      <div class="svc-panel reveal">
+        <span class="eyebrow">Scheduling</span>
+        <h2 class="h2">Scheduling & frequency</h2>
+        <div class="rule"></div>
+        <ul class="simple-checks">
+          <li>Nightly or multi-week routines</li>
+          <li>Day porter options during peak days</li>
+          <li>Emergency call-outs with defined response windows</li>
+          <li>Rotation detailing for baseboards/vents/glass</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="program" class="container section-compact">
+    <div class="svc-panel reveal">
+      <span class="eyebrow">Method</span>
+      <h2 class="h2">Program flow</h2>
+      <div class="rule"></div>
+      <ol class="steps-line steps-6">
+        <li><span>1</span>Walkthrough</li>
+        <li><span>2</span>Scope &amp; Quote</li>
+        <li><span>3</span>Onboarding</li>
+        <li><span>4</span>Service</li>
+        <li><span>5</span>Supervisor QA</li>
+        <li><span>6</span>Review & Improve</li>
+      </ol>
+      <div class="grid-notes">
+        <div><strong>Onboarding.</strong> Room counts, access, consumables, escalation tree.</div>
+        <div><strong>QA.</strong> Photo logs, corrective actions tracked.</div>
+        <div><strong>Reviews.</strong> Monthly results + rotation adjustments.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reporting" class="container section-compact">
+    <div class="svc-panel reveal">
+      <span class="eyebrow">Visibility</span>
+      <h2 class="h2">Reporting & communication</h2>
+      <div class="rule"></div>
+      <div class="list-grid">
+        <ul class="simple-checks">
+          <li>Service logs with completed tasks & timestamps</li>
+          <li>Photo logs for detailing and corrective actions</li>
+          <li>Issue tracker with SLA timers</li>
+        </ul>
+        <ul class="simple-checks">
+          <li>Monthly summary: metrics, trends, recommendations</li>
+          <li>Single point of contact + supervisor contact</li>
+          <li>Supply restock notes and consumables usage</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="tiers" class="container section-compact">
+    <div class="svc-panel reveal">
+      <span class="eyebrow">Options</span>
+      <h2 class="h2">Service tiers</h2>
+      <div class="rule"></div>
+      <div class="tier-tabs" role="tablist">
+        <button class="tier-tab active" data-tab="standard" role="tab" aria-selected="true">Standard</button>
+        <button class="tier-tab" data-tab="enhanced" role="tab">Enhanced</button>
+        <button class="tier-tab" data-tab="clinical" role="tab">Clinical+</button>
+      </div>
+      <div class="tier-panels">
+        <div class="tier-panel show" id="tab-standard" role="tabpanel">
+          <ul class="simple-checks mt8">
+            <li>Nightly clean + weekly touch-point detailing</li>
+            <li>Base scope across waiting, operatories (non-critical), washrooms, floors</li>
+            <li>Monthly QA summary</li>
           </ul>
-        </section>
-
-        <section class="section-card gradient-border reveal">
-          <h3 class="section-title">Gallery</h3>
-          <div class="carousel" data-carousel>
-            <button class="car-btn prev" aria-label="Previous">‹</button>
-            <div class="car-track">
-              <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1400&auto=format&fit=crop" alt="Operatory" />
-              <img src="https://images.unsplash.com/photo-1520013573795-38516d26617a?q=80&w=1400&auto=format&fit=crop" alt="Waiting" />
-              <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&w=1400&auto=format&fit=crop" alt="Reception" />
-              <img src="https://images.unsplash.com/photo-1581594693700-5b9d5e5d5b8e?q=80&w=1400&auto=format&fit=crop" alt="Treatment room" />
-            </div>
-            <button class="car-btn next" aria-label="Next">›</button>
-            <div class="car-dots"></div>
-          </div>
-        </section>
-
-        <section class="section-card gradient-border process reveal">
-          <h3 class="section-title">How It Works</h3>
-          <ol class="steps">
-            <li><span>1</span><div><strong>Walkthrough</strong><p>We map rooms and risk points.</p></div></li>
-            <li><span>2</span><div><strong>Scope & Quote</strong><p>Clear line-items + add-ons.</p></div></li>
-            <li><span>3</span><div><strong>Onboarding</strong><p>Access, boundaries, SDS.</p></div></li>
-            <li><span>4</span><div><strong>Service</strong><p>Scheduled teams + logs.</p></div></li>
-            <li><span>5</span><div><strong>Review</strong><p>QA & seasonal tweaks.</p></div></li>
-          </ol>
-        </section>
-
-        <article class="section-card gradient-border faq reveal">
-          <h3 class="section-title" style="padding:16px;">FAQs</h3>
-          <div class="faq-item"><button class="faq-q">How do you price?<span>+</span></button><div class="faq-a"><p>Sq-ft, ops count, frequency, and detailing. Walkthrough → 24–48h proposal.</p></div></div>
-          <div class="faq-item"><button class="faq-q">Disinfectant compliance?<span>+</span></button><div class="faq-a"><p>Healthcare-appropriate options with documented dwell times; SDS available.</p></div></div>
-          <div class="faq-item"><button class="faq-q">Special requests?<span>+</span></button><div class="faq-a"><p>Yes—add notes in the portal; we confirm in the nightly job ticket.</p></div></div>
-        </article>
+        </div>
+        <div class="tier-panel" id="tab-enhanced" role="tabpanel">
+          <ul class="simple-checks mt8">
+            <li>All Standard features</li>
+            <li>Weekly photo logs + supervisor spot-checks</li>
+            <li>Seasonal glass & baseboard rotations</li>
+          </ul>
+        </div>
+        <div class="tier-panel" id="tab-clinical" role="tabpanel">
+          <ul class="simple-checks mt8">
+            <li>All Enhanced features</li>
+            <li>Documented dwell-time attestations per shift</li>
+            <li>Quarterly review with improvement plan</li>
+          </ul>
+        </div>
       </div>
-
-      <aside class="sidebar">
-        <div class="section-card gradient-border cta reveal">
-          <h3>Get a Quote</h3><p>Tell us about your clinic. We’ll build the right scope.</p>
-          <button id="openQuote2" class="btn primary">Request Proposal</button>
-          <div class="meta-block">Typical turnaround: 24–48 hours</div>
-        </div>
-        <div class="section-card gradient-border reveal">
-          <h4>Why NFG</h4>
-          <ul class="list-check"><li>Insured & WSIB covered</li><li>Uniformed, trained staff</li><li>Documented logs</li><li>Flexible schedules</li></ul>
-        </div>
-        <div class="section-card gradient-border reveal">
-          <h4>Popular Add-Ons</h4>
-          <ul class="list-check"><li>Electrostatic disinfection</li><li>Monthly detailing</li><li>Carpet extraction</li><li>Interior glass rotation</li></ul>
-        </div>
-      </aside>
     </div>
-  </main>
+  </section>
 
-  <section class="cta-band reveal">
-    <div class="container cta-band-inner">
-      <div><h3 class="gradient-text">Want a clinic that always feels ready?</h3><p class="meta-block">We’ll tailor a schedule to your flow.</p></div>
-      <button id="openQuote3" class="btn primary">Start Your Quote</button>
+  <section id="quote" class="cta-glass full-bleed">
+    <div class="container cta-glass-inner">
+      <div>
+        <h3 class="h2">Clinic-ready, every shift.</h3>
+        <p class="muted">Send # of ops, hours, and any clinic policies—tailored proposal in 24–48h.</p>
+      </div>
+      <button id="openQuote2" class="btn primary">Request Proposal</button>
     </div>
   </section>
 
   <div id="footer-placeholder"></div>
 
-  <!-- Modal -->
-  <div id="quoteModal" class="modal" aria-hidden="true">
-    <div class="modal-overlay" data-close="true"></div>
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="quoteTitle">
-      <button id="closeModal" class="modal-close" aria-label="Close">×</button>
-      <h3 id="quoteTitle">Get a Free Quote</h3>
-      <form id="quoteForm" class="form">
-        <label>Company Name<input name="company" type="text" required /></label>
-        <label>Contact Name<input name="name" type="text" required /></label>
-        <label>Email<input name="email" type="email" required /></label>
-        <label>Phone<input name="phone" type="tel" /></label>
-        <label>Office Size (sq ft)<input name="size" type="number" min="0" /></label>
-        <label>Notes<textarea name="notes" rows="4" placeholder="Schedule, special areas, etc."></textarea></label>
-        <button type="submit" class="btn primary full">Submit</button>
-        <p id="formMsg" class="form-msg" hidden>Thanks! We’ll get back to you shortly.</p>
-      </form>
-    </div>
+<div id="quoteModal" class="modal" aria-hidden="true">
+  <div class="modal-overlay" data-close="true"></div>
+  <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="quoteTitle">
+    <button id="closeModal" class="modal-close" aria-label="Close">×</button>
+    <h3 id="quoteTitle">Get a Free Quote</h3>
+    <form id="quoteForm" class="form">
+      <label>Clinic / Company<input name="company" type="text" required /></label>
+      <label>Contact Name<input name="name" type="text" required /></label>
+      <label>Email<input name="email" type="email" required /></label>
+      <label>Phone<input name="phone" type="tel" /></label>
+      <label># of Operatories<input name="size" type="number" min="0" /></label>
+      <label>Notes<textarea name="notes" rows="4" placeholder="Frequency, add-ons, access, policy notes"></textarea></label>
+      <button type="submit" class="btn primary full">Submit</button>
+      <p id="formMsg" class="form-msg" hidden>Thanks! We’ll get back to you shortly.</p>
+    </form>
   </div>
+</div>
 
   <script src="../script.js" defer></script>
   <script>
