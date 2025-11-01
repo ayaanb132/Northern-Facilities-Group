@@ -1,6 +1,8 @@
 // =============================    lockNav(76, 44); // <— force navbar height 76px, logo 44px tall
     initKpiFit();           // auto-fit "24–48h", shrink unit, handle % etc.
     initCardPolish();       // staggered reveal timing for the three cards
+    setCurrentYear();       // set current year in footer
+    initFooterQuoteLinks(); // handle footer quote links
     setCurrentYear();       // set current year in footer===
 // NORTHERN FACILITIES GROUP
 // Premium Interactive JavaScript
@@ -36,6 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     lockNav(76, 44); // <— force navbar height 76px, logo 44px tall
     initKpiFit();           // auto-fit “24–48h”, shrink unit, handle % etc.
     initCardPolish();       // staggered reveal timing for the three cards
+    initFooterQuoteLinks(); // handle footer quote links
 });
 window.addEventListener('resize', () => lockNav(76, 44)); // keep it locked on resize
 // ===================================
@@ -870,4 +873,42 @@ function initCardPolish(){
   cards.forEach((card, i) => {
     card.style.animationDelay = (i * 0.07) + 's'; // subtle cascade
   });
+}
+
+// ===================================
+// Footer Quote Links Handler
+// ===================================
+function initFooterQuoteLinks() {
+    const quoteLinks = document.querySelectorAll('.footer-quote-link');
+    
+    quoteLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Try to find and open quote modal
+            const quoteModal = document.getElementById('quoteModal');
+            const contactModal = document.getElementById('contactModal');
+            
+            // Priority: quoteModal first, then contactModal
+            if (quoteModal) {
+                quoteModal.setAttribute('aria-hidden', 'false');
+                quoteModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            } else if (contactModal) {
+                contactModal.style.display = 'flex';
+                contactModal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            } else {
+                // Fallback: try to trigger existing quote buttons
+                const openQuoteBtn = document.getElementById('openQuote2') || 
+                                   document.getElementById('openQuote3') || 
+                                   document.getElementById('openQuote4') ||
+                                   document.getElementById('openQuote1');
+                
+                if (openQuoteBtn) {
+                    openQuoteBtn.click();
+                }
+            }
+        });
+    });
 }
