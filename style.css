@@ -3255,3 +3255,200 @@ main.typo .container,
   justify-content: space-between;
   gap: 36px;
 }
+/* ===== Mobile Drawer (Services + Specialty) ===== */
+@media (max-width: 900px){
+  /* Hide desktop mega under mobile */
+  .nav .dropdown-panel,
+  .nav .dropdown-panel.mega {
+    display: none !important;
+  }
+}
+
+.mobile-drawer{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  grid-template-rows: 1fr;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .18s ease;
+}
+.mobile-drawer[aria-hidden="false"]{
+  pointer-events: auto;
+  opacity: 1;
+}
+.mobile-drawer__overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(8,12,22,.6);
+  backdrop-filter: blur(2px);
+}
+.mobile-drawer__panel{
+  position: relative;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg,#0e1526,#0b1220);
+  border-top: 1px solid rgba(255,255,255,.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  padding: 16px 18px 24px;
+  transform: translateY(-6%);
+  transition: transform .22s ease;
+  overflow: auto;
+  outline: none;
+}
+.mobile-drawer[aria-hidden="false"] .mobile-drawer__panel{
+  transform: translateY(0);
+}
+
+.mobile-drawer__head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 6px 0 12px;
+  border-bottom: 1px solid rgba(148,163,184,.18);
+  color:#e7f0ff; font-weight:700; letter-spacing:.02em;
+}
+.mobile-drawer__close{
+  font-size: 28px; line-height: 1; background: transparent; border: 0; color: #e7f0ff;
+}
+
+.mobile-group{ padding: 14px 0; border-bottom: 1px solid rgba(148,163,184,.12); }
+.mobile-group__btn{
+  width: 100%; text-align: left; background: #0f1730; color:#eaf2ff;
+  border: 1px solid rgba(148,163,184,.18); border-radius: 10px;
+  padding: 10px 12px; font-weight: 700;
+}
+.mobile-group__btn[aria-expanded="true"]{
+  background: linear-gradient(90deg, var(--accent-1,#62b2ff), var(--accent-2,#8a6cff));
+  color:#0b1220; border-color: transparent; box-shadow: 0 8px 24px rgba(92,148,255,.25);
+}
+.mobile-group__list{
+  display: grid; gap: 8px;
+  padding: 12px 4px 2px;
+}
+.mobile-group__list a{
+  display: block; padding: 10px 8px; border-radius: 10px;
+  color:#eaf2ff; text-decoration: none; border:1px solid rgba(148,163,184,.18);
+  background: linear-gradient(180deg, #122037, #0f1b2f);
+}
+.mobile-group__list a:active { transform: translateY(1px); }
+
+.mobile-actions{
+  display: grid; gap: 10px; padding-top: 16px;
+}
+.mobile-actions .btn.primary{ text-align:center; }
+.mobile-actions .nav-link{ text-align:center; opacity:.9; }
+
+/* Prevent background scroll when drawer is open */
+.drawer-open body { overflow: hidden; }
+/* Ensure collapsed mobile lists are hidden */
+.mobile-group__list[hidden] { display: none !important; }
+/* Match desktop primary button inside the mobile drawer */
+.mobile-actions .btn.primary {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 999px;
+
+  /* sizing */
+  padding: 12px 18px;
+
+  /* NFG theme look */
+  border: 1px solid rgba(148,163,184,.25);
+  background: linear-gradient(90deg, var(--accent-1, #62b2ff), var(--accent-2, #8a6cff));
+  color: #0b1220;
+
+  /* glow similar to desktop */
+  box-shadow: 0 8px 24px rgba(92,148,255,.25), inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.mobile-actions .btn.primary:hover {
+  filter: brightness(1.05);
+}
+
+@media (max-width: 900px){
+  /* Ensure only the quote CTA shows in drawer */
+  .mobile-actions .nav-link { display: none !important; }
+}
+/* === Rotating chevrons for mobile drawer buttons === */
+.mobile-group__btn {
+  position: relative;
+  padding-right: 34px; /* room for arrow */
+}
+
+.mobile-group__btn::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-50%) rotate(45deg);
+  transition: transform 0.25s ease;
+  opacity: 0.9;
+}
+
+.mobile-group__btn[aria-expanded="true"]::after {
+  transform: translateY(-50%) rotate(225deg);
+}
+/* === Hide dashboard demo on mobile === */
+@media (max-width: 768px) {
+  #dashboard-demo {
+    display: none !important;
+  }
+}
+/* ==== Mobile hero layout & type fixes ==== */
+@media (max-width: 768px) {
+  /* add comfy left/right padding to the whole hero */
+  .hero { 
+    padding-block: clamp(48px, 10vw, 80px);
+  }
+  .hero-container {
+    display: block;                     /* stop any 2-col grid on mobile */
+    padding-inline: clamp(18px, 6vw, 28px);  /* <-- fixes the “squished left” look */
+    max-width: 760px;
+    margin-inline: auto;
+  }
+
+  .hero-content {
+    max-width: 640px;
+    margin-inline: auto;
+    text-align: left;                   /* keep left-aligned but not jammed to the edge */
+  }
+
+  .hero-title {
+    font-size: clamp(34px, 10vw, 48px); /* big but readable on phones */
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 12px;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(16px, 4.2vw, 18px);
+    line-height: 1.5;
+    margin: 0 0 18px;
+    opacity: 0.9;
+  }
+
+  /* make the CTA easy to tap and visually centered */
+  #heroCtaBtn,
+  .hero .btn-primary {
+    width: 100%;
+    max-width: 520px;
+    margin-top: 10px;
+  }
+
+  /* if the laptop/demo is still in the hero, push it below the text */
+  .hero-visual {
+    margin-top: 24px;
+  }
+}
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(24px, 3vw, 40px);
+}
