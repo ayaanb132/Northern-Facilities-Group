@@ -161,7 +161,7 @@ body{ padding-top: var(--nav-h); }
   margin-right: clamp(16px, 3vw, 32px);
 }
 .nav .nav-logo img{
-  width: clamp(260px, 20vw, 340px);    /* adjust max to taste (e.g., 320px) */
+  width: clamp(320px, 25vw, 420px);    /* increased from 260-340px to 320-420px */
   height: auto !important;
   max-height: none !important;
   display: block;
@@ -360,6 +360,94 @@ body{ padding-top: var(--nav-h); }
     position: relative;
     animation: fadeInRight 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
     opacity: 0;
+}
+
+/* Hero Gallery */
+.hero-gallery {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    height: 500px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-secondary);
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-normal);
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl), 0 0 30px rgba(56, 189, 248, 0.3);
+}
+
+.gallery-large {
+    grid-row: span 2;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-slow);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(15, 23, 42, 0.3) 100%
+    );
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* Gallery shimmer effect */
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(56, 189, 248, 0.1),
+        transparent
+    );
+    animation: shimmer 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
 }
 
 
@@ -1460,6 +1548,14 @@ body{ padding-top: var(--nav-h); }
         font-size: 3rem;
     }
     
+    .hero-gallery {
+        max-width: 500px;
+    }
+    
+    .gallery-grid {
+        height: 450px;
+    }
+    
     .demo-container {
         min-height: auto;
         grid-template-columns: 1fr;
@@ -1498,6 +1594,15 @@ body{ padding-top: var(--nav-h); }
         font-size: 1.125rem;
     }
     
+    .hero-gallery {
+        max-width: 100%;
+    }
+    
+    .gallery-grid {
+        height: 400px;
+        gap: var(--spacing-sm);
+    }
+    
     .value-grid {
         grid-template-columns: 1fr;
     }
@@ -1518,6 +1623,22 @@ body{ padding-top: var(--nav-h); }
 @media (max-width: 480px) {
     .hero-title {
         font-size: 2rem;
+    }
+    
+    .hero-gallery {
+        max-width: 100%;
+        margin: 0 -8px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 200px);
+        height: auto;
+        gap: var(--spacing-sm);
+    }
+    
+    .gallery-large {
+        grid-row: span 1;
     }
     
     .nav-logo {

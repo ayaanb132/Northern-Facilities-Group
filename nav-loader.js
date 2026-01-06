@@ -25,11 +25,19 @@ class NavigationLoader {
   const last = parts[parts.length - 1] || '';
   const lastIsFile = last.includes('.');
 
-  let depth = 0;
-  if (lastIsFile) depth = Math.max(0, parts.length - 2);
-  else depth = Math.max(0, parts.length - 1);
+  // Determine how many directories deep the file is
+  let depth;
+  if (lastIsFile) {
+    // e.g. /specialty/window-glass.html → parts = ["specialty", "window-glass.html"]
+    // depth = 1 → "../"
+    depth = parts.length - 1;
+  } else {
+    // e.g. /specialty/ → parts = ["specialty"]
+    // depth = 1 → "../"
+    depth = parts.length;
+  }
 
-  // Fix for GitHub Pages subpath hosting
+  // Special case for GitHub Pages (don’t mess with base paths there)
   if (window.location.hostname.includes('github.io')) {
     return './';
   }
@@ -59,7 +67,7 @@ class NavigationLoader {
    */
   async loadNavigation() {
     try {
-      const navPath = `${this.basePath}partials/nav.html`;
+      const navPath = `${this.basePath}/partials/partials/nav.html`;
       const response = await fetch(navPath);
 
       if (!response.ok) {
