@@ -161,12 +161,13 @@ body{ padding-top: var(--nav-h); }
   margin-right: clamp(16px, 3vw, 32px);
 }
 .nav .nav-logo img{
-  width: clamp(320px, 25vw, 420px);    /* increased from 260-340px to 320-420px */
+  width: clamp(360px, 26vw, 480px);    /* slightly larger for better readability */
   height: auto !important;
   max-height: none !important;
   display: block;
   object-fit: contain;
   flex-shrink: 0;
+  border-radius: 12px;
   
 }
 
