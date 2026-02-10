@@ -1,0 +1,129 @@
+'use client';
+
+import * as React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { siteConfig } from '@/lib/site';
+import { Button } from '@/components/ui/button';
+
+const LOGO_SRC = '/images/logo.svg';
+
+export function Navbar() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const pathname = usePathname();
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  React.useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  return (
+    <header
+      className={cn(
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.28,0.11,0.32,1)]',
+        isScrolled
+          ? 'glass-apple border-b border-black/[0.06]'
+          : 'bg-transparent'
+      )}
+    >
+      <nav className="container-wide">
+        <div className="flex min-h-16 items-center justify-between py-3 lg:min-h-24 lg:py-4">
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
+            <Image
+              src={LOGO_SRC}
+              alt={siteConfig.name}
+              width={600}
+              height={300}
+              className="h-auto w-full max-w-[280px] object-contain object-left sm:max-w-[360px] lg:min-w-[400px] lg:max-w-[400px] lg:w-[400px] lg:max-h-32"
+              priority
+            />
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex lg:items-center lg:gap-1">
+            {siteConfig.nav.main.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  'px-4 py-2 text-[13px] font-normal text-foreground/80 hover:text-foreground transition-colors duration-200 rounded-full',
+                  pathname === item.href || pathname.startsWith(item.href + '/')
+                    ? 'text-[hsl(var(--primary))]'
+                    : ''
+                )}
+              >
+                {item.title}
+              </Link>
+            ))}
+          </div>
+
+          {/* Desktop CTA */}
+          <div className="hidden lg:flex lg:items-center">
+            <Button asChild size="sm" className="rounded-full">
+              <Link href={siteConfig.nav.cta.href}>{siteConfig.nav.cta.title}</Link>
+            </Button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden p-2 -mr-2 text-foreground/70 hover:text-foreground transition-colors"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: [0.28, 0.11, 0.32, 1] }}
+            className="lg:hidden border-t border-black/[0.06] bg-white/95 backdrop-blur-xl"
+          >
+            <div className="container-wide py-5 space-y-0.5">
+              {siteConfig.nav.main.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    'block px-4 py-3 text-[17px] font-normal rounded-xl transition-colors',
+                    pathname === item.href || pathname.startsWith(item.href + '/')
+                      ? 'text-[hsl(var(--primary))]'
+                      : 'text-foreground hover:bg-black/[0.04]'
+                  )}
+                >
+                  {item.title}
+                </Link>
+              ))}
+              <div className="my-4 h-px bg-black/[0.06]" />
+              <div className="pt-4 px-4">
+                <Button asChild className="w-full rounded-full">
+                  <Link href={siteConfig.nav.cta.href}>{siteConfig.nav.cta.title}</Link>
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+}

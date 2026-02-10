@@ -1,0 +1,302 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary #000b3d | Secondary #e4e2dd | Tertiary #000000 */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --tertiary: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 229 100% 12%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 11% 88%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 40 11% 92%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 40 11% 88%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 8% 85%;
+    --input: 40 8% 85%;
+    --ring: 229 100% 12%;
+
+    --radius: 1rem;
+    --radius-lg: 1.25rem;
+    --radius-xl: 1.5rem;
+  }
+
+  .dark {
+    --background: 229 50% 5%;
+    --foreground: 0 0% 100%;
+    --tertiary: 0 0% 0%;
+
+    --card: 229 40% 8%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 229 40% 8%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 229 100% 12%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 11% 25%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 229 30% 15%;
+    --muted-foreground: 40 11% 65%;
+
+    --accent: 40 11% 25%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 229 30% 15%;
+    --input: 229 30% 15%;
+    --ring: 229 100% 12%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+}
+
+@layer components {
+  .container-wide {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-narrow {
+    @apply mx-auto w-full max-w-4xl px-4 sm:px-6;
+  }
+
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .section-padding-lg {
+    @apply py-20 sm:py-28 lg:py-32;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent;
+  }
+
+  .gradient-bg {
+    @apply bg-secondary;
+  }
+
+  .gradient-bg-hero {
+    @apply bg-gradient-to-b from-background to-secondary;
+  }
+
+  .gradient-bg-dark {
+    @apply bg-gradient-to-b from-primary to-[#000308];
+  }
+
+  .glass {
+    @apply bg-white/80 backdrop-blur-lg;
+  }
+
+  .glass-dark {
+    @apply bg-primary/80 backdrop-blur-lg;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 ease-out hover:-translate-y-0.5;
+  }
+
+  .glass-apple {
+    @apply bg-white/70 backdrop-blur-xl;
+  }
+
+  .link-underline {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+
+  /* 3D Scene container */
+  .scene-container {
+    @apply relative h-full w-full overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200;
+  }
+
+  /* Loading states */
+  .skeleton {
+    @apply animate-pulse rounded bg-muted;
+  }
+
+  /* Service hero image: light edge blend, no spill */
+  .service-hero-image-wrap {
+    -webkit-mask-image: radial-gradient(
+      ellipse 88% 88% at 50% 50%,
+      black 55%,
+      transparent 95%
+    );
+    mask-image: radial-gradient(
+      ellipse 88% 88% at 50% 50%,
+      black 55%,
+      transparent 95%
+    );
+    mask-size: 100% 100%;
+    -webkit-mask-size: 100% 100%;
+    /* Subtle halo only, contained */
+    filter: drop-shadow(0 0 24px hsl(var(--secondary) / 0.25));
+  }
+
+  /* Light overlay so edges blend, no spill */
+  .service-hero-image-blend {
+    background: radial-gradient(
+      ellipse 95% 95% at 50% 50%,
+      transparent 55%,
+      hsl(var(--secondary) / 0.25) 82%,
+      hsl(var(--secondary) / 0.6) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Bento grid */
+  .bento-grid {
+    @apply grid auto-rows-[18rem] gap-4;
+  }
+
+  .bento-card {
+    @apply relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:shadow-soft;
+  }
+
+  /* Typography utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+@layer utilities {
+  .animate-in {
+    animation: animate-in 0.5s ease-out forwards;
+  }
+
+  @keyframes animate-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply rounded-full bg-muted;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-muted-foreground/30;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
