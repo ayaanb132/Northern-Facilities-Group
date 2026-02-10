@@ -12,19 +12,6 @@
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
 
-# Production: northernfacilitiesgroup.ca — redirect www to canonical
-[[redirects]]
-  from = "https://www.northernfacilitiesgroup.ca/*"
-  to = "https://northernfacilitiesgroup.ca/:splat"
-  status = 301
-  force = true
-[[redirects]]
-  from = "http://www.northernfacilitiesgroup.ca/*"
-  to = "https://northernfacilitiesgroup.ca/:splat"
-  status = 301
-  force = true
-[[redirects]]
-  from = "http://northernfacilitiesgroup.ca/*"
-  to = "https://northernfacilitiesgroup.ca/:splat"
-  status = 301
-  force = true
+# Redirects: use Netlify Domain management instead to avoid ERR_TOO_MANY_REDIRECTS.
+# In Netlify: Site → Domain management → Set northernfacilitiesgroup.ca as primary,
+# add www.northernfacilitiesgroup.ca, then "Redirect www to primary" + "Force HTTPS".
