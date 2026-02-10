@@ -11,8 +11,8 @@ A premium, conversion-optimized Next.js marketing website with interactive 3D pr
 - **3D**: @react-three/fiber + Three.js + @react-three/drei
 - **Content**: MDX for services and specialty pages
 - **Forms**: Server Actions + Zod validation
-- **Email**: Resend (optional, env-var driven)
-- **Deployment**: Netlify (Next.js via OpenNext)
+- **Email**: Zoho Mail or Resend (env-var driven)
+- **Deployment**: Netlify (Next.js via OpenNext) — **Live:** [northernfacilitiesgroup.ca](https://northernfacilitiesgroup.ca)
 
 ## Getting Started
 
@@ -41,19 +41,25 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 Create a `.env.local` file with the following variables:
 
 ```env
-# Email (Resend) - Optional
-RESEND_API_KEY=your_resend_api_key
-
-# Analytics - Optional
-NEXT_PUBLIC_GA_ID=your_google_analytics_id
-NEXT_PUBLIC_PLAUSIBLE_DOMAIN=your_plausible_domain
-
-# Site URL (for OG images and sitemap)
-NEXT_PUBLIC_SITE_URL=https://northernfacilitiesgroup.ca
-
-# Contact form recipient
+# Email — Zoho (recommended) or Resend
+ZOHO_EMAIL=info@northernfacilitiesgroup.ca
+ZOHO_APP_PASSWORD=your_zoho_app_password
+RESEND_API_KEY=
 CONTACT_EMAIL=info@northernfacilitiesgroup.ca
+
+NEXT_PUBLIC_SITE_URL=https://northernfacilitiesgroup.ca
+NEXT_PUBLIC_GA_ID=
+NEXT_PUBLIC_PLAUSIBLE_DOMAIN=
 ```
+
+#### Get Quote & Walkthrough (and Contact) in your inbox
+
+**Zoho Mail:** Set `ZOHO_EMAIL`, `ZOHO_APP_PASSWORD`, and `CONTACT_EMAIL` in Netlify (and `.env.local`). Emails send via Zoho SMTP. **Alternative: Resend** (free tier is fine): sign up at [resend.com](https://resend.com), create an API key, and add your domain `northernfacilitiesgroup.ca` in the Resend dashboard so “From” is allowed. For quick testing you can use Resend’s sandbox domain first.
+2. **Env vars** (locally in `.env.local`, on Netlify in **Site settings → Environment variables**):
+   - `RESEND_API_KEY` = your Resend API key  
+   - `CONTACT_EMAIL` = the address that receives the emails (e.g. `info@northernfacilitiesgroup.ca`)
+
+After saving and redeploying (on Netlify), every Contact, Quote, and Walkthrough submission will be emailed to `CONTACT_EMAIL` with reply-to set to the submitter.
 
 ## Project Structure
 

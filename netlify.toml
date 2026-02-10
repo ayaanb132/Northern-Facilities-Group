@@ -11,3 +11,20 @@
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
+
+# Production: northernfacilitiesgroup.ca — redirect www to canonical
+[[redirects]]
+  from = "https://www.northernfacilitiesgroup.ca/*"
+  to = "https://northernfacilitiesgroup.ca/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "http://www.northernfacilitiesgroup.ca/*"
+  to = "https://northernfacilitiesgroup.ca/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "http://northernfacilitiesgroup.ca/*"
+  to = "https://northernfacilitiesgroup.ca/:splat"
+  status = 301
+  force = true

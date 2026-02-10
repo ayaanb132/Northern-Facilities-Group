@@ -39,15 +39,15 @@ export function Navbar() {
       )}
     >
       <nav className="container-wide">
-        <div className="flex min-h-16 items-center justify-between py-3 lg:min-h-24 lg:py-4">
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
+        <div className="flex min-h-14 items-center justify-between gap-3 py-2 lg:min-h-24 lg:py-4">
+          {/* Logo — compact on mobile */}
+          <Link href="/" className="flex shrink-0 items-center">
             <Image
               src={LOGO_SRC}
               alt={siteConfig.name}
               width={600}
               height={300}
-              className="h-auto w-full max-w-[280px] object-contain object-left sm:max-w-[360px] lg:min-w-[400px] lg:max-w-[400px] lg:w-[400px] lg:max-h-32"
+              className="h-8 w-auto max-w-[140px] object-contain object-left sm:max-w-[200px] lg:h-auto lg:min-w-[400px] lg:max-w-[400px] lg:max-h-32"
               priority
             />
           </Link>
@@ -77,9 +77,9 @@ export function Navbar() {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile: hamburger */}
           <button
-            className="lg:hidden p-2 -mr-2 text-foreground/70 hover:text-foreground transition-colors"
+            className="lg:hidden flex shrink-0 items-center justify-center w-10 h-10 rounded-lg text-foreground/80 hover:text-foreground hover:bg-black/[0.04] transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isOpen}

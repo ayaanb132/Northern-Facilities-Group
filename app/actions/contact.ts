@@ -1,9 +1,8 @@
 'use server';
 
-import { Resend } from 'resend';
 import { contactFormSchema, walkthroughFormSchema, quoteFormSchema, type ContactFormData, type WalkthroughFormData, type QuoteFormData } from '@/lib/validators';
-import { siteConfig } from '@/lib/site';
 import { sendToDealsPipeline } from '@/lib/dealsPipeline';
+import { sendFormEmail } from '@/lib/email';
 
 // Simple in-memory rate limiting
 const rateLimitMap = new Map<string, { count: number; timestamp: number }>();
@@ -91,18 +90,10 @@ export async function submitContactForm(
     };
   }
 
-  // Send email if Resend is configured
-  if (process.env.RESEND_API_KEY) {
-    try {
-      const resend = new Resend(process.env.RESEND_API_KEY);
-      const toEmail = process.env.CONTACT_EMAIL || siteConfig.links.email;
-
-      await resend.emails.send({
-        from: 'NFG Website <noreply@northernfacilitiesgroup.ca>',
-        to: toEmail,
-        reply_to: data.email,
-        subject: `Contact Form: ${data.subject}`,
-        text: `
+  const emailResult = await sendFormEmail({
+    replyTo: data.email,
+    subject: `Contact Form: ${data.subject}`,
+    text: `
 Name: ${data.name}
 Email: ${data.email}
 Phone: ${data.phone || 'Not provided'}
@@ -110,19 +101,14 @@ Subject: ${data.subject}
 
 Message:
 ${data.message}
-        `.trim(),
-      });
-    } catch (error) {
-      console.error('Failed to send contact email:', error);
-      return {
-        success: false,
-        message: 'Failed to send message. Please try again later.',
-      };
+    `.trim(),
+  });
+  if (!emailResult.ok) {
+    if (emailResult.error?.includes('No email service')) {
+      console.log('Contact form submission (no email service configured):', JSON.stringify(data, null, 2));
+    } else {
+      return { success: false, message: 'Failed to send message. Please try again later.' };
     }
-  } else {
-    // Log to console if no email service configured
-    console.log('Contact form submission (no email service configured):');
-    console.log(JSON.stringify(data, null, 2));
   }
 
   return {
@@ -176,18 +162,10 @@ export async function submitWalkthroughForm(
     };
   }
 
-  // Send email if Resend is configured
-  if (process.env.RESEND_API_KEY) {
-    try {
-      const resend = new Resend(process.env.RESEND_API_KEY);
-      const toEmail = process.env.CONTACT_EMAIL || siteConfig.links.email;
-
-      await resend.emails.send({
-        from: 'NFG Website <noreply@northernfacilitiesgroup.ca>',
-        to: toEmail,
-        reply_to: data.email,
-        subject: `Walkthrough Request: ${data.company}`,
-        text: `
+  const emailResult = await sendFormEmail({
+    replyTo: data.email,
+    subject: `Walkthrough Request: ${data.company}`,
+    text: `
 New Walkthrough Request
 
 Contact Information:
@@ -202,19 +180,14 @@ Property Details:
 
 Additional Notes:
 ${data.message || 'None provided'}
-        `.trim(),
-      });
-    } catch (error) {
-      console.error('Failed to send walkthrough email:', error);
-      return {
-        success: false,
-        message: 'Failed to submit request. Please try again later.',
-      };
+    `.trim(),
+  });
+  if (!emailResult.ok) {
+    if (emailResult.error?.includes('No email service')) {
+      console.log('Walkthrough form submission (no email service configured):', JSON.stringify(data, null, 2));
+    } else {
+      return { success: false, message: 'Failed to submit request. Please try again later.' };
     }
-  } else {
-    // Log to console if no email service configured
-    console.log('Walkthrough form submission (no email service configured):');
-    console.log(JSON.stringify(data, null, 2));
   }
 
   // Send to deals pipeline (your app / webhook)
@@ -278,26 +251,17 @@ export async function submitQuoteForm(
     };
   }
 
-  if (process.env.RESEND_API_KEY) {
-    try {
-      const resend = new Resend(process.env.RESEND_API_KEY);
-      const toEmail = process.env.CONTACT_EMAIL || siteConfig.links.email;
-      await resend.emails.send({
-        from: 'NFG Website <noreply@northernfacilitiesgroup.ca>',
-        to: toEmail,
-        reply_to: data.email,
-        subject: `Quote Request: ${data.propertyType} / ${data.tier}`,
-        text: `Quote request\n\nEmail: ${data.email}\nProperty type: ${data.propertyType}\nTier: ${data.tier}`,
-      });
-    } catch (error) {
-      console.error('Failed to send quote email:', error);
-      return {
-        success: false,
-        message: 'Failed to submit. Please try again later.',
-      };
+  const emailResult = await sendFormEmail({
+    replyTo: data.email,
+    subject: `Quote Request: ${data.propertyType} / ${data.tier}`,
+    text: `Quote request\n\nEmail: ${data.email}\nProperty type: ${data.propertyType}\nTier: ${data.tier}`,
+  });
+  if (!emailResult.ok) {
+    if (emailResult.error?.includes('No email service')) {
+      console.log('Quote form submission (no email service configured):', JSON.stringify(data, null, 2));
+    } else {
+      return { success: false, message: 'Failed to submit. Please try again later.' };
     }
-  } else {
-    console.log('Quote form submission (no email service configured):', JSON.stringify(data, null, 2));
   }
 
   const pipelinePayload = {
