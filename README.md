@@ -12,7 +12,7 @@ A premium, conversion-optimized Next.js marketing website with interactive 3D pr
 - **Content**: MDX for services and specialty pages
 - **Forms**: Server Actions + Zod validation
 - **Email**: Resend (optional, env-var driven)
-- **Deployment**: Vercel-ready
+- **Deployment**: Netlify (Next.js via OpenNext)
 
 ## Getting Started
 
@@ -269,15 +269,14 @@ npm run format
 
 ## Deployment
 
-To get the site live on the internet (fix "page not found" when visiting your repo’s link), deploy to **Vercel** (free and works with this Next.js app).
+The site is deployed on **Netlify**. Netlify supports this Next.js app with zero config via the [OpenNext adapter](https://docs.netlify.com/build/frameworks/framework-setup-guides/nextjs/overview/) (App Router, Server Actions, and Image Optimization all work).
 
-### Vercel (Recommended)
+### Netlify
 
-1. Go to [vercel.com](https://vercel.com) and sign in with GitHub.
-2. **Add New Project** → Import `ayaanb132/Northern-Facilities-Group`.
-3. Leave the default settings (framework: Next.js) and click **Deploy**.
-4. Add env vars in Project Settings → Environment Variables if you use Resend/contact email.
-5. Your site will be at `https://your-project.vercel.app` (you can add a custom domain later).
+1. In [Netlify](https://app.netlify.com), connect the repo **Northern-Facilities-Group** (or use **Add site → Import an existing project**).
+2. Netlify will detect Next.js and set **Build command** `npm run build` and use the Next.js/OpenNext pipeline. A `netlify.toml` in the repo is optional and can override build settings.
+3. Set **Environment variables** in Site settings → Environment variables (e.g. `RESEND_API_KEY`, `CONTACT_EMAIL`, `NEXT_PUBLIC_SITE_URL`).
+4. Deploy. The site will be at `https://<your-site-name>.netlify.app` (custom domain can be added in Domain settings).
 
 ### Manual Build
 
