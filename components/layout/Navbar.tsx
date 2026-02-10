@@ -33,9 +33,9 @@ export function Navbar() {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.28,0.11,0.32,1)]',
-        isScrolled
-          ? 'glass-apple border-b border-black/[0.06]'
-          : 'bg-transparent'
+        // Mobile: always solid so logo never overlaps hero
+        'lg:bg-transparent',
+        isScrolled ? 'glass-apple border-b border-black/[0.06]' : 'bg-white/95 backdrop-blur-sm lg:!bg-transparent'
       )}
     >
       <nav className="container-wide">
