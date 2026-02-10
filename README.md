@@ -269,12 +269,15 @@ npm run format
 
 ## Deployment
 
+To get the site live on the internet (fix "page not found" when visiting your repo’s link), deploy to **Vercel** (free and works with this Next.js app).
+
 ### Vercel (Recommended)
 
-1. Push to GitHub
-2. Import project in Vercel
-3. Set environment variables
-4. Deploy
+1. Go to [vercel.com](https://vercel.com) and sign in with GitHub.
+2. **Add New Project** → Import `ayaanb132/Northern-Facilities-Group`.
+3. Leave the default settings (framework: Next.js) and click **Deploy**.
+4. Add env vars in Project Settings → Environment Variables if you use Resend/contact email.
+5. Your site will be at `https://your-project.vercel.app` (you can add a custom domain later).
 
 ### Manual Build
 

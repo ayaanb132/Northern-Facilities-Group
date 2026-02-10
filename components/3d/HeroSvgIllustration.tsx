@@ -37,7 +37,9 @@ export function HeroSvgIllustration({ className }: HeroSvgIllustrationProps) {
     doneRef.current = true;
     try {
       sessionStorage.setItem(HERO_VIDEO_PLAYED_KEY, '1');
-    } catch {}
+    } catch {
+      // ignore sessionStorage errors (e.g. private mode)
+    }
     const video = videoRef.current;
     if (video) {
       video.pause();

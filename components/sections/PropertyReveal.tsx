@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView, type MotionValue } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { SceneCanvas } from '@/components/3d/SceneCanvas';
 import { PropertyScene } from '@/components/3d/PropertyScene';
@@ -28,7 +28,7 @@ function FloatingCard({
   description: string;
   href: string;
   className?: string;
-  scrollProgress: ReturnType<typeof useTransform>;
+  scrollProgress: MotionValue<number>;
   parallaxOffset?: number;
 }) {
   const y = useTransform(scrollProgress, [0, 0.3, 0.7, 1], [24 + parallaxOffset, 6, -6, -24 - parallaxOffset]);
@@ -65,7 +65,6 @@ function PropertyViewport({ config }: { config: ModelConfig }) {
       environmentPreset={config.environmentPreset}
       showContactShadows={false}
       cameraPosition={config.cameraPosition}
-      cameraFov={config.cameraFov}
     >
       <PropertyScene
         config={config}

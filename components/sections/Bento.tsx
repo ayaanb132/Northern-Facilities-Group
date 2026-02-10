@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import {
   Home,
   Building2,
@@ -34,9 +34,8 @@ function useCardTilt() {
   const ref = React.useRef<HTMLDivElement>(null);
   const [transform, setTransform] = React.useState({ rotateX: 0, rotateY: 0, scale: 1 });
 
-  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
+  const handleMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
     setTransform({
@@ -60,7 +59,7 @@ function BentoCard({
   property: (typeof siteConfig.propertyTypes)[number];
   Icon: React.ComponentType<{ className?: string }> | undefined;
   isLarge: boolean;
-  itemVariants: typeof itemVariants;
+  itemVariants: Variants;
 }) {
   const { ref, transform, handleMove, handleLeave } = useCardTilt();
 
@@ -122,7 +121,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,

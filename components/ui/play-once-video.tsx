@@ -23,7 +23,7 @@ function stopVideoAndNotify(video: HTMLVideoElement, onEnded: (() => void) | und
  */
 export function PlayOnceVideo({
   src,
-  type = 'video/mp4',
+  type: _type = 'video/mp4',
   className,
   onEnded,
   ...videoProps

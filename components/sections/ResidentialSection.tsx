@@ -52,9 +52,8 @@ function TiltCard({
   const [transform, setTransform] = React.useState({ rotateX: 0, rotateY: 0, scale: 1 });
   const Icon = CARD_ICONS[icon];
 
-  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
+  const handleMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
     setTransform({ rotateX: -y * 8, rotateY: x * 8, scale: 1.02 });
