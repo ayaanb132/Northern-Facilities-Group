@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 import { siteConfig } from '@/lib/site';
-import { getServiceSlugs, getSpecialtySlugs } from '@/lib/mdx';
+import { getServiceSlugs, getSpecialtySlugs, getCaseStudySlugs } from '@/lib/mdx';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
@@ -41,5 +41,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...servicePages, ...specialtyPages];
+  const caseStudySlugs = getCaseStudySlugs();
+  const caseStudyPages = caseStudySlugs.map((slug) => ({
+    url: `${baseUrl}/proof/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }));
+
+  return [...staticPages, ...servicePages, ...specialtyPages, ...caseStudyPages];
 }

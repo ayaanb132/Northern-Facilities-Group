@@ -47,6 +47,8 @@ export interface CaseStudyFrontmatter {
     author: string;
     role: string;
   };
+  /** Optional logo path (e.g. /images/case-studies/client-logo.png) */
+  logo?: string;
   published: boolean;
   date: string;
 }
@@ -161,6 +163,15 @@ export async function getAllCaseStudies(): Promise<CaseStudyFrontmatter[]> {
   return caseStudies.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
+}
+
+export function getCaseStudySlugs(): string[] {
+  const caseStudiesDir = path.join(contentDirectory, 'case-studies');
+  if (!fs.existsSync(caseStudiesDir)) return [];
+  return fs
+    .readdirSync(caseStudiesDir)
+    .filter((f) => f.endsWith('.mdx'))
+    .map((f) => f.replace('.mdx', ''));
 }
 
 export function getServiceSlugs(): string[] {

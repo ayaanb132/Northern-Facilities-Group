@@ -147,25 +147,22 @@ export default async function SpecialtyPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Before/After Placeholder */}
+      {/* Request examples - icon only, no pictures */}
       <section className="section-padding">
         <div className="container-wide">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-2xl font-display font-bold text-navy-900 mb-4">
-              See the Difference
+          <div className="flex flex-col items-center justify-center text-center max-w-xl mx-auto">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-6">
+              <Package className="h-7 w-7" />
+            </div>
+            <h2 className="text-2xl font-display font-bold text-navy-900 mb-3">
+              Project examples and references
             </h2>
-            <p className="text-muted-foreground">
-              Before and after gallery coming soon. Contact us for project examples
-              and references.
+            <p className="text-muted-foreground mb-6">
+              Contact us for before-and-after examples and client references for this service.
             </p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
-            <div className="aspect-video rounded-xl bg-slate-100 flex items-center justify-center">
-              <span className="text-sm text-muted-foreground">Before</span>
-            </div>
-            <div className="aspect-video rounded-xl bg-slate-100 flex items-center justify-center">
-              <span className="text-sm text-muted-foreground">After</span>
-            </div>
+            <Button asChild variant="outline">
+              <Link href="/contact">Contact us</Link>
+            </Button>
           </div>
         </div>
       </section>
