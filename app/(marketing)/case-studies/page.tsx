@@ -17,8 +17,6 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { CTA } from '@/components/sections/CTA';
-import { TestimonialsCarousel } from '@/components/sections/TestimonialsCarousel';
-import { testimonials } from '@/lib/testimonials';
 
 const icons: Record<string, React.ElementType> = {
   residential: Home,
@@ -31,49 +29,39 @@ const icons: Record<string, React.ElementType> = {
 };
 
 export const metadata: Metadata = genMeta({
-  title: 'Proof',
+  title: 'Case Studies',
   description:
-    'Case studies and success stories from properties we manage. See the results our clients achieve with NFG.',
-  pathname: '/proof',
+    'Case studies and success stories from properties we manage. See how NFG delivers consistent cleaning and facility management for offices, construction sites, and more.',
+  pathname: '/case-studies',
 });
 
-export default async function ProofPage() {
+export default async function CaseStudiesPage() {
   const caseStudies = await getAllCaseStudies();
 
   return (
     <>
-      {/* Hero */}
       <section className="pt-32 pb-16 lg:pt-40 lg:pb-20 gradient-bg">
         <div className="container-wide">
           <div className="max-w-3xl">
             <Badge variant="secondary" className="mb-4">
-              Results That Speak
+              Case Studies
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-navy-900 tracking-tight">
               Client Success Stories
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              Real results from real properties. Explore how we've helped facility
+              Real results from real properties. Explore how we&apos;ve helped facility
               managers and property owners transform their operations.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Case Studies */}
       <section className="section-padding">
         <div className="container-wide">
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-            <h2 className="text-2xl font-display font-bold text-navy-900">
-              Featured Case Studies
-            </h2>
-            <Link
-              href="/case-studies"
-              className="text-sm font-medium text-primary hover:underline"
-            >
-              All Case Studies →
-            </Link>
-          </div>
+          <h2 className="text-2xl font-display font-bold text-navy-900 mb-8">
+            All Case Studies
+          </h2>
 
           {caseStudies.length > 0 ? (
             <div className="grid gap-8 lg:grid-cols-2">
@@ -94,38 +82,31 @@ export default async function ProofPage() {
                       <p className="text-muted-foreground text-sm mb-4">
                         {study.summary}
                       </p>
-
-                      {/* Results */}
                       <div className="mb-4">
                         <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
                           Key Results
                         </h4>
                         <ul className="space-y-1">
                           {study.results.slice(0, 3).map((result) => (
-                            <li
-                              key={result}
-                              className="text-sm flex items-center"
-                            >
+                            <li key={result} className="text-sm flex items-center">
                               <span className="h-1.5 w-1.5 rounded-full bg-green-500 mr-2" />
                               {result}
                             </li>
                           ))}
                         </ul>
                       </div>
-
-                      {/* Testimonial */}
-                      {study.testimonial && (
+                      {study.testimonial && study.testimonialApproved === true && (
                         <div className="bg-slate-50 rounded-lg p-4 mb-4">
                           <Quote className="h-4 w-4 text-primary mb-2" />
-                          <p className="text-sm italic text-slate-700 mb-2">
-                            "{study.testimonial.quote}"
+                          <p className="text-sm italic text-slate-700">
+                            &ldquo;{study.testimonial.quote}&rdquo;
                           </p>
-                          <p className="text-xs text-muted-foreground">
-                            — {study.testimonial.author}, {study.testimonial.role}
+                          <p className="text-xs text-muted-foreground mt-2">
+                            — {study.testimonial.author}
+                            {study.testimonial.role && `, ${study.testimonial.role}`}
                           </p>
                         </div>
                       )}
-
                       <Button asChild variant="outline" size="sm">
                         <Link href={`/case-studies/${study.slug}`}>
                           Read Full Case Study
@@ -147,16 +128,6 @@ export default async function ProofPage() {
               </Button>
             </div>
           )}
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="section-padding bg-slate-50">
-        <div className="container-wide">
-          <h2 className="text-2xl font-display font-bold text-navy-900 mb-8 text-center">
-            What Our Clients Say
-          </h2>
-          <TestimonialsCarousel items={testimonials} />
         </div>
       </section>
 

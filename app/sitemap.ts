@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/specialty',
     '/how-it-works',
     '/proof',
+    '/case-studies',
     '/contact',
     '/get-walkthrough',
     '/privacy',
@@ -43,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const caseStudySlugs = getCaseStudySlugs();
   const caseStudyPages = caseStudySlugs.map((slug) => ({
-    url: `${baseUrl}/proof/${slug}`,
+    url: `${baseUrl}/case-studies/${slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.6,

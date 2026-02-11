@@ -33,6 +33,21 @@ export interface SpecialtyFrontmatter {
   order?: number;
 }
 
+/** At a Glance block for long-form case studies */
+export interface CaseStudyAtGlance {
+  client: string;
+  servicesDelivered: string[];
+  primaryOutcome: string;
+}
+
+/** Implemented section with optional subsections */
+export interface CaseStudyImplementedBlock {
+  title: string;
+  intro?: string;
+  subsections?: { title: string; items: string[] }[];
+  items?: string[];
+}
+
 export interface CaseStudyFrontmatter {
   title: string;
   slug: string;
@@ -47,10 +62,26 @@ export interface CaseStudyFrontmatter {
     author: string;
     role: string;
   };
+  /** Only show testimonial when true (e.g. approved for publication) */
+  testimonialApproved?: boolean;
   /** Optional logo path (e.g. /images/case-studies/client-logo.png) */
   logo?: string;
   published: boolean;
   date: string;
+  /** Long-form: At a Glance */
+  atGlance?: CaseStudyAtGlance;
+  /** Long-form: Client paragraph */
+  clientBlurb?: string;
+  /** Long-form: What success needed to look like (bullets) */
+  successNeeded?: string[];
+  /** Long-form: What we implemented (sections with subsections) */
+  implemented?: CaseStudyImplementedBlock[];
+  /** Long-form: Reporting and visibility bullets */
+  reporting?: string[];
+  /** Long-form: Why this worked bullets */
+  whyThisWorked?: string[];
+  /** Long-form: CTA subhead before buttons */
+  ctaSubhead?: string;
 }
 
 export async function getServiceBySlug(slug: string): Promise<{
