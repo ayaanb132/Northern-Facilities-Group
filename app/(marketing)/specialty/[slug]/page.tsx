@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Sparkles, Check, ArrowRight, ListChecks, Package } from 'lucide-react';
@@ -70,9 +71,22 @@ export default async function SpecialtyPage({ params }: PageProps) {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary/10 to-blue-500/10 flex items-center justify-center">
-                <Sparkles className="h-24 w-24 text-primary/30" />
-              </div>
+              {frontmatter.image ? (
+                <div className="aspect-video relative rounded-2xl overflow-hidden max-w-md mx-auto lg:mx-0 bg-secondary/30">
+                  <Image
+                    src={frontmatter.image}
+                    alt={frontmatter.title}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
+                </div>
+              ) : (
+                <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary/10 to-blue-500/10 flex items-center justify-center">
+                  <Sparkles className="h-24 w-24 text-primary/30" />
+                </div>
+              )}
             </div>
           </div>
         </div>

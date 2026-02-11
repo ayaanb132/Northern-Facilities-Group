@@ -27,6 +27,8 @@ export interface SpecialtyFrontmatter {
   slug: string;
   category: string;
   summary: string;
+  /** Optional hero image path (e.g. /images/specialty/name.svg) */
+  image?: string;
   whenNeeded: string[];
   process: string[];
   inclusions: string[];
