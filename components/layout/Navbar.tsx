@@ -18,11 +18,27 @@ export function Navbar() {
   const pathname = usePathname();
 
   React.useEffect(() => {
+    let rafId: number;
+    const SCROLL_DOWN_THRESHOLD = 24;
+    const SCROLL_UP_THRESHOLD = 8;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const y = window.scrollY;
+        setIsScrolled(prev => {
+          if (y > SCROLL_DOWN_THRESHOLD) return true;
+          if (y < SCROLL_UP_THRESHOLD) return false;
+          return prev;
+        });
+      });
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   React.useEffect(() => {
@@ -32,7 +48,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.28,0.11,0.32,1)]',
+        'fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color] duration-300 ease-out',
         // Mobile: always solid so logo never overlaps hero
         'lg:bg-transparent',
         isScrolled ? 'glass-apple border-b border-black/[0.06]' : 'bg-white/95 backdrop-blur-sm lg:!bg-transparent'
