@@ -79,7 +79,7 @@ export function Navbar() {
               alt={siteConfig.name}
               width={600}
               height={300}
-              className="h-8 w-auto max-w-[140px] object-contain object-left sm:max-w-[200px] lg:h-auto lg:min-w-[400px] lg:max-w-[400px] lg:max-h-32"
+              className="h-11 w-auto max-w-[200px] object-contain object-left sm:max-w-[240px] lg:h-auto lg:min-w-[400px] lg:max-w-[400px] lg:max-h-32"
               priority
             />
           </Link>
