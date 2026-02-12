@@ -66,6 +66,7 @@ export function Hero({
 }: HeroProps) {
   return (
     <section
+      id="hero"
       className={cn(
         'relative overflow-hidden pt-32 pb-20 sm:pt-36 lg:pt-36 lg:pb-28',
         variant === 'centered' && 'text-center',

@@ -15,6 +15,7 @@ const LOGO_SRC = '/images/logo.svg';
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isPastHero, setIsPastHero] = React.useState(false);
   const pathname = usePathname();
 
   React.useEffect(() => {
@@ -42,14 +43,29 @@ export function Navbar() {
   }, []);
 
   React.useEffect(() => {
+    const hero = document.getElementById('hero');
+    if (!hero) {
+      setIsPastHero(false);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsPastHero(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  React.useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color] duration-300 ease-out',
-        // Mobile: always solid so logo never overlaps hero
+        'fixed top-0 left-0 right-0 z-50 transition-[transform,background-color,border-color] duration-300 ease-out',
+        isPastHero && '-translate-y-full',
         'lg:bg-transparent',
         isScrolled ? 'glass-apple border-b border-black/[0.06]' : 'bg-white/95 backdrop-blur-sm lg:!bg-transparent'
       )}
