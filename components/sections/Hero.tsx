@@ -68,7 +68,7 @@ export function Hero({
     <section
       id="hero"
       className={cn(
-        'relative overflow-hidden pt-[180px] pb-20 sm:pt-[196px] lg:pt-[212px] lg:pb-28',
+        'relative overflow-hidden pt-[200px] pb-20 sm:pt-[220px] lg:pt-[240px] lg:pb-28',
         variant === 'centered' && 'text-center',
         className
       )}
