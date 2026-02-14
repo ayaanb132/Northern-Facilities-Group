@@ -1,10 +1,14 @@
 import type { Metadata, Viewport } from 'next';
+import dynamic from 'next/dynamic';
 import { Inter, DM_Sans } from 'next/font/google';
 import './globals.css';
 import { siteConfig } from '@/lib/site';
 import { generateLocalBusinessSchema } from '@/lib/seo';
-import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+
+const CardNav = dynamic(() => import('@/components/layout/CardNav').then((m) => ({ default: m.CardNav })), {
+  ssr: false,
+});
 
 const inter = Inter({
   subsets: ['latin'],
@@ -111,7 +115,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-background font-sans antialiased">
         <div className="relative flex min-h-screen flex-col">
-          <Navbar />
+          <CardNav />
           <main className="flex-1">{children}</main>
           <Footer />
         </div>

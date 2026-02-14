@@ -64,14 +64,18 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-[transform,background-color,border-color] duration-300 ease-out',
-        isPastHero && '-translate-y-full',
-        'lg:bg-transparent',
-        isScrolled ? 'bg-white/95 border-b border-black/[0.06]' : 'bg-white/95 lg:!bg-transparent'
+        'fixed top-0 left-0 right-0 z-50 px-3 pt-3 transition-[transform] duration-300 ease-out',
+        isPastHero && '-translate-y-full'
       )}
     >
-      <nav className="container-wide">
-        <div className="flex min-h-14 items-center justify-between gap-3 py-2 lg:min-h-24 lg:py-4">
+      <nav
+        className={cn(
+          'mx-auto max-w-6xl rounded-full border border-black/[0.06] shadow-sm transition-colors duration-300',
+          'lg:max-w-5xl',
+          isScrolled ? 'bg-white/95' : 'bg-white/95 lg:bg-white/80 lg:backdrop-blur-md'
+        )}
+      >
+        <div className="flex min-h-10 items-center justify-between gap-2 px-3 py-1.5 sm:px-5 lg:min-h-12 lg:px-6 lg:py-2">
           {/* Logo — compact on mobile */}
           <Link href="/" className="flex shrink-0 items-center">
             <Image
@@ -79,7 +83,7 @@ export function Navbar() {
               alt={siteConfig.name}
               width={600}
               height={300}
-              className="h-11 w-auto max-w-[200px] object-contain object-left sm:max-w-[240px] lg:h-auto lg:min-w-[400px] lg:max-w-[400px] lg:max-h-32"
+              className="h-9 w-auto max-w-[160px] object-contain object-left sm:max-w-[200px] lg:h-auto lg:min-w-[320px] lg:max-w-[320px] lg:max-h-24"
               priority
             />
           </Link>
@@ -91,7 +95,7 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  'px-4 py-2 text-[13px] font-normal text-foreground/80 hover:text-foreground transition-colors duration-200 rounded-full',
+                  'px-3 py-1.5 text-[13px] font-normal text-foreground/80 hover:text-foreground transition-colors duration-200 rounded-full',
                   pathname === item.href || pathname.startsWith(item.href + '/')
                     ? 'text-[hsl(var(--primary))]'
                     : ''
@@ -111,7 +115,7 @@ export function Navbar() {
 
           {/* Mobile: hamburger */}
           <button
-            className="lg:hidden flex shrink-0 items-center justify-center w-10 h-10 rounded-lg text-foreground/80 hover:text-foreground hover:bg-black/[0.04] transition-colors"
+            className="lg:hidden flex shrink-0 items-center justify-center w-9 h-9 rounded-lg text-foreground/80 hover:text-foreground hover:bg-black/[0.04] transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isOpen}
@@ -129,9 +133,9 @@ export function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.28, 0.11, 0.32, 1] }}
-            className="lg:hidden border-t border-black/[0.06] bg-white/95 backdrop-blur-xl"
+            className="lg:hidden mx-3 mt-1.5 rounded-2xl border border-black/[0.06] border-t-0 bg-white/95 shadow-sm backdrop-blur-xl"
           >
-            <div className="container-wide py-5 space-y-0.5">
+            <div className="px-5 py-4 space-y-0.5">
               {siteConfig.nav.main.map((item) => (
                 <Link
                   key={item.href}
