@@ -67,7 +67,7 @@ export function Navbar() {
         'fixed top-0 left-0 right-0 z-50 transition-[transform,background-color,border-color] duration-300 ease-out',
         isPastHero && '-translate-y-full',
         'lg:bg-transparent',
-        isScrolled ? 'glass-apple border-b border-black/[0.06]' : 'bg-white/95 backdrop-blur-sm lg:!bg-transparent'
+        isScrolled ? 'glass-apple border-b border-black/[0.06]' : 'bg-white/95 lg:!bg-transparent'
       )}
     >
       <nav className="container-wide">
