@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { siteConfig } from '@/lib/site';
 import { getServiceSlugs, getSpecialtySlugs, getCaseStudySlugs } from '@/lib/mdx';
+import { jobs } from '@/lib/careers';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
@@ -13,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/how-it-works',
     '/proof',
     '/case-studies',
+    '/careers',
     '/contact',
     '/get-walkthrough',
     '/privacy',
@@ -50,5 +52,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...servicePages, ...specialtyPages, ...caseStudyPages];
+  const careerPages = jobs.map((job) => ({
+    url: `${baseUrl}/careers/${job.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }));
+
+  return [...staticPages, ...servicePages, ...specialtyPages, ...caseStudyPages, ...careerPages];
 }

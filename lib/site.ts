@@ -17,9 +17,11 @@ export const siteConfig = {
       { title: 'Specialty', href: '/specialty' },
       { title: 'How It Works', href: '/how-it-works' },
       { title: 'Proof', href: '/proof' },
+      { title: 'Careers', href: '/careers' },
     ],
     cta: { title: 'Get a Walkthrough', href: '/get-walkthrough' },
     secondary: [
+      { title: 'Careers', href: '/careers' },
       { title: 'Contact', href: '/contact' },
       { title: 'Privacy', href: '/privacy' },
       { title: 'Terms', href: '/terms' },

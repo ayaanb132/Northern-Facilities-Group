@@ -36,6 +36,7 @@ const CARD_ITEMS = [
     bgColor: 'hsl(229 100% 22%)',
     textColor: 'white',
     links: [
+      { label: 'Careers', href: '/careers', ariaLabel: 'Careers' },
       { label: 'Get a Walkthrough', href: '/get-walkthrough', ariaLabel: 'Get a walkthrough' },
       { label: 'Contact Us', href: '/contact', ariaLabel: 'Contact us' },
     ],
