@@ -1,6 +1,6 @@
 /**
  * Model Pipeline Configuration
- * 
+ *
  * This module handles the configuration for 3D model loading, LOD management,
  * and asset optimization settings.
  */
@@ -18,7 +18,17 @@ export interface ModelConfig {
   hotspots: Hotspot[];
   cameraPosition: [number, number, number];
   cameraTarget: [number, number, number];
-  environmentPreset: 'apartment' | 'city' | 'dawn' | 'forest' | 'lobby' | 'night' | 'park' | 'studio' | 'sunset' | 'warehouse';
+  environmentPreset:
+    | 'apartment'
+    | 'city'
+    | 'dawn'
+    | 'forest'
+    | 'lobby'
+    | 'night'
+    | 'park'
+    | 'studio'
+    | 'sunset'
+    | 'warehouse';
 }
 
 export interface Hotspot {
@@ -78,28 +88,32 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
         id: 'condo-1',
         label: 'Daily Touchpoints',
         position: [1.5, 1, 0],
-        description: 'High-traffic areas receive multiple daily cleanings with antimicrobial treatments.',
+        description:
+          'High-traffic areas receive multiple daily cleanings with antimicrobial treatments.',
         ctaText: 'Book Walkthrough',
       },
       {
         id: 'condo-2',
         label: 'Supervisor QA',
         position: [-1, 1.2, 1],
-        description: 'Regular quality inspections ensure consistent service standards across all common areas.',
+        description:
+          'Regular quality inspections ensure consistent service standards across all common areas.',
         ctaText: 'Learn About QA',
       },
       {
         id: 'condo-3',
         label: 'After-Hours Schedule',
         position: [0, 0.8, -2],
-        description: 'Deep cleaning and floor maintenance performed during low-traffic hours to minimize disruption.',
+        description:
+          'Deep cleaning and floor maintenance performed during low-traffic hours to minimize disruption.',
         ctaText: 'View Schedules',
       },
       {
         id: 'condo-4',
         label: 'Supply Management',
         position: [2, 0.5, 1.5],
-        description: 'Automated inventory tracking ensures supplies are always stocked and available.',
+        description:
+          'Automated inventory tracking ensures supplies are always stocked and available.',
         ctaText: 'See Our Process',
       },
     ],
@@ -136,7 +150,8 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
         id: 'medical-3',
         label: 'Air Quality',
         position: [0, 2, -1],
-        description: 'HEPA filtration and air quality monitoring for healthier clinical environments.',
+        description:
+          'HEPA filtration and air quality monitoring for healthier clinical environments.',
         ctaText: 'Learn More',
       },
       {
@@ -150,7 +165,8 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
         id: 'medical-5',
         label: 'Inspection Log',
         position: [-0.5, 1.5, 2],
-        description: 'Digital inspection logs provide real-time visibility into cleaning activities.',
+        description:
+          'Digital inspection logs provide real-time visibility into cleaning activities.',
         ctaText: 'See Reporting',
       },
     ],
@@ -173,7 +189,8 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
         id: 'restaurant-1',
         label: 'Kitchen Sanitation',
         position: [-2, 1, 0],
-        description: 'Food-safe cleaning products and grease control systems for commercial kitchens.',
+        description:
+          'Food-safe cleaning products and grease control systems for commercial kitchens.',
         ctaText: 'Kitchen Services',
       },
       {
@@ -194,7 +211,8 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
         id: 'restaurant-4',
         label: 'Floor Care',
         position: [2, 0.3, -1],
-        description: 'Specialized floor care for tile, hardwood, and high-traffic restaurant surfaces.',
+        description:
+          'Specialized floor care for tile, hardwood, and high-traffic restaurant surfaces.',
         ctaText: 'Book Walkthrough',
       },
     ],
@@ -224,7 +242,8 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
         id: 'warehouse-2',
         label: 'Aisle Maintenance',
         position: [-1, 1.5, 2],
-        description: 'Clear aisles and dust control for safety compliance and efficient operations.',
+        description:
+          'Clear aisles and dust control for safety compliance and efficient operations.',
         ctaText: 'View Services',
       },
       {
@@ -312,7 +331,8 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
         id: 'office-1',
         label: 'Workstations',
         position: [1.5, 1, 1],
-        description: 'Desk-level cleaning with sanitization of keyboards, phones, and high-touch surfaces.',
+        description:
+          'Desk-level cleaning with sanitization of keyboards, phones, and high-touch surfaces.',
         ctaText: 'Workspace Services',
       },
       {
@@ -333,7 +353,8 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
         id: 'office-4',
         label: 'Reception',
         position: [2, 1, -1],
-        description: 'First impressions matter—reception areas maintained to the highest standards.',
+        description:
+          'First impressions matter—reception areas maintained to the highest standards.',
         ctaText: 'Book Walkthrough',
       },
       {

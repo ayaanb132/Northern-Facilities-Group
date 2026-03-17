@@ -80,9 +80,7 @@ export default async function JobDetailPage({ params }: PageProps) {
                 {job.compensation}
               </span>
             </div>
-            <p className="mt-6 text-lg text-foreground/80">
-              {job.fullDescription}
-            </p>
+            <p className="mt-6 text-lg text-foreground/80">{job.fullDescription}</p>
           </div>
         </div>
       </section>
@@ -166,7 +164,9 @@ export default async function JobDetailPage({ params }: PageProps) {
                       <h3 className="font-medium text-foreground/90 mb-2">{metric.period}:</h3>
                       <ul className="space-y-1 pl-4">
                         {metric.items.map((item, j) => (
-                          <li key={j} className="text-foreground/85">{item}</li>
+                          <li key={j} className="text-foreground/85">
+                            {item}
+                          </li>
                         ))}
                       </ul>
                     </div>
@@ -207,12 +207,10 @@ export default async function JobDetailPage({ params }: PageProps) {
       <section className="section-padding">
         <div className="container-wide">
           <div className="max-w-2xl mx-auto text-center rounded-2xl border bg-white p-10 shadow-soft">
-            <h2 className="text-2xl font-display font-bold text-navy-900 mb-4">
-              Ready to Apply?
-            </h2>
+            <h2 className="text-2xl font-display font-bold text-navy-900 mb-4">Ready to Apply?</h2>
             <p className="text-foreground/70 mb-6">
-              Send your resume and a short note (2-3 sentences) about why you want this role.
-              We review applications on a rolling basis.
+              Send your resume and a short note (2-3 sentences) about why you want this role. We
+              review applications on a rolling basis.
             </p>
             <Button asChild size="lg" className="rounded-full">
               <a href={`mailto:${CAREERS_EMAIL}?subject=Application: ${job.title}`}>
@@ -220,9 +218,7 @@ export default async function JobDetailPage({ params }: PageProps) {
                 Apply via Email
               </a>
             </Button>
-            <p className="mt-4 text-sm text-muted-foreground">
-              {CAREERS_EMAIL}
-            </p>
+            <p className="mt-4 text-sm text-muted-foreground">{CAREERS_EMAIL}</p>
           </div>
         </div>
       </section>

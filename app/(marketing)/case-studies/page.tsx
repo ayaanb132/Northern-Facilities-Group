@@ -50,8 +50,8 @@ export default async function CaseStudiesPage() {
               Client Success Stories
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              Real results from real properties. Explore how we&apos;ve helped facility
-              managers and property owners transform their operations.
+              Real results from real properties. Explore how we&apos;ve helped facility managers and
+              property owners transform their operations.
             </p>
           </div>
         </div>
@@ -59,9 +59,7 @@ export default async function CaseStudiesPage() {
 
       <section className="section-padding">
         <div className="container-wide">
-          <h2 className="text-2xl font-display font-bold text-navy-900 mb-8">
-            All Case Studies
-          </h2>
+          <h2 className="text-2xl font-display font-bold text-navy-900 mb-8">All Case Studies</h2>
 
           {caseStudies.length > 0 ? (
             <div className="grid gap-8 lg:grid-cols-2">
@@ -76,12 +74,8 @@ export default async function CaseStudiesPage() {
                         </div>
                         <Badge variant="outline">{study.client}</Badge>
                       </div>
-                      <h3 className="text-xl font-semibold text-navy-900 mb-3">
-                        {study.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm mb-4">
-                        {study.summary}
-                      </p>
+                      <h3 className="text-xl font-semibold text-navy-900 mb-3">{study.title}</h3>
+                      <p className="text-muted-foreground text-sm mb-4">{study.summary}</p>
                       <div className="mb-4">
                         <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
                           Key Results

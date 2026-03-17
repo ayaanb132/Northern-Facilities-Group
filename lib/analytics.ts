@@ -6,7 +6,6 @@ type EventName =
   | 'cta_click'
   | 'property_select'
   | 'hotspot_click'
-  | 'tier_select'
   | 'walkthrough_request'
   | 'contact_submit';
 
@@ -40,11 +39,7 @@ class Analytics {
     }
 
     // Plausible
-    if (
-      this.config.plausibleDomain &&
-      typeof window !== 'undefined' &&
-      window.plausible
-    ) {
+    if (this.config.plausibleDomain && typeof window !== 'undefined' && window.plausible) {
       window.plausible(event, { props: properties });
     }
 

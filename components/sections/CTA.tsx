@@ -70,7 +70,11 @@ export function CTA({
               asChild
               size="lg"
               variant={variant === 'default' ? 'default' : 'secondary'}
-              className={variant !== 'default' ? 'bg-white text-[hsl(var(--foreground))] hover:bg-white/90' : ''}
+              className={
+                variant !== 'default'
+                  ? 'bg-white text-[hsl(var(--foreground))] hover:bg-white/90'
+                  : ''
+              }
             >
               <Link href={primaryCta.href}>
                 {primaryCta.text}

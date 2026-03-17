@@ -2,14 +2,7 @@
 
 import * as React from 'react';
 import { motion, useInView } from 'framer-motion';
-import {
-  BarChart3,
-  Camera,
-  CheckSquare,
-  Clock,
-  AlertTriangle,
-  FileText,
-} from 'lucide-react';
+import { BarChart3, Camera, CheckSquare, Clock, AlertTriangle, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const CHART_HEIGHTS = [60, 80, 45, 90, 75, 85, 70];
@@ -86,9 +79,7 @@ function DashboardPreview() {
               <div className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
               <div className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
             </div>
-            <div className="text-[12px] text-[hsl(var(--foreground))]/55">
-              Your Dashboard
-            </div>
+            <div className="text-[12px] text-[hsl(var(--foreground))]/55">Your Dashboard</div>
           </div>
         </div>
 
@@ -133,7 +124,9 @@ function DashboardPreview() {
             className="rounded-2xl border border-[hsl(var(--foreground))]/[0.06] p-4"
           >
             <div className="flex items-center justify-between mb-4">
-              <span className="text-[15px] font-medium text-[hsl(var(--foreground))]">Weekly Activity</span>
+              <span className="text-[15px] font-medium text-[hsl(var(--foreground))]">
+                Weekly Activity
+              </span>
               <span className="text-[12px] text-[hsl(var(--foreground))]/55">Last 7 days</span>
             </div>
             <div className="flex items-end justify-between h-20 space-x-2">
@@ -210,9 +203,9 @@ export function ReportingPreview({
         <div className="grid gap-12 lg:grid-cols-2 items-center">
           {/* Content */}
           <div>
-                    <span className="inline-flex rounded-full bg-[hsl(var(--primary))]/10 px-3 py-1 text-[13px] font-medium text-[hsl(var(--primary))] mb-6">
-                      Dashboard Access Included
-                    </span>
+            <span className="inline-flex rounded-full bg-[hsl(var(--primary))]/10 px-3 py-1 text-[13px] font-medium text-[hsl(var(--primary))] mb-6">
+              Dashboard Access Included
+            </span>
             <h2 className="text-[2rem] leading-tight sm:text-[2.5rem] font-display font-semibold text-[hsl(var(--foreground))] tracking-tight">
               {title}
             </h2>

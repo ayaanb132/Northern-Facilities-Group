@@ -55,7 +55,7 @@ export function CardNav() {
       if (rafId) cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
         const y = window.scrollY;
-        setIsScrolled(prev => (y > 24 ? true : y < 8 ? false : prev));
+        setIsScrolled((prev) => (y > 24 ? true : y < 8 ? false : prev));
       });
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -71,10 +71,9 @@ export function CardNav() {
       setIsPastHero(false);
       return;
     }
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsPastHero(!entry.isIntersecting),
-      { threshold: 0 }
-    );
+    const observer = new IntersectionObserver(([entry]) => setIsPastHero(!entry.isIntersecting), {
+      threshold: 0,
+    });
     observer.observe(hero);
     return () => observer.disconnect();
   }, [pathname]);

@@ -21,10 +21,10 @@ export function OfficeSceneCanvas({ children, className }: OfficeSceneCanvasProp
   React.useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => setIsInView(e.isIntersecting),
-      { threshold: 0.1, rootMargin: '80px' }
-    );
+    const obs = new IntersectionObserver(([e]) => setIsInView(e.isIntersecting), {
+      threshold: 0.1,
+      rootMargin: '80px',
+    });
     obs.observe(el);
     return () => obs.disconnect();
   }, []);

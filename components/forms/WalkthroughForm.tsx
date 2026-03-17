@@ -57,15 +57,9 @@ export function WalkthroughForm() {
             <CheckCircle className="h-8 w-8 text-green-600" />
           </div>
         </div>
-        <h3 className="text-xl font-semibold text-foreground mb-2">
-          Request Submitted!
-        </h3>
+        <h3 className="text-xl font-semibold text-foreground mb-2">Request Submitted!</h3>
         <p className="text-muted-foreground">{result.message}</p>
-        <Button
-          variant="outline"
-          className="mt-6"
-          onClick={() => setResult(null)}
-        >
+        <Button variant="outline" className="mt-6" onClick={() => setResult(null)}>
           Submit Another Request
         </Button>
       </div>
@@ -77,30 +71,17 @@ export function WalkthroughForm() {
       {/* Honeypot field - hidden from users */}
       <div className="hidden" aria-hidden="true">
         <label htmlFor="website">Website</label>
-        <input
-          type="text"
-          name="website"
-          id="website"
-          tabIndex={-1}
-          autoComplete="off"
-        />
+        <input type="text" name="website" id="website" tabIndex={-1} autoComplete="off" />
       </div>
 
       {result && !result.success && (
-        <div className="p-4 bg-red-50 text-red-700 rounded-lg text-sm">
-          {result.message}
-        </div>
+        <div className="p-4 bg-red-50 text-red-700 rounded-lg text-sm">{result.message}</div>
       )}
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="firstName">First Name *</Label>
-          <Input
-            id="firstName"
-            name="firstName"
-            required
-            error={!!result?.errors?.firstName}
-          />
+          <Input id="firstName" name="firstName" required error={!!result?.errors?.firstName} />
           {result?.errors?.firstName && (
             <p className="text-sm text-red-500">{result.errors.firstName[0]}</p>
           )}
@@ -108,12 +89,7 @@ export function WalkthroughForm() {
 
         <div className="space-y-2">
           <Label htmlFor="lastName">Last Name *</Label>
-          <Input
-            id="lastName"
-            name="lastName"
-            required
-            error={!!result?.errors?.lastName}
-          />
+          <Input id="lastName" name="lastName" required error={!!result?.errors?.lastName} />
           {result?.errors?.lastName && (
             <p className="text-sm text-red-500">{result.errors.lastName[0]}</p>
           )}
@@ -123,13 +99,7 @@ export function WalkthroughForm() {
       <div className="grid gap-6 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="email">Email *</Label>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            required
-            error={!!result?.errors?.email}
-          />
+          <Input id="email" name="email" type="email" required error={!!result?.errors?.email} />
           {result?.errors?.email && (
             <p className="text-sm text-red-500">{result.errors.email[0]}</p>
           )}
@@ -143,12 +113,7 @@ export function WalkthroughForm() {
 
       <div className="space-y-2">
         <Label htmlFor="company">Company / Property Name *</Label>
-        <Input
-          id="company"
-          name="company"
-          required
-          error={!!result?.errors?.company}
-        />
+        <Input id="company" name="company" required error={!!result?.errors?.company} />
         {result?.errors?.company && (
           <p className="text-sm text-red-500">{result.errors.company[0]}</p>
         )}

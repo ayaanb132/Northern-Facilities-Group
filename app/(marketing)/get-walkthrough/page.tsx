@@ -30,7 +30,7 @@ const benefits = [
     icon: Users,
     title: 'Experienced Assessment',
     description:
-      'Our team evaluates your property type, square footage, and requirements so we can recommend the right service tier.',
+      'Our team evaluates your property type, square footage, and requirements so we can recommend the right scope and service frequency.',
   },
 ];
 
@@ -57,7 +57,9 @@ export default function GetWalkthroughPage() {
               Get a Walkthrough
             </h1>
             <p className="mt-6 text-lg text-white/80">
-              Whether you run an office, condo, medical practice, restaurant, warehouse, or retail space—we’ll visit your property, assess your needs, and send a custom cleaning and facility management proposal. Response within 24 hours.
+              Whether you run an office, condo, medical practice, restaurant, warehouse, or retail
+              space—we’ll visit your property, assess your needs, and send a custom cleaning and
+              facility management proposal. Response within 24 hours.
             </p>
           </div>
         </div>
@@ -94,12 +96,8 @@ export default function GetWalkthroughPage() {
                         <Icon className="h-5 w-5" />
                       </div>
                       <div>
-                        <h3 className="font-medium text-foreground mb-1">
-                          {benefit.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground">
-                          {benefit.description}
-                        </p>
+                        <h3 className="font-medium text-foreground mb-1">{benefit.title}</h3>
+                        <p className="text-sm text-muted-foreground">{benefit.description}</p>
                       </div>
                     </div>
                   );
@@ -108,9 +106,7 @@ export default function GetWalkthroughPage() {
 
               {/* What to Expect */}
               <div className="bg-secondary rounded-xl p-6">
-                <h3 className="font-semibold text-foreground mb-4">
-                  What to Expect
-                </h3>
+                <h3 className="font-semibold text-foreground mb-4">What to Expect</h3>
                 <ul className="space-y-3">
                   {whatToExpect.map((item) => (
                     <li key={item} className="flex items-start text-sm">
@@ -123,30 +119,20 @@ export default function GetWalkthroughPage() {
 
               {/* Trust Signals */}
               <div className="border border-border rounded-xl p-6">
-                <h3 className="font-semibold text-foreground mb-4">
-                  Why {siteConfig.shortName}
-                </h3>
+                <h3 className="font-semibold text-foreground mb-4">Why {siteConfig.shortName}</h3>
                 <div className="grid grid-cols-2 gap-4 text-center">
                   {siteConfig.stats.map((stat) => (
                     <div key={stat.label}>
-                      <div className="text-2xl font-bold text-primary">
-                        {stat.value}
-                      </div>
-                      <div className="text-xs text-muted-foreground">
-                        {stat.label}
-                      </div>
+                      <div className="text-2xl font-bold text-primary">{stat.value}</div>
+                      <div className="text-xs text-muted-foreground">{stat.label}</div>
                     </div>
                   ))}
                   <div>
                     <div className="text-2xl font-bold text-primary">100%</div>
-                    <div className="text-xs text-muted-foreground">
-                      Client Satisfaction
-                    </div>
+                    <div className="text-xs text-muted-foreground">Client Satisfaction</div>
                   </div>
                   <div className="col-span-2 pt-2">
-                    <p className="text-xs text-muted-foreground">
-                      {siteConfig.socialProof[0]}
-                    </p>
+                    <p className="text-xs text-muted-foreground">{siteConfig.socialProof[0]}</p>
                   </div>
                 </div>
               </div>

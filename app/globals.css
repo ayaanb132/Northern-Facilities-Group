@@ -85,7 +85,9 @@
 
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
 
   h1,
@@ -171,16 +173,8 @@
 
   /* Service hero image: light edge blend, no spill */
   .service-hero-image-wrap {
-    -webkit-mask-image: radial-gradient(
-      ellipse 88% 88% at 50% 50%,
-      black 55%,
-      transparent 95%
-    );
-    mask-image: radial-gradient(
-      ellipse 88% 88% at 50% 50%,
-      black 55%,
-      transparent 95%
-    );
+    -webkit-mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, black 55%, transparent 95%);
+    mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, black 55%, transparent 95%);
     mask-size: 100% 100%;
     -webkit-mask-size: 100% 100%;
     /* Subtle halo only, contained */

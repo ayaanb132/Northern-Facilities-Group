@@ -27,7 +27,7 @@ export function Navbar() {
       if (rafId) cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
         const y = window.scrollY;
-        setIsScrolled(prev => {
+        setIsScrolled((prev) => {
           if (y > SCROLL_DOWN_THRESHOLD) return true;
           if (y < SCROLL_UP_THRESHOLD) return false;
           return prev;
@@ -49,10 +49,9 @@ export function Navbar() {
       return;
     }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsPastHero(!entry.isIntersecting),
-      { threshold: 0 }
-    );
+    const observer = new IntersectionObserver(([entry]) => setIsPastHero(!entry.isIntersecting), {
+      threshold: 0,
+    });
     observer.observe(hero);
     return () => observer.disconnect();
   }, [pathname]);

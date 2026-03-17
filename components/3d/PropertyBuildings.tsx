@@ -14,9 +14,9 @@ export function PropertyBuilding({ type }: { type: string }) {
       {type === 'warehouse' && <Warehouse />}
       {type === 'retail' && <Retail />}
       {type === 'office' && <Office />}
-      {!['residential', 'condo', 'medical', 'restaurant', 'warehouse', 'retail', 'office'].includes(type) && (
-        <GenericBuilding />
-      )}
+      {!['residential', 'condo', 'medical', 'restaurant', 'warehouse', 'retail', 'office'].includes(
+        type
+      ) && <GenericBuilding />}
     </group>
   );
 }

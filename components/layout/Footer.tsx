@@ -46,8 +46,8 @@ export function Footer() {
               />
             </Link>
             <p className="mt-5 text-[13px] text-foreground/65 leading-relaxed">
-              Premium commercial cleaning and facility management services for
-              properties across Canada.
+              Premium commercial cleaning and facility management services for properties across
+              Canada.
             </p>
             <div className="mt-6 space-y-3">
               <a

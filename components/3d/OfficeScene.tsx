@@ -162,11 +162,7 @@ export function OfficeScene({ onHotspotClick }: OfficeSceneProps) {
         dampingFactor={0.05}
       />
       {OFFICE_HOTSPOTS.map((h) => (
-        <OfficeHotspotMarker
-          key={h.id}
-          hotspot={h}
-          onClick={() => onHotspotClick(h)}
-        />
+        <OfficeHotspotMarker key={h.id} hotspot={h} onClick={() => onHotspotClick(h)} />
       ))}
     </Suspense>
   );

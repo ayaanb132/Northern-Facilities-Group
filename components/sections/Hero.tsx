@@ -77,7 +77,10 @@ export function Hero({
       <div className="absolute inset-0 gradient-bg-hero" />
 
       {/* Ontario outline - behind content, centered */}
-      <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center" aria-hidden>
+      <div
+        className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center"
+        aria-hidden
+      >
         <div className="relative w-full h-full max-w-3xl max-h-[80%] lg:max-w-4xl">
           <Image
             src="/images/ontario-outline.svg"
@@ -183,7 +186,12 @@ export function Hero({
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full border-foreground/20 bg-transparent hover:bg-black/[0.04]">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="rounded-full border-foreground/20 bg-transparent hover:bg-black/[0.04]"
+              >
                 <Link href={secondaryCta.href}>{secondaryCta.text}</Link>
               </Button>
             </motion.div>

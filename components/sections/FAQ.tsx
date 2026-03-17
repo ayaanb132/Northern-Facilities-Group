@@ -34,7 +34,7 @@ const defaultFaqs: FAQItem[] = [
   {
     question: 'What happens if we need service outside of regular hours?',
     answer:
-      "We offer 24/7 emergency support for all clients. Regular after-hours service can be scheduled based on your property's needs. Our Professional and Enterprise tiers include enhanced support coverage.",
+      "We offer 24/7 emergency support for all clients. Regular after-hours service can be scheduled based on your property's needs and service schedule.",
   },
   {
     question: 'Can you accommodate special cleaning requirements?',
@@ -44,7 +44,7 @@ const defaultFaqs: FAQItem[] = [
   {
     question: 'How does your pricing work?',
     answer:
-      'Pricing is based on square footage, service frequency, and property type. We offer three service tiers (Essential, Professional, Enterprise) to match different needs and budgets. Schedule a walkthrough for a custom quote.',
+      "Pricing is based on square footage, service frequency, and property type. We'll scope your needs during a walkthrough and provide a custom quote.",
   },
 ];
 
@@ -57,7 +57,7 @@ interface FAQProps {
 
 export function FAQ({
   title = 'Frequently Asked Questions',
-  subtitle = "Everything you need to know about our facility management services",
+  subtitle = 'Everything you need to know about our facility management services',
   faqs = defaultFaqs,
   className,
 }: FAQProps) {

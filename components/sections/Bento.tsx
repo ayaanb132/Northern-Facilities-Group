@@ -92,10 +92,14 @@ function BentoCard({
               {property.name}
             </h3>
             <p className="text-[15px] text-[hsl(var(--foreground))]/65 leading-relaxed">
-              Specialized cleaning protocols designed for {property.name.toLowerCase()} environments.
+              Specialized cleaning protocols designed for {property.name.toLowerCase()}{' '}
+              environments.
             </p>
           </div>
-          <div className="mt-6 flex items-center text-[15px] font-normal text-[hsl(var(--primary))] group-hover:underline" style={{ transform: 'translateZ(2px)' }}>
+          <div
+            className="mt-6 flex items-center text-[15px] font-normal text-[hsl(var(--primary))] group-hover:underline"
+            style={{ transform: 'translateZ(2px)' }}
+          >
             Learn more
             <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </div>
@@ -145,7 +149,9 @@ export function Bento({
           <h2 className="text-[2rem] leading-tight sm:text-[2.5rem] font-display font-semibold text-[hsl(var(--foreground))] tracking-tight">
             {title}
           </h2>
-          <p className="mt-5 text-[19px] leading-relaxed text-[hsl(var(--foreground))]/70">{subtitle}</p>
+          <p className="mt-5 text-[19px] leading-relaxed text-[hsl(var(--foreground))]/70">
+            {subtitle}
+          </p>
         </div>
 
         {/* Bento Grid - commercial property types only; residential is below "Not a business owner?" */}
@@ -156,19 +162,21 @@ export function Bento({
           viewport={{ once: true, margin: '-100px' }}
           className="grid gap-5 md:grid-cols-2 lg:grid-cols-3"
         >
-          {siteConfig.propertyTypes.filter((p) => p.id !== 'residential').map((property, index) => {
-            const Icon = icons[property.icon as keyof typeof icons];
-            const isLarge = index === 0 || index === 3;
-            return (
-              <BentoCard
-                key={property.id}
-                property={property}
-                Icon={Icon}
-                isLarge={isLarge}
-                itemVariants={itemVariants}
-              />
-            );
-          })}
+          {siteConfig.propertyTypes
+            .filter((p) => p.id !== 'residential')
+            .map((property, index) => {
+              const Icon = icons[property.icon as keyof typeof icons];
+              const isLarge = index === 0 || index === 3;
+              return (
+                <BentoCard
+                  key={property.id}
+                  property={property}
+                  Icon={Icon}
+                  isLarge={isLarge}
+                  itemVariants={itemVariants}
+                />
+              );
+            })}
         </motion.div>
       </div>
     </section>

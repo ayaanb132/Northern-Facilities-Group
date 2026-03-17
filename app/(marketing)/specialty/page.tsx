@@ -29,9 +29,8 @@ export default async function SpecialtyPage() {
               Specialty Services
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              Sometimes your facility needs more than routine maintenance. Our
-              specialty services address specific challenges with focused expertise
-              and specialized equipment.
+              Sometimes your facility needs more than routine maintenance. Our specialty services
+              address specific challenges with focused expertise and specialized equipment.
             </p>
           </div>
         </div>
@@ -54,12 +53,8 @@ export default async function SpecialtyPage() {
                   <Badge variant="outline" className="mb-3">
                     {specialty.category}
                   </Badge>
-                  <h2 className="text-xl font-semibold text-navy-900 mb-3">
-                    {specialty.title}
-                  </h2>
-                  <p className="text-muted-foreground text-sm mb-4">
-                    {specialty.summary}
-                  </p>
+                  <h2 className="text-xl font-semibold text-navy-900 mb-3">{specialty.title}</h2>
+                  <p className="text-muted-foreground text-sm mb-4">{specialty.summary}</p>
 
                   <div className="mb-6">
                     <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
@@ -67,10 +62,7 @@ export default async function SpecialtyPage() {
                     </h4>
                     <ul className="space-y-1">
                       {specialty.whenNeeded.slice(0, 3).map((item) => (
-                        <li
-                          key={item}
-                          className="text-xs text-slate-600 flex items-center"
-                        >
+                        <li key={item} className="text-xs text-slate-600 flex items-center">
                           <span className="h-1 w-1 rounded-full bg-primary mr-2" />
                           {item}
                         </li>
@@ -97,8 +89,8 @@ export default async function SpecialtyPage() {
               Need Something Custom?
             </h2>
             <p className="text-muted-foreground mb-8">
-              Don't see what you're looking for? We handle a wide variety of
-              specialty cleaning requests. Contact us to discuss your specific needs.
+              Don't see what you're looking for? We handle a wide variety of specialty cleaning
+              requests. Contact us to discuss your specific needs.
             </p>
             <Link
               href="/contact"

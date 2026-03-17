@@ -7,7 +7,6 @@ import { Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import { siteConfig } from '@/lib/site';
 
 interface PricingProps {
   title?: string;
@@ -17,8 +16,8 @@ interface PricingProps {
 }
 
 export function Pricing({
-  title = 'Service Tiers',
-  subtitle = 'Flexible plans designed for properties of all sizes',
+  title = 'Transparent Pricing',
+  subtitle = 'Your quote is based on your space and service needs.',
   showCta = true,
   className,
 }: PricingProps) {
@@ -26,68 +25,67 @@ export function Pricing({
     <section className={cn('section-padding bg-slate-50', className)}>
       <div className="container-wide">
         {/* Header */}
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-[2rem] leading-tight sm:text-[2.5rem] font-display font-semibold text-[hsl(var(--foreground))] tracking-tight">
-              {title}
-            </h2>
-            <p className="mt-5 text-[19px] text-[hsl(var(--foreground))]/70">{subtitle}</p>
-          </div>
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <h2 className="text-[2rem] leading-tight sm:text-[2.5rem] font-display font-semibold text-[hsl(var(--foreground))] tracking-tight">
+            {title}
+          </h2>
+          <p className="mt-5 text-[19px] text-[hsl(var(--foreground))]/70">{subtitle}</p>
+        </div>
 
-        {/* Pricing Cards */}
         <div className="grid gap-6 lg:grid-cols-3">
-          {siteConfig.tiers.map((tier, index) => (
+          {[
+            {
+              title: 'Scope & surfaces',
+              items: [
+                'Square footage',
+                'Room count',
+                'Floor type and finishes',
+                'Specialty areas (kitchens, washrooms, medical)',
+              ],
+            },
+            {
+              title: 'Schedule & traffic',
+              items: [
+                'Service frequency',
+                'Operating hours',
+                'High-traffic zones',
+                'Seasonality and events',
+              ],
+            },
+            {
+              title: 'Reporting & compliance',
+              items: [
+                'Checklists and photo documentation',
+                'QA inspections',
+                'Issue reporting',
+                'Any compliance requirements',
+              ],
+            },
+          ].map((card, index) => (
             <motion.div
-              key={tier.id}
+              key={card.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className={cn(
-                'relative rounded-3xl border bg-white p-8 border-[hsl(var(--foreground))]/[0.06]',
-                tier.popular && 'border-[hsl(var(--primary))]/30 ring-1 ring-[hsl(var(--primary))]/20'
-              )}
+              transition={{ delay: index * 0.08 }}
+              className="relative rounded-3xl border bg-white p-8 border-[hsl(var(--foreground))]/[0.06]"
             >
-              {tier.popular && (
-                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  Most Popular
-                </Badge>
-              )}
-
               <div className="mb-6">
                 <h3 className="text-[21px] font-semibold text-[hsl(var(--foreground))] tracking-tight">
-                  {tier.name}
+                  {card.title}
                 </h3>
                 <p className="mt-2 text-[15px] text-[hsl(var(--foreground))]/65">
-                  {tier.description}
+                  Custom to your building—not a one-size-fits-all plan.
                 </p>
               </div>
-
-              <div className="mb-8">
-                <span className="text-[28px] font-semibold text-[hsl(var(--foreground))]">Custom</span>
-                <span className="text-[15px] text-[hsl(var(--foreground))]/60"> / quote</span>
-              </div>
-
-              <ul className="space-y-3.5 mb-8">
-                {tier.features.map((feature) => (
-                  <li key={feature} className="flex items-start">
+              <ul className="space-y-3.5">
+                {card.items.map((item) => (
+                  <li key={item} className="flex items-start">
                     <Check className="mr-3 h-5 w-5 shrink-0 text-[hsl(var(--primary))]" />
-                    <span className="text-[15px] text-[hsl(var(--foreground))]/70">
-                      {feature}
-                    </span>
+                    <span className="text-[15px] text-[hsl(var(--foreground))]/70">{item}</span>
                   </li>
                 ))}
               </ul>
-
-              <Button
-                asChild
-                variant={tier.popular ? 'default' : 'outline'}
-                className="w-full rounded-full"
-              >
-                <Link href="/get-walkthrough">
-                  Get Started
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
             </motion.div>
           ))}
         </div>

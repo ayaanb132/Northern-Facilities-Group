@@ -30,9 +30,7 @@ export function SketchfabEmbed({
   className,
 }: SketchfabEmbedProps) {
   const embedUrl = React.useMemo(() => {
-    const url = new URL(
-      `https://sketchfab.com/models/${modelId}/embed`
-    );
+    const url = new URL(`https://sketchfab.com/models/${modelId}/embed`);
     url.searchParams.set('utm_medium', 'embed');
     url.searchParams.set('utm_campaign', 'share-popup');
     url.searchParams.set('autostart', '0'); // no animation

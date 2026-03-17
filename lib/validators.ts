@@ -24,10 +24,9 @@ export const walkthroughFormSchema = z.object({
     ['residential', 'condo', 'medical', 'restaurant', 'warehouse', 'retail', 'office', 'other'],
     { errorMap: () => ({ message: 'Please select a property type' }) }
   ),
-  squareFootage: z.enum(
-    ['under-10k', '10k-50k', '50k-100k', '100k-500k', 'over-500k'],
-    { errorMap: () => ({ message: 'Please select square footage' }) }
-  ),
+  squareFootage: z.enum(['under-10k', '10k-50k', '50k-100k', '100k-500k', 'over-500k'], {
+    errorMap: () => ({ message: 'Please select square footage' }),
+  }),
   message: z
     .string()
     .max(1000, 'Message must be less than 1000 characters')
@@ -40,10 +39,7 @@ export const walkthroughFormSchema = z.object({
 export type WalkthroughFormData = z.infer<typeof walkthroughFormSchema>;
 
 export const contactFormSchema = z.object({
-  name: z
-    .string()
-    .min(1, 'Name is required')
-    .max(100, 'Name must be less than 100 characters'),
+  name: z.string().min(1, 'Name is required').max(100, 'Name must be less than 100 characters'),
   email: z.string().email('Please enter a valid email address'),
   phone: z.string().optional().or(z.literal('')),
   subject: z
@@ -66,9 +62,6 @@ export const quoteFormSchema = z.object({
     ['residential', 'condo', 'medical', 'restaurant', 'warehouse', 'retail', 'office', 'other'],
     { errorMap: () => ({ message: 'Please select a property type' }) }
   ),
-  tier: z.enum(['essential', 'professional', 'enterprise'], {
-    errorMap: () => ({ message: 'Please select a tier' }),
-  }),
   // Honeypot
   website: z.string().max(0, 'Invalid submission').optional(),
 });

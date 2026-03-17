@@ -17,7 +17,6 @@ export interface ServiceFrontmatter {
   protocols: string[];
   frequencyOptions: string[];
   reporting: string[];
-  tiersRecommended: string[];
   faqs: { question: string; answer: string }[];
   order?: number;
 }
@@ -105,13 +104,13 @@ export async function getServiceBySlug(slug: string): Promise<{
 
 export async function getAllServices(): Promise<ServiceFrontmatter[]> {
   const servicesDir = path.join(contentDirectory, 'services');
-  
+
   if (!fs.existsSync(servicesDir)) {
     return [];
   }
 
   const files = fs.readdirSync(servicesDir).filter((f) => f.endsWith('.mdx'));
-  
+
   const services = files.map((file) => {
     const filePath = path.join(servicesDir, file);
     const fileContents = fs.readFileSync(filePath, 'utf8');
@@ -141,13 +140,13 @@ export async function getSpecialtyBySlug(slug: string): Promise<{
 
 export async function getAllSpecialties(): Promise<SpecialtyFrontmatter[]> {
   const specialtyDir = path.join(contentDirectory, 'specialty');
-  
+
   if (!fs.existsSync(specialtyDir)) {
     return [];
   }
 
   const files = fs.readdirSync(specialtyDir).filter((f) => f.endsWith('.mdx'));
-  
+
   const specialties = files.map((file) => {
     const filePath = path.join(specialtyDir, file);
     const fileContents = fs.readFileSync(filePath, 'utf8');
@@ -177,13 +176,13 @@ export async function getCaseStudyBySlug(slug: string): Promise<{
 
 export async function getAllCaseStudies(): Promise<CaseStudyFrontmatter[]> {
   const caseStudiesDir = path.join(contentDirectory, 'case-studies');
-  
+
   if (!fs.existsSync(caseStudiesDir)) {
     return [];
   }
 
   const files = fs.readdirSync(caseStudiesDir).filter((f) => f.endsWith('.mdx'));
-  
+
   const caseStudies = files
     .map((file) => {
       const filePath = path.join(caseStudiesDir, file);
@@ -193,9 +192,7 @@ export async function getAllCaseStudies(): Promise<CaseStudyFrontmatter[]> {
     })
     .filter((cs) => cs.published);
 
-  return caseStudies.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  return caseStudies.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export function getCaseStudySlugs(): string[] {
@@ -209,7 +206,7 @@ export function getCaseStudySlugs(): string[] {
 
 export function getServiceSlugs(): string[] {
   const servicesDir = path.join(contentDirectory, 'services');
-  
+
   if (!fs.existsSync(servicesDir)) {
     return [];
   }
@@ -222,7 +219,7 @@ export function getServiceSlugs(): string[] {
 
 export function getSpecialtySlugs(): string[] {
   const specialtyDir = path.join(contentDirectory, 'specialty');
-  
+
   if (!fs.existsSync(specialtyDir)) {
     return [];
   }

@@ -28,8 +28,8 @@ export default function ContactPage() {
               Contact Us
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              Have questions about our services? Ready to get started? We're here to
-              help. Reach out and we'll respond within one business day.
+              Have questions about our services? Ready to get started? We're here to help. Reach out
+              and we'll respond within one business day.
             </p>
           </div>
         </div>
@@ -87,9 +87,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-medium text-navy-900 mb-1">Office</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {siteConfig.links.address}
-                      </p>
+                      <p className="text-sm text-muted-foreground">{siteConfig.links.address}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -103,21 +101,16 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-medium text-navy-900 mb-1">Hours</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {siteConfig.hours}
-                      </p>
+                      <p className="text-sm text-muted-foreground">{siteConfig.hours}</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
               <div className="p-6 bg-slate-50 rounded-xl">
-                <h3 className="font-medium text-navy-900 mb-2">
-                  Ready for a quote?
-                </h3>
+                <h3 className="font-medium text-navy-900 mb-2">Ready for a quote?</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Skip the form and schedule a property walkthrough for a custom
-                  proposal.
+                  Skip the form and schedule a property walkthrough for a custom proposal.
                 </p>
                 <Link
                   href="/get-walkthrough"
@@ -132,9 +125,7 @@ export default function ContactPage() {
             <div className="lg:col-span-2">
               <Card>
                 <CardContent className="pt-6">
-                  <h2 className="text-xl font-semibold text-navy-900 mb-6">
-                    Send Us a Message
-                  </h2>
+                  <h2 className="text-xl font-semibold text-navy-900 mb-6">Send Us a Message</h2>
                   <ContactForm />
                 </CardContent>
               </Card>

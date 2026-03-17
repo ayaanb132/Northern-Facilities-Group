@@ -26,7 +26,9 @@ function isResendConfigured(): boolean {
   return !!process.env.RESEND_API_KEY;
 }
 
-export async function sendFormEmail(options: SendEmailOptions): Promise<{ ok: boolean; error?: string }> {
+export async function sendFormEmail(
+  options: SendEmailOptions
+): Promise<{ ok: boolean; error?: string }> {
   const { to = TO_EMAIL, replyTo, subject, text } = options;
 
   // 1) Zoho SMTP (if you use Zoho Mail)

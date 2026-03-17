@@ -75,7 +75,8 @@ function buildArticleSchema(slug: string, title: string, summary: string, client
       url: siteConfig.url,
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-    keywords: 'Van Horne Construction, post-construction cleaning, construction site cleaning, head office janitorial, Ontario',
+    keywords:
+      'Van Horne Construction, post-construction cleaning, construction site cleaning, head office janitorial, Ontario',
     about: [
       { '@type': 'Organization', name: siteConfig.name },
       { '@type': 'Organization', name: client },

@@ -53,12 +53,12 @@ const steps = [
     icon: FileCheck,
     title: '3. Custom Proposal',
     description:
-      'Based on our assessment, we create a detailed proposal including scope, schedule, pricing, and recommended service tier.',
+      'Based on our assessment, we create a detailed proposal including scope, schedule, and pricing.',
     details: [
       'Clear scope of work',
       'Recommended cleaning frequency',
       'Transparent pricing breakdown',
-      'Service level options',
+      'Service options',
     ],
   },
   {
@@ -149,9 +149,8 @@ export default function HowItWorksPage() {
               How We Work
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              A transparent, systematic approach to facility management. From first
-              contact to ongoing partnership, here's what to expect when you work
-              with NFG.
+              A transparent, systematic approach to facility management. From first contact to
+              ongoing partnership, here's what to expect when you work with NFG.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button asChild size="lg" variant="gradient">
@@ -187,18 +186,11 @@ export default function HowItWorksPage() {
 
                       {/* Content */}
                       <div className="flex-1 pb-8">
-                        <h3 className="text-xl font-semibold text-navy-900 mb-2">
-                          {step.title}
-                        </h3>
-                        <p className="text-muted-foreground mb-4">
-                          {step.description}
-                        </p>
+                        <h3 className="text-xl font-semibold text-navy-900 mb-2">{step.title}</h3>
+                        <p className="text-muted-foreground mb-4">{step.description}</p>
                         <div className="grid gap-2 sm:grid-cols-2">
                           {step.details.map((detail) => (
-                            <div
-                              key={detail}
-                              className="flex items-center text-sm"
-                            >
+                            <div key={detail} className="flex items-center text-sm">
                               <span className="h-1.5 w-1.5 rounded-full bg-primary mr-2" />
                               {detail}
                             </div>
@@ -218,12 +210,8 @@ export default function HowItWorksPage() {
       <section className="section-padding bg-slate-50">
         <div className="container-wide">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-2xl font-display font-bold text-navy-900 mb-4">
-              Typical Timeline
-            </h2>
-            <p className="text-muted-foreground">
-              From first contact to service launch
-            </p>
+            <h2 className="text-2xl font-display font-bold text-navy-900 mb-4">Typical Timeline</h2>
+            <p className="text-muted-foreground">From first contact to service launch</p>
           </div>
           <div className="grid gap-6 md:grid-cols-4 max-w-4xl mx-auto">
             {[
@@ -233,9 +221,7 @@ export default function HowItWorksPage() {
               { time: 'Days 7-10', label: 'Service Begins' },
             ].map((item) => (
               <div key={item.label} className="text-center">
-                <div className="text-2xl font-bold text-primary mb-1">
-                  {item.time}
-                </div>
+                <div className="text-2xl font-bold text-primary mb-1">{item.time}</div>
                 <div className="text-sm text-muted-foreground">{item.label}</div>
               </div>
             ))}

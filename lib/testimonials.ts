@@ -55,8 +55,7 @@ export const testimonials: Testimonial[] = [
     role: 'Google review',
   },
   {
-    quote:
-      'Super professional and always does a great job. Highly recommend.',
+    quote: 'Super professional and always does a great job. Highly recommend.',
     author: 'Fatma Cobankara',
     role: 'Google review',
   },
@@ -79,20 +78,17 @@ export const testimonials: Testimonial[] = [
     role: 'Google review',
   },
   {
-    quote:
-      'The best cleaning service—the service was amazing!',
+    quote: 'The best cleaning service—the service was amazing!',
     author: 'Juliana Vieira',
     role: 'Google review',
   },
   {
-    quote:
-      'Hard working and dependable. I would recommend their services to anyone.',
+    quote: 'Hard working and dependable. I would recommend their services to anyone.',
     author: 'Will Vincent',
     role: 'Google review',
   },
   {
-    quote:
-      'Efficient and quality service! Highly recommended!',
+    quote: 'Efficient and quality service! Highly recommended!',
     author: 'Ethan Xavier',
     role: 'Google review',
   },

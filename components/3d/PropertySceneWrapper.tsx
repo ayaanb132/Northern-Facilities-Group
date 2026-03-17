@@ -162,10 +162,7 @@ function PropertySceneWrapperInner() {
     <div className="relative w-full max-w-lg mx-auto">
       {/* Property Selector */}
       <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20">
-        <PropertySelector
-          selectedProperty={selectedProperty}
-          onSelect={handlePropertyChange}
-        />
+        <PropertySelector selectedProperty={selectedProperty} onSelect={handlePropertyChange} />
       </div>
 
       {/* Quality Toggle */}

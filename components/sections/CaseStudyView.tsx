@@ -152,11 +152,15 @@ export function CaseStudyView({
               <h2 className="text-2xl font-display font-bold text-navy-900 mb-6">At a Glance</h2>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl">
                 <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
-                  <span className="text-xs font-medium text-primary uppercase tracking-wider">Client</span>
+                  <span className="text-xs font-medium text-primary uppercase tracking-wider">
+                    Client
+                  </span>
                   <p className="mt-1 text-foreground font-medium">{frontmatter.atGlance.client}</p>
                 </div>
                 <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 sm:col-span-2">
-                  <span className="text-xs font-medium text-primary uppercase tracking-wider">Services delivered</span>
+                  <span className="text-xs font-medium text-primary uppercase tracking-wider">
+                    Services delivered
+                  </span>
                   <ul className="mt-2 space-y-1">
                     {frontmatter.atGlance.servicesDelivered.map((s) => (
                       <li key={s} className="flex items-start gap-2 text-sm text-foreground/90">
@@ -167,7 +171,9 @@ export function CaseStudyView({
                   </ul>
                 </div>
                 <div className="p-4 rounded-xl bg-primary/5 border border-primary/10 sm:col-span-3">
-                  <span className="text-xs font-medium text-primary uppercase tracking-wider">Primary outcome</span>
+                  <span className="text-xs font-medium text-primary uppercase tracking-wider">
+                    Primary outcome
+                  </span>
                   <p className="mt-2 text-foreground/90">{frontmatter.atGlance.primaryOutcome}</p>
                 </div>
               </div>
@@ -189,7 +195,9 @@ export function CaseStudyView({
               <p className="text-foreground/85 leading-relaxed mb-6">{frontmatter.challenge}</p>
               {frontmatter.successNeeded && frontmatter.successNeeded.length > 0 && (
                 <>
-                  <h3 className="text-lg font-semibold text-navy-900 mb-3">What success needed to look like</h3>
+                  <h3 className="text-lg font-semibold text-navy-900 mb-3">
+                    What success needed to look like
+                  </h3>
                   <ul className="space-y-2">
                     {frontmatter.successNeeded.map((item) => (
                       <li key={item} className="flex items-start gap-2">
@@ -206,11 +214,15 @@ export function CaseStudyView({
           {frontmatter.implemented && frontmatter.implemented.length > 0 && (
             <AnimatedSection className="section-padding bg-slate-50">
               <div className="container-wide max-w-3xl">
-                <h2 className="text-2xl font-display font-bold text-navy-900 mb-8">What we implemented</h2>
+                <h2 className="text-2xl font-display font-bold text-navy-900 mb-8">
+                  What we implemented
+                </h2>
                 <div className="space-y-10">
                   {frontmatter.implemented.map((block: CaseStudyImplementedBlock, i: number) => (
                     <div key={i}>
-                      <h3 className="text-xl font-display font-semibold text-navy-900 mb-3">{block.title}</h3>
+                      <h3 className="text-xl font-display font-semibold text-navy-900 mb-3">
+                        {block.title}
+                      </h3>
                       {block.intro && <p className="text-foreground/85 mb-4">{block.intro}</p>}
                       {block.items && (
                         <ul className="space-y-2 mb-4">
@@ -266,7 +278,10 @@ export function CaseStudyView({
               <h2 className="text-2xl font-display font-bold text-navy-900 mb-6">Results</h2>
               <ul className="grid gap-4 sm:grid-cols-2 max-w-4xl">
                 {frontmatter.results.map((result) => (
-                  <li key={result} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-100">
+                  <li
+                    key={result}
+                    className="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-100"
+                  >
                     <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                     <span className="text-foreground/90">{result}</span>
                   </li>
@@ -278,7 +293,9 @@ export function CaseStudyView({
           {frontmatter.whyThisWorked && frontmatter.whyThisWorked.length > 0 && (
             <AnimatedSection className="section-padding">
               <div className="container-wide max-w-3xl">
-                <h2 className="text-2xl font-display font-bold text-navy-900 mb-4">Why this worked</h2>
+                <h2 className="text-2xl font-display font-bold text-navy-900 mb-4">
+                  Why this worked
+                </h2>
                 <ul className="space-y-2">
                   {frontmatter.whyThisWorked.map((item) => (
                     <li key={item} className="flex items-start gap-2">
@@ -295,7 +312,9 @@ export function CaseStudyView({
             <div className="container-wide text-center">
               <h2 className="text-2xl font-display font-bold text-navy-900 mb-4">Next step</h2>
               {frontmatter.ctaSubhead && (
-                <p className="text-muted-foreground mb-6 max-w-xl mx-auto">{frontmatter.ctaSubhead}</p>
+                <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+                  {frontmatter.ctaSubhead}
+                </p>
               )}
               <div className="flex flex-wrap gap-4 justify-center">
                 <Button asChild size="lg" className="rounded-full">
@@ -335,145 +354,152 @@ export function CaseStudyView({
       {/* Default flow: Challenge, Solution, Results (when not long-form) */}
       {!isLongForm && (
         <>
-      {/* Challenge — scroll animation */}
-      <AnimatedSection className="section-padding">
-        <div className="container-wide max-w-3xl">
-          <motion.div variants={stagger} initial="initial" whileInView="animate" viewport={{ once: true }}>
-            <motion.div
-              variants={fadeInUp}
-              className="flex items-center gap-2 mb-4"
-            >
-              <Building2 className="h-5 w-5 text-primary" />
-              <span className="text-xs font-medium text-primary uppercase tracking-wider">
-                The Challenge
-              </span>
-            </motion.div>
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl text-foreground/85 leading-relaxed"
-            >
-              {frontmatter.challenge}
-            </motion.p>
-          </motion.div>
-        </div>
-      </AnimatedSection>
-
-      {/* Solution — scroll animation */}
-      <AnimatedSection className="section-padding bg-slate-50">
-        <div className="container-wide max-w-3xl">
-          <motion.div variants={stagger} initial="initial" whileInView="animate" viewport={{ once: true }}>
-            <motion.span
-              variants={fadeInUp}
-              className="text-xs font-medium text-primary uppercase tracking-wider"
-            >
-              Our Approach
-            </motion.span>
-            <motion.p
-              variants={fadeInUp}
-              className="mt-4 text-xl text-foreground/85 leading-relaxed"
-            >
-              {frontmatter.solution}
-            </motion.p>
-          </motion.div>
-        </div>
-      </AnimatedSection>
-
-      {/* Key Results — scroll animation */}
-      <AnimatedSection className="section-padding">
-        <div className="container-wide">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-2xl font-display font-bold text-navy-900 mb-8"
-          >
-            Key Results
-          </motion.h2>
-          <motion.ul
-            className="grid gap-4 sm:grid-cols-2 max-w-4xl"
-            variants={stagger}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-          >
-            {frontmatter.results.map((result) => (
-              <motion.li
-                key={result}
-                variants={fadeInUp}
-                className="flex items-start gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100"
+          {/* Challenge — scroll animation */}
+          <AnimatedSection className="section-padding">
+            <div className="container-wide max-w-3xl">
+              <motion.div
+                variants={stagger}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
               >
-                <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                <span className="text-foreground/90">{result}</span>
-              </motion.li>
-            ))}
-          </motion.ul>
-        </div>
-      </AnimatedSection>
+                <motion.div variants={fadeInUp} className="flex items-center gap-2 mb-4">
+                  <Building2 className="h-5 w-5 text-primary" />
+                  <span className="text-xs font-medium text-primary uppercase tracking-wider">
+                    The Challenge
+                  </span>
+                </motion.div>
+                <motion.p
+                  variants={fadeInUp}
+                  className="text-xl text-foreground/85 leading-relaxed"
+                >
+                  {frontmatter.challenge}
+                </motion.p>
+              </motion.div>
+            </div>
+          </AnimatedSection>
 
-      {/* Testimonial — scroll animation (only when approved in long-form) */}
-      {showTestimonial && frontmatter.testimonial && (
-        <AnimatedSection className="section-padding bg-slate-50">
-          <div className="container-wide max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="rounded-2xl bg-white p-8 sm:p-10 shadow-sm border border-slate-100"
-            >
-              <Quote className="h-10 w-10 text-primary/30 mb-6" />
-              <blockquote className="text-xl sm:text-2xl font-medium text-foreground leading-relaxed">
-                &ldquo;{frontmatter.testimonial.quote}&rdquo;
-              </blockquote>
-              <footer className="mt-6 text-muted-foreground">
-                — {frontmatter.testimonial.author}
-                {frontmatter.testimonial.role && (
-                  <span className="text-foreground/70">, {frontmatter.testimonial.role}</span>
-                )}
-              </footer>
-            </motion.div>
-          </div>
-        </AnimatedSection>
-      )}
+          {/* Solution — scroll animation */}
+          <AnimatedSection className="section-padding bg-slate-50">
+            <div className="container-wide max-w-3xl">
+              <motion.div
+                variants={stagger}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+              >
+                <motion.span
+                  variants={fadeInUp}
+                  className="text-xs font-medium text-primary uppercase tracking-wider"
+                >
+                  Our Approach
+                </motion.span>
+                <motion.p
+                  variants={fadeInUp}
+                  className="mt-4 text-xl text-foreground/85 leading-relaxed"
+                >
+                  {frontmatter.solution}
+                </motion.p>
+              </motion.div>
+            </div>
+          </AnimatedSection>
 
-      {/* Full story (MDX body) — only in default (non–long-form) */}
-      {content.trim() && (
-        <AnimatedSection className="section-padding">
-          <div className="container-wide max-w-3xl">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-2xl font-display font-bold text-navy-900 mb-10"
-            >
-              Full Story
-            </motion.h2>
-            <ProseBlock content={content} />
-          </div>
-        </AnimatedSection>
-      )}
+          {/* Key Results — scroll animation */}
+          <AnimatedSection className="section-padding">
+            <div className="container-wide">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-2xl font-display font-bold text-navy-900 mb-8"
+              >
+                Key Results
+              </motion.h2>
+              <motion.ul
+                className="grid gap-4 sm:grid-cols-2 max-w-4xl"
+                variants={stagger}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+              >
+                {frontmatter.results.map((result) => (
+                  <motion.li
+                    key={result}
+                    variants={fadeInUp}
+                    className="flex items-start gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100"
+                  >
+                    <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                    <span className="text-foreground/90">{result}</span>
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </div>
+          </AnimatedSection>
 
-      {/* CTA — default flow only (long-form has its own Next step CTA) */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="section-padding bg-primary/5"
-      >
-        <div className="container-wide text-center">
-          <h2 className="text-2xl font-display font-bold text-navy-900 mb-4">
-            Ready for similar results?
-          </h2>
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            Schedule a walkthrough and we&apos;ll tailor a program for your property.
-          </p>
-          <Button asChild size="lg" className="rounded-full">
-            <Link href="/get-walkthrough">
-              Get a Walkthrough
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
-      </motion.section>
+          {/* Testimonial — scroll animation (only when approved in long-form) */}
+          {showTestimonial && frontmatter.testimonial && (
+            <AnimatedSection className="section-padding bg-slate-50">
+              <div className="container-wide max-w-3xl">
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="rounded-2xl bg-white p-8 sm:p-10 shadow-sm border border-slate-100"
+                >
+                  <Quote className="h-10 w-10 text-primary/30 mb-6" />
+                  <blockquote className="text-xl sm:text-2xl font-medium text-foreground leading-relaxed">
+                    &ldquo;{frontmatter.testimonial.quote}&rdquo;
+                  </blockquote>
+                  <footer className="mt-6 text-muted-foreground">
+                    — {frontmatter.testimonial.author}
+                    {frontmatter.testimonial.role && (
+                      <span className="text-foreground/70">, {frontmatter.testimonial.role}</span>
+                    )}
+                  </footer>
+                </motion.div>
+              </div>
+            </AnimatedSection>
+          )}
+
+          {/* Full story (MDX body) — only in default (non–long-form) */}
+          {content.trim() && (
+            <AnimatedSection className="section-padding">
+              <div className="container-wide max-w-3xl">
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-2xl font-display font-bold text-navy-900 mb-10"
+                >
+                  Full Story
+                </motion.h2>
+                <ProseBlock content={content} />
+              </div>
+            </AnimatedSection>
+          )}
+
+          {/* CTA — default flow only (long-form has its own Next step CTA) */}
+          <motion.section
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="section-padding bg-primary/5"
+          >
+            <div className="container-wide text-center">
+              <h2 className="text-2xl font-display font-bold text-navy-900 mb-4">
+                Ready for similar results?
+              </h2>
+              <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
+                Schedule a walkthrough and we&apos;ll tailor a program for your property.
+              </p>
+              <Button asChild size="lg" className="rounded-full">
+                <Link href="/get-walkthrough">
+                  Get a Walkthrough
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </motion.section>
         </>
       )}
     </>

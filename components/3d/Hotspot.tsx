@@ -19,12 +19,7 @@ export function Hotspot({ hotspot, isActive, onClick }: HotspotProps) {
   // On low-end devices, render simpler hotspots
   if (capabilities.level === 'low') {
     return (
-      <Html
-        position={hotspot.position}
-        center
-        distanceFactor={10}
-        zIndexRange={[100, 0]}
-      >
+      <Html position={hotspot.position} center distanceFactor={10} zIndexRange={[100, 0]}>
         <button
           onClick={onClick}
           className="w-4 h-4 bg-primary rounded-full border-2 border-white shadow-lg hover:scale-125 transition-transform"
@@ -96,11 +91,7 @@ interface HotspotOverlayProps {
   onHotspotClick: (id: string) => void;
 }
 
-export function HotspotOverlay({
-  hotspots,
-  activeHotspot,
-  onHotspotClick,
-}: HotspotOverlayProps) {
+export function HotspotOverlay({ hotspots, activeHotspot, onHotspotClick }: HotspotOverlayProps) {
   return (
     <div className="absolute bottom-4 left-4 z-20">
       <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-3 max-w-[200px]">

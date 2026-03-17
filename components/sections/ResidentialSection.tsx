@@ -94,7 +94,10 @@ function TiltCard({
               {description}
             </p>
           </div>
-          <div className="mt-6 flex items-center text-[15px] font-normal text-[hsl(var(--primary))] group-hover:underline" style={{ transform: 'translateZ(2px)' }}>
+          <div
+            className="mt-6 flex items-center text-[15px] font-normal text-[hsl(var(--primary))] group-hover:underline"
+            style={{ transform: 'translateZ(2px)' }}
+          >
             Learn more
             <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </div>
@@ -122,7 +125,8 @@ export function ResidentialSection({ className }: ResidentialSectionProps) {
             Not a business owner?
           </h2>
           <p className="mt-3 text-[17px] text-[hsl(var(--foreground))]/70">
-            We offer specialized options for homeowners, facility managers, property managers, and realtors. Same quality standards, tailored for your role.
+            We offer specialized options for homeowners, facility managers, property managers, and
+            realtors. Same quality standards, tailored for your role.
           </p>
         </motion.div>
 

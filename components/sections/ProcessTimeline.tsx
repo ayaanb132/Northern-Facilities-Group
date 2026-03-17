@@ -2,14 +2,7 @@
 
 import * as React from 'react';
 import { motion } from 'framer-motion';
-import {
-  ClipboardCheck,
-  Users,
-  CalendarClock,
-  BarChart3,
-  Headphones,
-  Shield,
-} from 'lucide-react';
+import { ClipboardCheck, Users, CalendarClock, BarChart3, Headphones, Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface Step {
@@ -34,8 +27,7 @@ const defaultSteps: Step[] = [
   {
     icon: CalendarClock,
     title: 'Custom Schedule',
-    description:
-      'Flexible scheduling that minimizes disruption and maximizes coverage.',
+    description: 'Flexible scheduling that minimizes disruption and maximizes coverage.',
   },
   {
     icon: Shield,
@@ -46,14 +38,12 @@ const defaultSteps: Step[] = [
   {
     icon: BarChart3,
     title: 'Real-Time Reporting',
-    description:
-      'Dashboard access with photos, completion logs, and issue tracking.',
+    description: 'Dashboard access with photos, completion logs, and issue tracking.',
   },
   {
     icon: Headphones,
     title: 'Ongoing Support',
-    description:
-      'Dedicated account manager and 24/7 emergency response for peace of mind.',
+    description: 'Dedicated account manager and 24/7 emergency response for peace of mind.',
   },
 ];
 

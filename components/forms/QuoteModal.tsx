@@ -26,29 +26,22 @@ import { submitQuoteForm } from '@/app/actions/contact';
 interface QuoteModalProps {
   trigger: React.ReactNode;
   defaultPropertyType?: string;
-  defaultTier?: string;
 }
 
-export function QuoteModal({
-  trigger,
-  defaultPropertyType,
-  defaultTier,
-}: QuoteModalProps) {
+export function QuoteModal({ trigger, defaultPropertyType }: QuoteModalProps) {
   const [open, setOpen] = React.useState(false);
   const [submitted, setSubmitted] = React.useState(false);
   const [pending, setPending] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
   const [email, setEmail] = React.useState('');
   const [propertyType, setPropertyType] = React.useState(defaultPropertyType ?? '');
-  const [tier, setTier] = React.useState(defaultTier ?? '');
 
   const resolvedPropertyType = defaultPropertyType ?? propertyType;
-  const resolvedTier = defaultTier ?? tier;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!resolvedPropertyType || !resolvedTier) {
-      setError('Please select property type and tier.');
+    if (!resolvedPropertyType) {
+      setError('Please select a property type.');
       return;
     }
     setError(null);
@@ -56,7 +49,6 @@ export function QuoteModal({
     const formData = new FormData();
     formData.set('email', email);
     formData.set('propertyType', resolvedPropertyType);
-    formData.set('tier', resolvedTier);
     const result = await submitQuoteForm(formData);
     setPending(false);
     if (result.success) {
@@ -73,7 +65,6 @@ export function QuoteModal({
       setError(null);
       setEmail('');
       setPropertyType(defaultPropertyType ?? '');
-      setTier(defaultTier ?? '');
     }
   };
 
@@ -91,19 +82,15 @@ export function QuoteModal({
             <DialogHeader>
               <DialogTitle>Thank You!</DialogTitle>
               <DialogDescription>
-                We'll send you more information shortly. For a detailed proposal,
-                schedule a walkthrough.
+                We'll send you more information shortly. For a detailed proposal, schedule a
+                walkthrough.
               </DialogDescription>
             </DialogHeader>
             <div className="mt-6 space-y-3">
               <Button asChild className="w-full">
                 <Link href="/get-walkthrough">Schedule Walkthrough</Link>
               </Button>
-              <Button
-                variant="outline"
-                className="w-full"
-                onClick={() => handleOpenChange(false)}
-              >
+              <Button variant="outline" className="w-full" onClick={() => handleOpenChange(false)}>
                 Close
               </Button>
             </div>
@@ -113,8 +100,8 @@ export function QuoteModal({
             <DialogHeader>
               <DialogTitle>Get Pricing Information</DialogTitle>
               <DialogDescription>
-                Enter your email to receive general pricing information, or
-                schedule a walkthrough for a custom quote.
+                Enter your email to receive general pricing information, or schedule a walkthrough
+                for a custom quote.
               </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4 mt-4">
@@ -155,30 +142,7 @@ export function QuoteModal({
                 </div>
               )}
 
-              {!defaultTier && (
-                <div className="space-y-2">
-                  <Label htmlFor="quick-tier">Interested Tier</Label>
-                  <Select
-                    name="tier"
-                    value={tier}
-                    onValueChange={setTier}
-                    required
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select tier" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="essential">Essential</SelectItem>
-                      <SelectItem value="professional">Professional</SelectItem>
-                      <SelectItem value="enterprise">Enterprise</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              )}
-
-              {error && (
-                <p className="text-sm text-destructive">{error}</p>
-              )}
+              {error && <p className="text-sm text-destructive">{error}</p>}
               <Button type="submit" className="w-full" disabled={pending}>
                 {pending ? (
                   <>

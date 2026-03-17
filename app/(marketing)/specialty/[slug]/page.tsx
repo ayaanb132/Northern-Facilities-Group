@@ -55,9 +55,7 @@ export default async function SpecialtyPage({ params }: PageProps) {
               <h1 className="text-4xl sm:text-5xl font-display font-bold text-navy-900 tracking-tight">
                 {frontmatter.title}
               </h1>
-              <p className="mt-6 text-lg text-muted-foreground">
-                {frontmatter.summary}
-              </p>
+              <p className="mt-6 text-lg text-muted-foreground">{frontmatter.summary}</p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button asChild size="lg" variant="gradient">
                   <Link href="/get-walkthrough">
@@ -100,10 +98,7 @@ export default async function SpecialtyPage({ params }: PageProps) {
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {frontmatter.whenNeeded.map((item) => (
-              <div
-                key={item}
-                className="flex items-start gap-3 p-4 rounded-xl bg-slate-50"
-              >
+              <div key={item} className="flex items-start gap-3 p-4 rounded-xl bg-slate-50">
                 <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                 <span className="text-sm text-navy-900">{item}</span>
               </div>
@@ -121,9 +116,7 @@ export default async function SpecialtyPage({ params }: PageProps) {
               <CardContent className="pt-6">
                 <div className="flex items-center gap-2 mb-4">
                   <ListChecks className="h-5 w-5 text-primary" />
-                  <h3 className="text-lg font-semibold text-navy-900">
-                    Our Process
-                  </h3>
+                  <h3 className="text-lg font-semibold text-navy-900">Our Process</h3>
                 </div>
                 <ol className="space-y-4">
                   {frontmatter.process.map((step, index) => (
@@ -143,9 +136,7 @@ export default async function SpecialtyPage({ params }: PageProps) {
               <CardContent className="pt-6">
                 <div className="flex items-center gap-2 mb-4">
                   <Package className="h-5 w-5 text-primary" />
-                  <h3 className="text-lg font-semibold text-navy-900">
-                    What's Included
-                  </h3>
+                  <h3 className="text-lg font-semibold text-navy-900">What's Included</h3>
                 </div>
                 <ul className="space-y-3">
                   {frontmatter.inclusions.map((item) => (

@@ -1,6 +1,13 @@
 'use server';
 
-import { contactFormSchema, walkthroughFormSchema, quoteFormSchema, type ContactFormData, type WalkthroughFormData, type QuoteFormData } from '@/lib/validators';
+import {
+  contactFormSchema,
+  walkthroughFormSchema,
+  quoteFormSchema,
+  type ContactFormData,
+  type WalkthroughFormData,
+  type QuoteFormData,
+} from '@/lib/validators';
 import { sendToDealsPipeline } from '@/lib/dealsPipeline';
 import { sendFormEmail } from '@/lib/email';
 
@@ -105,7 +112,10 @@ ${data.message}
   });
   if (!emailResult.ok) {
     if (emailResult.error?.includes('No email service')) {
-      console.log('Contact form submission (no email service configured):', JSON.stringify(data, null, 2));
+      console.log(
+        'Contact form submission (no email service configured):',
+        JSON.stringify(data, null, 2)
+      );
     } else {
       return { success: false, message: 'Failed to send message. Please try again later.' };
     }
@@ -184,7 +194,10 @@ ${data.message || 'None provided'}
   });
   if (!emailResult.ok) {
     if (emailResult.error?.includes('No email service')) {
-      console.log('Walkthrough form submission (no email service configured):', JSON.stringify(data, null, 2));
+      console.log(
+        'Walkthrough form submission (no email service configured):',
+        JSON.stringify(data, null, 2)
+      );
     } else {
       return { success: false, message: 'Failed to submit request. Please try again later.' };
     }
@@ -228,7 +241,6 @@ export async function submitQuoteForm(
   const rawData = {
     email: formData.get('email'),
     propertyType: formData.get('propertyType'),
-    tier: formData.get('tier'),
     website: formData.get('website'),
   };
 
@@ -253,12 +265,15 @@ export async function submitQuoteForm(
 
   const emailResult = await sendFormEmail({
     replyTo: data.email,
-    subject: `Quote Request: ${data.propertyType} / ${data.tier}`,
-    text: `Quote request\n\nEmail: ${data.email}\nProperty type: ${data.propertyType}\nTier: ${data.tier}`,
+    subject: `Quote Request: ${data.propertyType}`,
+    text: `Quote request\n\nEmail: ${data.email}\nProperty type: ${data.propertyType}`,
   });
   if (!emailResult.ok) {
     if (emailResult.error?.includes('No email service')) {
-      console.log('Quote form submission (no email service configured):', JSON.stringify(data, null, 2));
+      console.log(
+        'Quote form submission (no email service configured):',
+        JSON.stringify(data, null, 2)
+      );
     } else {
       return { success: false, message: 'Failed to submit. Please try again later.' };
     }
@@ -269,7 +284,6 @@ export async function submitQuoteForm(
     submittedAt: new Date().toISOString(),
     email: data.email,
     propertyType: data.propertyType,
-    tier: data.tier,
   };
   const pipelineResult = await sendToDealsPipeline(pipelinePayload);
   if (!pipelineResult.ok) {
@@ -278,6 +292,7 @@ export async function submitQuoteForm(
 
   return {
     success: true,
-    message: "We'll send you pricing information shortly. For a custom proposal, schedule a walkthrough.",
+    message:
+      "We'll send you pricing information shortly. For a custom proposal, schedule a walkthrough.",
   };
 }

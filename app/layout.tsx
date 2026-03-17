@@ -6,9 +6,12 @@ import { siteConfig } from '@/lib/site';
 import { generateLocalBusinessSchema } from '@/lib/seo';
 import { Footer } from '@/components/layout/Footer';
 
-const CardNav = dynamic(() => import('@/components/layout/CardNav').then((m) => ({ default: m.CardNav })), {
-  ssr: false,
-});
+const CardNav = dynamic(
+  () => import('@/components/layout/CardNav').then((m) => ({ default: m.CardNav })),
+  {
+    ssr: false,
+  }
+);
 
 const inter = Inter({
   subsets: ['latin'],
@@ -98,11 +101,7 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   const jsonLd = generateLocalBusinessSchema();
 
   return (

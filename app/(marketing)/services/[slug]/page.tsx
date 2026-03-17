@@ -29,7 +29,6 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { CTA } from '@/components/sections/CTA';
-import { siteConfig } from '@/lib/site';
 
 const icons: Record<string, React.ElementType> = {
   Building2,
@@ -99,9 +98,7 @@ export default async function ServicePage({ params }: PageProps) {
               <h1 className="text-4xl sm:text-5xl font-display font-bold text-navy-900 tracking-tight">
                 {frontmatter.title}
               </h1>
-              <p className="mt-6 text-lg text-muted-foreground">
-                {frontmatter.summary}
-              </p>
+              <p className="mt-6 text-lg text-muted-foreground">{frontmatter.summary}</p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button asChild size="lg" variant="gradient">
                   <Link href="/get-walkthrough">
@@ -150,10 +147,7 @@ export default async function ServicePage({ params }: PageProps) {
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {frontmatter.outcomes.map((outcome) => (
-              <div
-                key={outcome}
-                className="flex items-start gap-3 p-4 rounded-xl bg-slate-50"
-              >
+              <div key={outcome} className="flex items-start gap-3 p-4 rounded-xl bg-slate-50">
                 <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                 <span className="text-sm text-navy-900">{outcome}</span>
               </div>
@@ -171,9 +165,7 @@ export default async function ServicePage({ params }: PageProps) {
               <CardContent className="pt-6">
                 <div className="flex items-center gap-2 mb-4">
                   <Shield className="h-5 w-5 text-primary" />
-                  <h3 className="text-lg font-semibold text-navy-900">
-                    Service Scope
-                  </h3>
+                  <h3 className="text-lg font-semibold text-navy-900">Service Scope</h3>
                 </div>
                 <p className="text-sm text-muted-foreground mb-4">
                   Areas and spaces covered by this service:
@@ -194,9 +186,7 @@ export default async function ServicePage({ params }: PageProps) {
               <CardContent className="pt-6">
                 <div className="flex items-center gap-2 mb-4">
                   <FileText className="h-5 w-5 text-primary" />
-                  <h3 className="text-lg font-semibold text-navy-900">
-                    Cleaning Protocols
-                  </h3>
+                  <h3 className="text-lg font-semibold text-navy-900">Cleaning Protocols</h3>
                 </div>
                 <p className="text-sm text-muted-foreground mb-4">
                   Specialized procedures and standards we follow:
@@ -223,9 +213,7 @@ export default async function ServicePage({ params }: PageProps) {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <Clock className="h-5 w-5 text-primary" />
-                <h3 className="text-lg font-semibold text-navy-900">
-                  Service Frequency Options
-                </h3>
+                <h3 className="text-lg font-semibold text-navy-900">Service Frequency Options</h3>
               </div>
               <div className="space-y-3">
                 {frontmatter.frequencyOptions.map((option) => (
@@ -244,9 +232,7 @@ export default async function ServicePage({ params }: PageProps) {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <FileText className="h-5 w-5 text-primary" />
-                <h3 className="text-lg font-semibold text-navy-900">
-                  Reporting & Documentation
-                </h3>
+                <h3 className="text-lg font-semibold text-navy-900">Reporting & Documentation</h3>
               </div>
               <div className="space-y-3">
                 {frontmatter.reporting.map((item) => (
@@ -260,47 +246,6 @@ export default async function ServicePage({ params }: PageProps) {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Recommended Tiers */}
-      <section className="section-padding bg-slate-50">
-        <div className="container-wide">
-          <h2 className="text-2xl font-display font-bold text-navy-900 mb-4">
-            Recommended Service Tiers
-          </h2>
-          <p className="text-muted-foreground mb-8">
-            Based on the requirements of {frontmatter.title.toLowerCase()}, we
-            recommend these service levels:
-          </p>
-          <div className="grid gap-6 md:grid-cols-3">
-            {siteConfig.tiers.map((tier) => {
-              const isRecommended = frontmatter.tiersRecommended.includes(tier.id);
-              return (
-                <Card
-                  key={tier.id}
-                  className={isRecommended ? 'ring-2 ring-primary' : 'opacity-60'}
-                >
-                  <CardContent className="pt-6">
-                    {isRecommended && (
-                      <Badge className="mb-2">Recommended</Badge>
-                    )}
-                    <h3 className="text-lg font-semibold mb-2">{tier.name}</h3>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      {tier.description}
-                    </p>
-                    <Button
-                      asChild
-                      variant={isRecommended ? 'default' : 'outline'}
-                      className="w-full"
-                    >
-                      <Link href="/get-walkthrough">Get Quote</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              );
-            })}
           </div>
         </div>
       </section>

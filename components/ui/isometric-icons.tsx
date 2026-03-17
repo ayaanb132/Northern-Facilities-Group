@@ -58,7 +58,17 @@ export function IsometricRestaurant({ className }: { className?: string }) {
       {/* Awning stripe below roofline */}
       <path d="M10 10 L24 18 L38 10 L24 6 Z" fill="currentColor" fillOpacity="0.4" />
       {/* Door/window */}
-      <rect x="28" y="22" width="6" height="8" rx="0.5" fill="none" stroke="currentColor" strokeWidth="0.8" strokeOpacity="0.9" />
+      <rect
+        x="28"
+        y="22"
+        width="6"
+        height="8"
+        rx="0.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="0.8"
+        strokeOpacity="0.9"
+      />
     </svg>
   );
 }
@@ -74,8 +84,23 @@ export function IsometricWarehouse({ className }: { className?: string }) {
       {/* Roof (angled / shed style) */}
       <path d="M4 8 L16 14 L28 8 L16 4 Z" fill="currentColor" />
       {/* Large loading door on right face */}
-      <path d="M18 18 L26 14 L26 28 L18 32 Z" fill="currentColor" fillOpacity="0.25" stroke="currentColor" strokeWidth="0.8" strokeOpacity="0.8" />
-      <line x1="22" y1="14" x2="22" y2="30" stroke="currentColor" strokeWidth="0.6" strokeOpacity="0.6" />
+      <path
+        d="M18 18 L26 14 L26 28 L18 32 Z"
+        fill="currentColor"
+        fillOpacity="0.25"
+        stroke="currentColor"
+        strokeWidth="0.8"
+        strokeOpacity="0.8"
+      />
+      <line
+        x1="22"
+        y1="14"
+        x2="22"
+        y2="30"
+        stroke="currentColor"
+        strokeWidth="0.6"
+        strokeOpacity="0.6"
+      />
     </svg>
   );
 }
@@ -88,11 +113,48 @@ export function IsometricRetail({ className }: { className?: string }) {
       <path d="M24 38 L40 28 L40 4 L24 14 Z" fill="currentColor" fillOpacity="0.75" />
       <path d="M8 4 L24 14 L40 4 L24 0 Z" fill="currentColor" />
       {/* Large display window */}
-      <rect x="26" y="16" width="12" height="10" rx="0.5" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="0.8" strokeOpacity="0.9" />
-      <line x1="28" y1="21" x2="36" y2="21" stroke="currentColor" strokeWidth="0.4" strokeOpacity="0.5" />
-      <line x1="32" y1="17" x2="32" y2="25" stroke="currentColor" strokeWidth="0.4" strokeOpacity="0.5" />
+      <rect
+        x="26"
+        y="16"
+        width="12"
+        height="10"
+        rx="0.5"
+        fill="currentColor"
+        fillOpacity="0.15"
+        stroke="currentColor"
+        strokeWidth="0.8"
+        strokeOpacity="0.9"
+      />
+      <line
+        x1="28"
+        y1="21"
+        x2="36"
+        y2="21"
+        stroke="currentColor"
+        strokeWidth="0.4"
+        strokeOpacity="0.5"
+      />
+      <line
+        x1="32"
+        y1="17"
+        x2="32"
+        y2="25"
+        stroke="currentColor"
+        strokeWidth="0.4"
+        strokeOpacity="0.5"
+      />
       {/* Door */}
-      <rect x="30" y="26" width="4" height="6" rx="0.5" fill="none" stroke="currentColor" strokeWidth="0.7" strokeOpacity="0.8" />
+      <rect
+        x="30"
+        y="26"
+        width="4"
+        height="6"
+        rx="0.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="0.7"
+        strokeOpacity="0.8"
+      />
     </svg>
   );
 }

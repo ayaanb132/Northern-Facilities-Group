@@ -2,7 +2,13 @@
 
 import * as React from 'react';
 import { Canvas, type RootState } from '@react-three/fiber';
-import { Environment, ContactShadows, AdaptiveDpr, AdaptiveEvents, Preload } from '@react-three/drei';
+import {
+  Environment,
+  ContactShadows,
+  AdaptiveDpr,
+  AdaptiveEvents,
+  Preload,
+} from '@react-three/drei';
 import { Suspense } from 'react';
 import * as THREE from 'three';
 import { PerfGateProvider, usePerfGate, PerfGate } from './PerfGate';
@@ -15,7 +21,17 @@ interface SceneCanvasProps {
   className?: string;
   posterSrc?: string;
   posterAlt?: string;
-  environmentPreset?: 'apartment' | 'city' | 'dawn' | 'forest' | 'lobby' | 'night' | 'park' | 'studio' | 'sunset' | 'warehouse';
+  environmentPreset?:
+    | 'apartment'
+    | 'city'
+    | 'dawn'
+    | 'forest'
+    | 'lobby'
+    | 'night'
+    | 'park'
+    | 'studio'
+    | 'sunset'
+    | 'warehouse';
   showContactShadows?: boolean;
   cameraPosition?: [number, number, number];
   cameraFov?: number;
@@ -55,13 +71,7 @@ function SceneContent({
 
       {/* Contact shadows (only in high quality mode) */}
       {shouldShowShadows && (
-        <ContactShadows
-          position={[0, -0.01, 0]}
-          opacity={0.4}
-          scale={20}
-          blur={2}
-          far={10}
-        />
+        <ContactShadows position={[0, -0.01, 0]} opacity={0.4} scale={20} blur={2} far={10} />
       )}
 
       {/* Performance monitoring */}
@@ -173,12 +183,7 @@ export function SceneCanvas({
     <PerfGateProvider>
       <PerfGate
         fallback={
-          <PosterFallback
-            src={posterSrc}
-            alt={posterAlt}
-            className={className}
-            enableParallax
-          />
+          <PosterFallback src={posterSrc} alt={posterAlt} className={className} enableParallax />
         }
       >
         <CanvasWrapper

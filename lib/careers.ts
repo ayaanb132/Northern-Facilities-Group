@@ -49,7 +49,7 @@ export const jobs: JobListing[] = [
       'Ability to work from our GTA office or remote',
     ],
     notRequired: [
-      'Cleaning industry knowledge (we\'ll teach you)',
+      "Cleaning industry knowledge (we'll teach you)",
       'Sales degree or certification',
       'Perfectly polished sales background',
     ],
@@ -63,11 +63,20 @@ export const jobs: JobListing[] = [
     successMetrics: [
       {
         period: 'Daily',
-        items: ['25-30 outbound conversations', '3-5 new prospects qualified', '1-2 walkthrough appointments booked'],
+        items: [
+          '25-30 outbound conversations',
+          '3-5 new prospects qualified',
+          '1-2 walkthrough appointments booked',
+        ],
       },
       {
         period: 'Monthly',
-        items: ['500-600 conversations', '60-100 qualified prospects', '20-40 walkthrough bookings', '2-4 closed deals'],
+        items: [
+          '500-600 conversations',
+          '60-100 qualified prospects',
+          '20-40 walkthrough bookings',
+          '2-4 closed deals',
+        ],
       },
     ],
     onboarding: [
@@ -78,7 +87,7 @@ export const jobs: JobListing[] = [
     ],
     tools: ['Quo (phone dialer)', 'Custom CRM', 'Email/SMS sequencing tools', 'Google Suite'],
     whyJoin: [
-      'You\'ll actually close deals—we have a proven playbook',
+      "You'll actually close deals—we have a proven playbook",
       'Real commission structure—serious money by month 3-4',
       'Weekly 1-on-1s, daily coaching, supportive team',
       '95% close rate on our best channel',
@@ -128,7 +137,12 @@ export const jobs: JobListing[] = [
       },
       {
         period: 'Monthly',
-        items: ['800-1,000 calls handled', '100-200 prospects qualified', '40-60 walkthroughs scheduled', '95%+ CRM accuracy'],
+        items: [
+          '800-1,000 calls handled',
+          '100-200 prospects qualified',
+          '40-60 walkthroughs scheduled',
+          '95%+ CRM accuracy',
+        ],
       },
     ],
     onboarding: [
@@ -137,7 +151,13 @@ export const jobs: JobListing[] = [
       'Week 2: Handle 80% of calls independently',
       'Week 3+: Full responsibility',
     ],
-    tools: ['Quo (phone system)', 'Custom CRM', 'Email platform', 'SMS/follow-up tools', 'Google Sheets'],
+    tools: [
+      'Quo (phone system)',
+      'Custom CRM',
+      'Email platform',
+      'SMS/follow-up tools',
+      'Google Sheets',
+    ],
     whyJoin: [
       'Critical to growth—good intake multiplies deals',
       'Learn the business, options to move into other roles',
@@ -237,7 +257,12 @@ export const jobs: JobListing[] = [
     successMetrics: [
       {
         period: 'Monthly (Part-Time)',
-        items: ['40-60 inbound leads managed', '12-20 consultations', '4-8 closes', '$800-2,400 commission'],
+        items: [
+          '40-60 inbound leads managed',
+          '12-20 consultations',
+          '4-8 closes',
+          '$800-2,400 commission',
+        ],
       },
     ],
     tools: ['Google Ads', 'CRM', 'Email/phone tools', 'Google Suite'],

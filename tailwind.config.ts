@@ -112,12 +112,12 @@ const config: Config = {
         '4xl': '2rem',
       },
       boxShadow: {
-        'soft': '0 2px 10px -2px rgba(0, 0, 0, 0.05), 0 4px 20px -4px rgba(0, 0, 0, 0.04)',
+        soft: '0 2px 10px -2px rgba(0, 0, 0, 0.05), 0 4px 20px -4px rgba(0, 0, 0, 0.04)',
         'soft-lg': '0 4px 24px -4px rgba(0, 0, 0, 0.08), 0 8px 40px -8px rgba(0, 0, 0, 0.06)',
         'soft-xl': '0 8px 40px -8px rgba(0, 0, 0, 0.1), 0 16px 64px -16px rgba(0, 0, 0, 0.08)',
-        'glow': '0 0 20px rgba(59, 130, 246, 0.2)',
+        glow: '0 0 20px rgba(59, 130, 246, 0.2)',
         'glow-lg': '0 0 40px rgba(59, 130, 246, 0.25)',
-        'apple': '0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.03)',
+        apple: '0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.03)',
         'apple-lg': '0 10px 40px -10px rgba(0, 0, 0, 0.08)',
       },
       animation: {
@@ -126,7 +126,7 @@ const config: Config = {
         'fade-in': 'fade-in 0.5s ease-out',
         'fade-up': 'fade-up 0.5s ease-out',
         'slide-in-right': 'slide-in-right 0.5s ease-out',
-        'float': 'float 6s ease-in-out infinite',
+        float: 'float 6s ease-in-out infinite',
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
@@ -150,7 +150,7 @@ const config: Config = {
           '0%': { opacity: '0', transform: 'translateX(20px)' },
           '100%': { opacity: '1', transform: 'translateX(0)' },
         },
-        'float': {
+        float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
         },

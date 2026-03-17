@@ -57,10 +57,7 @@ export function PosterFallback({
   return (
     <div
       ref={containerRef}
-      className={cn(
-        'relative w-full h-full overflow-hidden rounded-2xl',
-        className
-      )}
+      className={cn('relative w-full h-full overflow-hidden rounded-2xl', className)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >

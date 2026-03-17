@@ -29,9 +29,8 @@ export default function ProofPage() {
               Testimonials
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              Real feedback from property managers, facility owners, and clients
-              across the GTA. See why they trust NFG for cleaning and facility
-              management.
+              Real feedback from property managers, facility owners, and clients across the GTA. See
+              why they trust NFG for cleaning and facility management.
             </p>
           </div>
         </div>
@@ -51,8 +50,8 @@ export default function ProofPage() {
             Want to see detailed results?
           </h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            Explore our case studies to see how we&apos;ve helped clients achieve
-            measurable improvements in their facilities.
+            Explore our case studies to see how we&apos;ve helped clients achieve measurable
+            improvements in their facilities.
           </p>
           <Button asChild>
             <Link href="/case-studies">

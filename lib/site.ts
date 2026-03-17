@@ -36,49 +36,6 @@ export const siteConfig = {
     { id: 'retail', name: 'Retail', icon: 'Store' },
     { id: 'office', name: 'Office', icon: 'Briefcase' },
   ],
-  tiers: [
-    {
-      id: 'essential',
-      name: 'Essential',
-      description: 'Daily cleaning and maintenance for standard requirements',
-      features: [
-        'Daily cleaning service',
-        'Basic supplies included',
-        'Weekly supervisor check-ins',
-        'Standard reporting',
-      ],
-      popular: false,
-    },
-    {
-      id: 'professional',
-      name: 'Professional',
-      description: 'Enhanced cleaning with quality assurance and dedicated support',
-      features: [
-        'Everything in Essential',
-        'Enhanced cleaning protocols',
-        'Bi-weekly deep cleaning',
-        'Dedicated account manager',
-        'Real-time reporting dashboard',
-        '24/7 emergency support',
-      ],
-      popular: true,
-    },
-    {
-      id: 'enterprise',
-      name: 'Enterprise',
-      description: 'Full-service facility management with custom SLAs',
-      features: [
-        'Everything in Professional',
-        'Custom SLA agreements',
-        'On-site supervision',
-        'Inventory management',
-        'Vendor coordination',
-        'Sustainability reporting',
-        'Executive quarterly reviews',
-      ],
-      popular: false,
-    },
-  ],
   stats: [
     { value: '100,000+', label: 'sqft serviced daily' },
     { value: '5+', label: 'Years in Business' },
@@ -92,4 +49,3 @@ export const siteConfig = {
 } as const;
 
 export type PropertyType = (typeof siteConfig.propertyTypes)[number]['id'];
-export type Tier = (typeof siteConfig.tiers)[number];

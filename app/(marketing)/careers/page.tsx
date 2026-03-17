@@ -9,7 +9,7 @@ import { jobs } from '@/lib/careers';
 export const metadata: Metadata = genMeta({
   title: 'Careers',
   description:
-    'Join Northern Facilities Group. We\'re hiring Business Development Reps, Intake Specialists, Operations Coordinators, and more. Grow with us in the GTA.',
+    "Join Northern Facilities Group. We're hiring Business Development Reps, Intake Specialists, Operations Coordinators, and more. Grow with us in the GTA.",
   pathname: '/careers',
 });
 
@@ -27,8 +27,8 @@ export default function CareersPage() {
               Careers at NFG
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              We&apos;re a rapidly growing facilities management company serving the GTA.
-              Join us and grow with a team that moves fast, owns results, and builds trust.
+              We&apos;re a rapidly growing facilities management company serving the GTA. Join us
+              and grow with a team that moves fast, owns results, and builds trust.
             </p>
           </div>
         </div>
@@ -39,11 +39,7 @@ export default function CareersPage() {
         <div className="container-wide">
           <div className="grid gap-6 lg:grid-cols-2">
             {jobs.map((job) => (
-              <Link
-                key={job.slug}
-                href={`/careers/${job.slug}`}
-                className="group block"
-              >
+              <Link key={job.slug} href={`/careers/${job.slug}`} className="group block">
                 <article className="h-full rounded-2xl border bg-white p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg hover:border-primary/20">
                   <div className="flex items-start justify-between gap-4">
                     <div>
@@ -80,19 +76,27 @@ export default function CareersPage() {
       <section className="section-padding bg-slate-50">
         <div className="container-wide">
           <div className="max-w-3xl">
-            <h2 className="text-2xl font-display font-bold text-navy-900 mb-6">
-              Our Values
-            </h2>
+            <h2 className="text-2xl font-display font-bold text-navy-900 mb-6">Our Values</h2>
             <ul className="space-y-3 text-foreground/80">
-              <li><strong>Move Fast.</strong> Make decisions, test, adjust.</li>
-              <li><strong>Own Your Results.</strong> Hit targets. Own your mistakes.</li>
-              <li><strong>Solve Problems.</strong> Things break. Fix them.</li>
-              <li><strong>Respect Your Team.</strong> Treat people like you want to be treated.</li>
-              <li><strong>Build Trust.</strong> Do what you say. Communicate clearly.</li>
+              <li>
+                <strong>Move Fast.</strong> Make decisions, test, adjust.
+              </li>
+              <li>
+                <strong>Own Your Results.</strong> Hit targets. Own your mistakes.
+              </li>
+              <li>
+                <strong>Solve Problems.</strong> Things break. Fix them.
+              </li>
+              <li>
+                <strong>Respect Your Team.</strong> Treat people like you want to be treated.
+              </li>
+              <li>
+                <strong>Build Trust.</strong> Do what you say. Communicate clearly.
+              </li>
             </ul>
             <p className="mt-6 text-foreground/70">
-              We&apos;re not looking for people who need to be told what to do.
-              We&apos;re looking for people who take ownership, move fast, and grow with us.
+              We&apos;re not looking for people who need to be told what to do. We&apos;re looking
+              for people who take ownership, move fast, and grow with us.
             </p>
           </div>
         </div>

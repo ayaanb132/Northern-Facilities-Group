@@ -110,13 +110,13 @@ export function Model({
   // Clone the scene to avoid issues with reusing
   const clonedScene = React.useMemo(() => {
     const clone = gltf.scene.clone(true);
-    
+
     // Apply shadow settings
     clone.traverse((child) => {
       if (child instanceof THREE.Mesh) {
         child.castShadow = castShadow;
         child.receiveShadow = receiveShadow;
-        
+
         // Ensure materials are properly set up
         if (child.material) {
           const material = child.material as THREE.MeshStandardMaterial;

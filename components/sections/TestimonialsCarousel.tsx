@@ -32,7 +32,7 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
 
   const goTo = useCallback(
     (delta: number) => {
-      setPage((p) => ((p + delta) % totalPages + totalPages) % totalPages);
+      setPage((p) => (((p + delta) % totalPages) + totalPages) % totalPages);
     },
     [totalPages]
   );
@@ -45,10 +45,7 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
 
   if (items.length === 0) return null;
 
-  const pair = [
-    items[page * 2],
-    items[page * 2 + 1],
-  ].filter(Boolean);
+  const pair = [items[page * 2], items[page * 2 + 1]].filter(Boolean);
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -109,9 +106,7 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
               aria-current={i === page}
               onClick={() => setPage(i)}
               className={`h-2 rounded-full transition-all ${
-                i === page
-                  ? 'w-6 bg-primary'
-                  : 'w-2 bg-slate-300 hover:bg-slate-400'
+                i === page ? 'w-6 bg-primary' : 'w-2 bg-slate-300 hover:bg-slate-400'
               }`}
             />
           ))}

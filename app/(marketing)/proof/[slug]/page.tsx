@@ -32,10 +32,5 @@ export default async function CaseStudyPage({ params }: PageProps) {
     notFound();
   }
 
-  return (
-    <CaseStudyView
-      frontmatter={study.frontmatter}
-      content={study.content}
-    />
-  );
+  return <CaseStudyView frontmatter={study.frontmatter} content={study.content} />;
 }

@@ -22,12 +22,12 @@ export interface DealPayload {
   propertyType: string;
   /** For walkthrough: square footage band; for quote: N/A */
   squareFootage?: string;
-  /** For quote: tier; for walkthrough: N/A */
-  tier?: string;
   message?: string;
 }
 
-export async function sendToDealsPipeline(payload: DealPayload): Promise<{ ok: boolean; error?: string }> {
+export async function sendToDealsPipeline(
+  payload: DealPayload
+): Promise<{ ok: boolean; error?: string }> {
   const url = process.env.DEALS_PIPELINE_WEBHOOK_URL;
   const apiKey = process.env.DEALS_PIPELINE_API_KEY;
 

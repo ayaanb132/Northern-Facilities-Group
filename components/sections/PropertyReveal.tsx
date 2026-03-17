@@ -31,7 +31,11 @@ function FloatingCard({
   scrollProgress: MotionValue<number>;
   parallaxOffset?: number;
 }) {
-  const y = useTransform(scrollProgress, [0, 0.3, 0.7, 1], [24 + parallaxOffset, 6, -6, -24 - parallaxOffset]);
+  const y = useTransform(
+    scrollProgress,
+    [0, 0.3, 0.7, 1],
+    [24 + parallaxOffset, 6, -6, -24 - parallaxOffset]
+  );
   const opacity = useTransform(scrollProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0]);
   const scale = useTransform(scrollProgress, [0, 0.2], [0.96, 1]);
 
@@ -43,8 +47,12 @@ function FloatingCard({
         className
       )}
     >
-      <h3 className="text-sm font-semibold tracking-tight text-[hsl(var(--foreground))]">{title}</h3>
-      <p className="mt-1 text-xs leading-snug text-[hsl(var(--foreground))]/70 line-clamp-2">{description}</p>
+      <h3 className="text-sm font-semibold tracking-tight text-[hsl(var(--foreground))]">
+        {title}
+      </h3>
+      <p className="mt-1 text-xs leading-snug text-[hsl(var(--foreground))]/70 line-clamp-2">
+        {description}
+      </p>
       <Link
         href={href}
         className="mt-2 inline-flex items-center text-xs font-medium text-[hsl(var(--primary))] hover:underline"
@@ -76,13 +84,7 @@ function PropertyViewport({ config }: { config: ModelConfig }) {
   );
 }
 
-function RevealBlock({
-  propertyIds,
-  index,
-}: {
-  propertyIds: [string, string];
-  index: number;
-}) {
+function RevealBlock({ propertyIds, index }: { propertyIds: [string, string]; index: number }) {
   const ref = React.useRef<HTMLElement>(null);
   const isInView = useInView(ref, { amount: 0.15, once: true });
   const { scrollYProgress } = useScroll({

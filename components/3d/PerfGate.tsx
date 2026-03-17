@@ -59,8 +59,7 @@ function detectCapabilities(): PerformanceCapabilities {
     return defaultCapabilities;
   }
 
-  const deviceMemory =
-    (navigator as Navigator & { deviceMemory?: number }).deviceMemory || 4;
+  const deviceMemory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory || 4;
   const hardwareConcurrency = navigator.hardwareConcurrency || 4;
 
   let supportsWebGL2 = false;
@@ -71,34 +70,21 @@ function detectCapabilities(): PerformanceCapabilities {
     supportsWebGL2 = false;
   }
 
-  const prefersReducedMotion = window.matchMedia(
-    '(prefers-reduced-motion: reduce)'
-  ).matches;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const isMobile =
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    ) || window.innerWidth < 768;
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+    window.innerWidth < 768;
 
   let level: PerformanceLevel = 'standard';
   let maxDpr = 1.5;
   let recommendedLOD: 'high' | 'mid' | 'low' = 'mid';
 
-  if (
-    deviceMemory >= 8 &&
-    hardwareConcurrency >= 8 &&
-    supportsWebGL2 &&
-    !isMobile
-  ) {
+  if (deviceMemory >= 8 && hardwareConcurrency >= 8 && supportsWebGL2 && !isMobile) {
     level = 'high';
     maxDpr = 2.0;
     recommendedLOD = 'high';
-  } else if (
-    deviceMemory < 4 ||
-    hardwareConcurrency < 4 ||
-    !supportsWebGL2 ||
-    isMobile
-  ) {
+  } else if (deviceMemory < 4 || hardwareConcurrency < 4 || !supportsWebGL2 || isMobile) {
     level = 'low';
     maxDpr = 1.0;
     recommendedLOD = 'low';
@@ -117,9 +103,7 @@ function detectCapabilities(): PerformanceCapabilities {
 }
 
 /** Initial render mode from capabilities: poster when 3D is not viable. */
-function initialRenderMode(
-  caps: PerformanceCapabilities
-): RenderMode {
+function initialRenderMode(caps: PerformanceCapabilities): RenderMode {
   if (!caps.supportsWebGL2 || caps.prefersReducedMotion) return 'poster';
   if (caps.level === 'low') return 'poster';
   return 'standard';
@@ -133,9 +117,7 @@ export function PerfGateProvider({ children }: PerfGateProviderProps) {
   const [capabilities, setCapabilities] =
     React.useState<PerformanceCapabilities>(defaultCapabilities);
   const [renderMode, setRenderMode] = React.useState<RenderMode>('standard');
-  const [qualityMode, setQualityMode] = React.useState<'standard' | 'high'>(
-    'standard'
-  );
+  const [qualityMode, setQualityMode] = React.useState<'standard' | 'high'>('standard');
 
   React.useEffect(() => {
     const caps = detectCapabilities();
@@ -147,9 +129,7 @@ export function PerfGateProvider({ children }: PerfGateProviderProps) {
   }, []);
 
   const shouldRender3D =
-    renderMode !== 'poster' &&
-    capabilities.supportsWebGL2 &&
-    !capabilities.prefersReducedMotion;
+    renderMode !== 'poster' && capabilities.supportsWebGL2 && !capabilities.prefersReducedMotion;
 
   const value = React.useMemo(
     () => ({
@@ -163,11 +143,7 @@ export function PerfGateProvider({ children }: PerfGateProviderProps) {
     [capabilities, renderMode, qualityMode, shouldRender3D]
   );
 
-  return (
-    <PerfGateContext.Provider value={value}>
-      {children}
-    </PerfGateContext.Provider>
-  );
+  return <PerfGateContext.Provider value={value}>{children}</PerfGateContext.Provider>;
 }
 
 export function PerfGate({

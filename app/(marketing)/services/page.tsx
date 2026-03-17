@@ -50,9 +50,8 @@ export default async function ServicesPage() {
               Services Built for Your Industry
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              Every property type has unique cleaning requirements. Our specialized teams
-              are trained in industry-specific protocols to deliver the results your
-              facility demands.
+              Every property type has unique cleaning requirements. Our specialized teams are
+              trained in industry-specific protocols to deliver the results your facility demands.
             </p>
           </div>
         </div>
@@ -65,11 +64,7 @@ export default async function ServicesPage() {
             {services.map((service) => {
               const Icon = icons[service.icon] || Building2;
               return (
-                <Link
-                  key={service.slug}
-                  href={`/services/${service.slug}`}
-                  className="group block"
-                >
+                <Link key={service.slug} href={`/services/${service.slug}`} className="group block">
                   <article className="h-full rounded-2xl border bg-white p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg">
                     <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
                       <Icon className="h-7 w-7" />
@@ -77,12 +72,8 @@ export default async function ServicesPage() {
                     <Badge variant="outline" className="mb-3">
                       {service.category}
                     </Badge>
-                    <h2 className="text-xl font-semibold text-navy-900 mb-3">
-                      {service.title}
-                    </h2>
-                    <p className="text-muted-foreground text-sm mb-4">
-                      {service.summary}
-                    </p>
+                    <h2 className="text-xl font-semibold text-navy-900 mb-3">{service.title}</h2>
+                    <p className="text-muted-foreground text-sm mb-4">{service.summary}</p>
                     <div className="flex flex-wrap gap-2 mb-6">
                       {service.outcomes.slice(0, 3).map((outcome) => (
                         <span
@@ -113,8 +104,8 @@ export default async function ServicesPage() {
               Why Choose Specialized Cleaning?
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Generic cleaning services can't meet the unique demands of your industry.
-              Our specialized approach delivers better results.
+              Generic cleaning services can't meet the unique demands of your industry. Our
+              specialized approach delivers better results.
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">

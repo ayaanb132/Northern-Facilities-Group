@@ -52,9 +52,7 @@ export function generateMetadata({
       description: siteDescription,
       images: [siteImage],
     },
-    robots: noIndex
-      ? { index: false, follow: false }
-      : { index: true, follow: true },
+    robots: noIndex ? { index: false, follow: false } : { index: true, follow: true },
   };
 }
 
@@ -73,9 +71,7 @@ interface LocalBusinessSchema {
   };
 }
 
-export function generateLocalBusinessSchema(
-  overrides?: Partial<LocalBusinessSchema>
-): object {
+export function generateLocalBusinessSchema(overrides?: Partial<LocalBusinessSchema>): object {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -105,11 +101,7 @@ export function generateLocalBusinessSchema(
       '@type': 'Country',
       name: 'Canada',
     },
-    serviceType: [
-      'Commercial Cleaning',
-      'Facility Management',
-      'Janitorial Services',
-    ],
+    serviceType: ['Commercial Cleaning', 'Facility Management', 'Janitorial Services'],
   };
 }
 
@@ -149,9 +141,7 @@ export function generateServiceSchema({
   };
 }
 
-export function generateBreadcrumbSchema(
-  items: { name: string; href: string }[]
-): object {
+export function generateBreadcrumbSchema(items: { name: string; href: string }[]): object {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',

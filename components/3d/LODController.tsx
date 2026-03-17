@@ -67,7 +67,7 @@ export function LODControllerProvider({
     if (forcedLOD) return;
 
     let targetLOD: LODLevel = 'mid';
-    
+
     if (qualityMode === 'high' && capabilities.level !== 'low') {
       targetLOD = 'high';
     } else if (capabilities.level === 'low') {
@@ -89,11 +89,7 @@ export function LODControllerProvider({
     [state, forcedLOD]
   );
 
-  return (
-    <LODControllerContext.Provider value={value}>
-      {children}
-    </LODControllerContext.Provider>
-  );
+  return <LODControllerContext.Provider value={value}>{children}</LODControllerContext.Provider>;
 }
 
 // Track how long FPS has been in "low" or "high" range for hysteresis
@@ -114,9 +110,7 @@ function LODMonitorInner() {
       frameTimesRef.current.shift();
     }
 
-    const avgFPS =
-      frameTimesRef.current.reduce((a, b) => a + b, 0) /
-      frameTimesRef.current.length;
+    const avgFPS = frameTimesRef.current.reduce((a, b) => a + b, 0) / frameTimesRef.current.length;
 
     let newLOD: LODLevel | null = null;
 
@@ -135,10 +129,7 @@ function LODMonitorInner() {
           newLOD = 'low';
           lowFPSStartRef.current = null;
         }
-      } else if (
-        avgFPS > FPS_THRESHOLDS.high.upgrade &&
-        capabilities.level === 'high'
-      ) {
+      } else if (avgFPS > FPS_THRESHOLDS.high.upgrade && capabilities.level === 'high') {
         if (highFPSStartRef.current === null) highFPSStartRef.current = now;
         lowFPSStartRef.current = null;
         if (now - highFPSStartRef.current >= HYSTERESIS_UPGRADE_MS) {
@@ -176,9 +167,7 @@ export function LODMonitor() {
 }
 
 // Helper hook to get model path based on current LOD
-export function useLODModelPath(
-  paths: { high: string; mid: string; low: string }
-): string {
+export function useLODModelPath(paths: { high: string; mid: string; low: string }): string {
   const { currentLOD } = useLODController();
   return paths[currentLOD];
 }

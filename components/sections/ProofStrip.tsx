@@ -17,7 +17,12 @@ interface ProofStripProps {
 
 export function ProofStrip({ className }: ProofStripProps) {
   return (
-    <section className={cn('py-12 bg-secondary border-y border-[hsl(var(--foreground))]/[0.06]', className)}>
+    <section
+      className={cn(
+        'py-12 bg-secondary border-y border-[hsl(var(--foreground))]/[0.06]',
+        className
+      )}
+    >
       <div className="container-wide">
         <div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-8 sm:gap-x-24 md:gap-x-32">
           {BADGES.map((badge, index) => (

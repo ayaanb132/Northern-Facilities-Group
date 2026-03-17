@@ -50,15 +50,9 @@ export function ContactForm() {
             <CheckCircle className="h-8 w-8 text-green-600" />
           </div>
         </div>
-        <h3 className="text-xl font-semibold text-navy-900 mb-2">
-          Message Sent!
-        </h3>
+        <h3 className="text-xl font-semibold text-navy-900 mb-2">Message Sent!</h3>
         <p className="text-muted-foreground">{result.message}</p>
-        <Button
-          variant="outline"
-          className="mt-6"
-          onClick={() => setResult(null)}
-        >
+        <Button variant="outline" className="mt-6" onClick={() => setResult(null)}>
           Send Another Message
         </Button>
       </div>
@@ -70,32 +64,17 @@ export function ContactForm() {
       {/* Honeypot field - hidden from users */}
       <div className="hidden" aria-hidden="true">
         <label htmlFor="website-contact">Website</label>
-        <input
-          type="text"
-          name="website"
-          id="website-contact"
-          tabIndex={-1}
-          autoComplete="off"
-        />
+        <input type="text" name="website" id="website-contact" tabIndex={-1} autoComplete="off" />
       </div>
 
       {result && !result.success && (
-        <div className="p-4 bg-red-50 text-red-700 rounded-lg text-sm">
-          {result.message}
-        </div>
+        <div className="p-4 bg-red-50 text-red-700 rounded-lg text-sm">{result.message}</div>
       )}
 
       <div className="space-y-2">
         <Label htmlFor="name">Name *</Label>
-        <Input
-          id="name"
-          name="name"
-          required
-          error={!!result?.errors?.name}
-        />
-        {result?.errors?.name && (
-          <p className="text-sm text-red-500">{result.errors.name[0]}</p>
-        )}
+        <Input id="name" name="name" required error={!!result?.errors?.name} />
+        {result?.errors?.name && <p className="text-sm text-red-500">{result.errors.name[0]}</p>}
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2">
@@ -121,12 +100,7 @@ export function ContactForm() {
 
       <div className="space-y-2">
         <Label htmlFor="subject">Subject *</Label>
-        <Input
-          id="subject"
-          name="subject"
-          required
-          error={!!result?.errors?.subject}
-        />
+        <Input id="subject" name="subject" required error={!!result?.errors?.subject} />
         {result?.errors?.subject && (
           <p className="text-sm text-red-500">{result.errors.subject[0]}</p>
         )}
