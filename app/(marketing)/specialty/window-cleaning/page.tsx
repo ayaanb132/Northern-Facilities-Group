@@ -49,9 +49,8 @@ export default function WindowCleaningPage() {
       />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 gradient-bg relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-slate-200/50 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0))] -z-10" />
-        <div className="container-wide">
+      <section className="py-10 md:py-16 lg:py-20 pt-28 md:pt-32 lg:pt-40 gradient-bg relative overflow-hidden">
+        <div className="container-wide px-5 md:px-[30px] lg:px-10">
           <div className="max-w-4xl">
             <div className="flex items-center gap-3 mb-6">
               <Badge variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20">
@@ -63,7 +62,7 @@ export default function WindowCleaningPage() {
               </div>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-navy-900 tracking-tight leading-[1.1] mb-6">
+            <h1 className="text-[28px] md:text-[32px] lg:text-[40px] leading-[1.6] lg:leading-[1.7] font-display font-bold text-navy-900 tracking-tight mb-6">
               Professional Window Cleaning Services for Ontario Homes & Businesses
             </h1>
 
@@ -80,14 +79,21 @@ export default function WindowCleaningPage() {
               clean windows. We do it right. Every time."
             </blockquote>
 
-            <div className="flex flex-wrap gap-4">
-              <Button asChild size="lg" className="h-14 px-8 text-lg">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button
+                asChild
+                className="min-h-[48px] h-12 lg:h-14 w-full sm:w-auto px-6 lg:px-8 text-base lg:text-lg"
+              >
                 <a href="tel:8556641144">
                   Call: (855) 664-1144
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg">
+              <Button
+                asChild
+                variant="outline"
+                className="min-h-[48px] h-12 lg:h-14 w-full sm:w-auto px-6 lg:px-8 text-base lg:text-lg"
+              >
                 <a href="mailto:info@northernfacilitiesgroup.ca">Email Us</a>
               </Button>
             </div>
@@ -96,8 +102,8 @@ export default function WindowCleaningPage() {
       </section>
 
       {/* Two Column Section: Residential vs Commercial */}
-      <section className="py-20 bg-slate-50">
-        <div className="container-wide">
+      <section className="py-[30px] md:py-[50px] lg:py-[80px] bg-slate-50">
+        <div className="container-wide px-5 md:px-[30px] lg:px-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-8">
             {/* Residential */}
             <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-sm border border-border/50">
@@ -236,9 +242,9 @@ export default function WindowCleaningPage() {
       </section>
 
       {/* Why Choose Us & Equipment */}
-      <section className="py-20">
-        <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <section className="py-[30px] md:py-[50px] lg:py-[80px]">
+        <div className="container-wide px-5 md:px-[30px] lg:px-10">
+          <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl font-display font-bold text-navy-900 mb-4">
                 Why Choose Northern Facilities Group?
@@ -309,9 +315,9 @@ export default function WindowCleaningPage() {
       </section>
 
       {/* Animated Service Steps */}
-      <section className="py-24 bg-slate-50 border-y border-border/50 overflow-hidden">
-        <div className="container-wide max-w-4xl mx-auto">
-          <div className="text-center mb-16">
+      <section className="py-[30px] md:py-[50px] lg:py-[80px] bg-slate-50 border-y border-border/50 overflow-hidden">
+        <div className="container-wide px-5 md:px-[30px] lg:px-10 max-w-4xl mx-auto">
+          <div className="text-center mb-10 md:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-navy-900 mb-6">
               Service Breakdown: From Contact to Final Payment
             </h2>
@@ -326,10 +332,10 @@ export default function WindowCleaningPage() {
       </section>
 
       {/* Areas, Payments & FAQs */}
-      <section className="py-20">
-        <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-16">
-            <div className="space-y-12">
+      <section className="py-[30px] md:py-[50px] lg:py-[80px]">
+        <div className="container-wide px-5 md:px-[30px] lg:px-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+            <div className="space-y-10 md:space-y-12">
               <div>
                 <h2 className="text-2xl font-display font-bold text-navy-900 mb-6 border-b pb-4">
                   Service Areas Across Ontario
@@ -440,8 +446,8 @@ export default function WindowCleaningPage() {
       </section>
 
       {/* Pre-footer CTA */}
-      <section className="py-20 bg-primary mb-10 text-white text-center">
-        <div className="container-wide max-w-4xl mx-auto">
+      <section className="py-[30px] md:py-[50px] lg:py-[80px] bg-primary mb-10 text-white text-center">
+        <div className="container-wide px-5 md:px-[30px] lg:px-10 max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-5xl font-display font-bold mb-6">
             Ready for Clean Windows?
           </h2>
