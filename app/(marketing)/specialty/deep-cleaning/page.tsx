@@ -15,6 +15,10 @@ import {
   Calendar,
   ClipboardCheck,
   AlertTriangle,
+  Star,
+  Camera,
+  Cog,
+  Users,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -124,7 +128,7 @@ export default function DeepCleaningPage() {
       </section>
 
       {/* When You Actually Need Deep Cleaning */}
-      <section className="py-[30px] md:py-[50px] lg:py-[80px] bg-white">
+      <section className="py-[30px] md:py-[50px] lg:py-[80px] bg-white border-b border-border/50">
         <div className="container-wide px-5 md:px-[30px] lg:px-10">
           <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
             <h2 className="text-3xl lg:text-4xl font-display font-bold text-navy-900 mb-4">
@@ -141,33 +145,35 @@ export default function DeepCleaningPage() {
               <Wrench className="h-10 w-10 text-primary mb-4" />
               <h3 className="text-xl font-bold text-navy-900 mb-3">Post-Construction</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                We remove construction dust from every surface, clean equipment areas so machinery
-                runs properly, detail vents and fixtures, and prepare your space for occupancy so
-                move-in happens on schedule.
+                After construction wraps, dust is everywhere. Equipment areas are filthy. Windows
+                are hazed. We remove construction dust from every surface, clean equipment areas,
+                detail every vent and fixture, and prepare your space for occupancy on schedule.
               </p>
             </div>
             <div className="bg-slate-50 border border-slate-200 p-6 md:p-8 rounded-2xl transition hover:shadow-md">
               <Calendar className="h-10 w-10 text-primary mb-4" />
               <h3 className="text-xl font-bold text-navy-900 mb-3">Seasonal / Annual Reset</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                Over a year, dust accumulates in unreached spaces. A quarterly or annual deep clean
-                brings your facility back to baseline, preventing decline and maintaining standards.
+                Over a year, dust accumulates in unreached spaces. Equipment areas build up debris.
+                Corners and baseboards get overlooked. Most facilities do this quarterly or annually
+                to prevent operational decline and maintain compliance standards.
               </p>
             </div>
             <div className="bg-slate-50 border border-slate-200 p-6 md:p-8 rounded-2xl transition hover:shadow-md">
               <ClipboardCheck className="h-10 w-10 text-primary mb-4" />
               <h3 className="text-xl font-bold text-navy-900 mb-3">Before Inspections</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                A pre-audit deep clean ensures your facility passes inspection. We handle the dirty
-                equipment areas, dusty surfaces, and neglected corners that inspectors look for.
+                Inspectors look for detail. Dirty equipment areas, dusty surfaces, neglected
+                corners—these raise red flags, even if your daily cleaning is fine. A pre-audit deep
+                clean ensures your facility passes inspection. Every detail matters. We handle them.
               </p>
             </div>
             <div className="bg-slate-50 border border-slate-200 p-6 md:p-8 rounded-2xl transition hover:shadow-md">
               <Home className="h-10 w-10 text-primary mb-4" />
-              <h3 className="text-xl font-bold text-navy-900 mb-3">Move-In/Move-Out</h3>
+              <h3 className="text-xl font-bold text-navy-900 mb-3">Move-In / Move-Out</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 Empty facilities need to be pristine before new tenants arrive. We clean
-                everything—every room, every surface, every vent. Your facility makes a clean
+                everything—every room, every surface, every vent. Your facility makes a professional
                 impression.
               </p>
             </div>
@@ -175,8 +181,9 @@ export default function DeepCleaningPage() {
               <Clock className="h-10 w-10 text-primary mb-4" />
               <h3 className="text-xl font-bold text-navy-900 mb-3">After Prolonged Vacancy</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                Extended vacancy leaves facilities in rough shape. A thorough deep clean brings your
-                facility back to operational standard, ready for occupancy or tenant transition.
+                Extended vacancy leaves facilities in rough shape. Dust settles everywhere.
+                Equipment areas accumulate debris. Restrooms need deep sanitization. A thorough deep
+                clean brings your facility back to operational standard.
               </p>
             </div>
             <div className="bg-slate-50 border border-slate-200 p-6 md:p-8 rounded-2xl transition hover:shadow-md">
@@ -184,7 +191,8 @@ export default function DeepCleaningPage() {
               <h3 className="text-xl font-bold text-navy-900 mb-3">Compliance Recovery</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 Sometimes facilities fall behind on maintenance. Equipment areas become safety
-                hazards. A complete deep clean resets everything, bringing you back into compliance.
+                risks. Surfaces accumulate contamination. A deep clean resets everything and brings
+                you back into compliance.
               </p>
             </div>
           </div>
@@ -192,7 +200,7 @@ export default function DeepCleaningPage() {
       </section>
 
       {/* The Deep Cleaning Difference */}
-      <section className="py-[30px] md:py-[50px] lg:py-[80px] bg-slate-50 border-y border-border/50">
+      <section className="py-[30px] md:py-[50px] lg:py-[80px] bg-slate-50 border-b border-border/50">
         <div className="container-wide px-5 md:px-[30px] lg:px-10 max-w-5xl mx-auto">
           <div className="text-center mb-10 md:mb-16">
             <h2 className="text-3xl lg:text-4xl font-display font-bold text-navy-900 mb-4">
@@ -275,18 +283,90 @@ export default function DeepCleaningPage() {
         </div>
       </section>
 
+      {/* What Construction Leaves Behind — dark section for visual weight */}
+      <section className="py-[30px] md:py-[50px] lg:py-[80px] bg-navy-900 text-white border-y border-border/50 overflow-hidden">
+        <div className="container-wide px-5 md:px-[30px] lg:px-10 max-w-6xl mx-auto">
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="text-3xl lg:text-4xl font-display font-bold text-white mb-4">
+              Why Choose Northern Facilities Group?
+            </h2>
+            <p className="text-lg text-white/70">
+              Deep cleaning is different from daily maintenance. Not all cleaning companies do this
+              well. We do.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="bg-navy-800 border border-slate-700 p-6 rounded-2xl hover:bg-navy-800/80 transition">
+              <Cog className="h-9 w-9 text-primary mb-4" />
+              <h4 className="font-bold text-lg mb-2">Specialized Equipment</h4>
+              <p className="text-sm text-white/70">
+                Professional-grade carpet extraction, floor restoration systems, pressure washing
+                equipment, and access equipment for high surfaces. The right tools for the job.
+              </p>
+            </div>
+
+            <div className="bg-navy-800 border border-slate-700 p-6 rounded-2xl hover:bg-navy-800/80 transition">
+              <Camera className="h-9 w-9 text-primary mb-4" />
+              <h4 className="font-bold text-lg mb-2">We Document Everything</h4>
+              <p className="text-sm text-white/70">
+                Before, during, and after photos. Completion reports. You have proof of what was
+                done and the transformation that happened. No guesswork.
+              </p>
+            </div>
+
+            <div className="bg-navy-800 border border-slate-700 p-6 rounded-2xl hover:bg-navy-800/80 transition">
+              <Users className="h-9 w-9 text-primary mb-4" />
+              <h4 className="font-bold text-lg mb-2">We Understand Operations</h4>
+              <p className="text-sm text-white/70">
+                We coordinate around your business. If you're open, we work nights and weekends. If
+                you're construction-based, we work within your project timeline. We're partners, not
+                obstacles.
+              </p>
+            </div>
+
+            <div className="bg-navy-800 border border-slate-700 p-6 rounded-2xl hover:bg-navy-800/80 transition">
+              <ShieldCheck className="h-9 w-9 text-primary mb-4" />
+              <h4 className="font-bold text-lg mb-2">Fully Insured — $2M Coverage</h4>
+              <p className="text-sm text-white/70">
+                Your facility is protected. Any issues are covered. You can trust us with your
+                space. Quality is non-negotiable.
+              </p>
+            </div>
+
+            <div className="bg-navy-800 border border-slate-700 p-6 rounded-2xl hover:bg-navy-800/80 transition">
+              <Star className="h-9 w-9 text-primary mb-4" />
+              <h4 className="font-bold text-lg mb-2">We Guarantee Quality</h4>
+              <p className="text-sm text-white/70">
+                If something isn't right, we fix it. No arguments. No excuses. Quality is
+                non-negotiable on every deep cleaning project we take on.
+              </p>
+            </div>
+
+            <div className="bg-navy-800 border border-slate-700 p-6 rounded-2xl hover:bg-navy-800/80 transition">
+              <ClipboardCheck className="h-9 w-9 text-primary mb-4" />
+              <h4 className="font-bold text-lg mb-2">Specializing in Restoration</h4>
+              <p className="text-sm text-white/70">
+                Deep cleaning is comprehensive restoration. We have the crew training and process
+                discipline to ensure nothing gets missed. Not all companies can say that.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* What's Included & Timeline */}
-      <section className="py-[30px] md:py-[50px] lg:py-[80px] bg-slate-50 border-y border-border/50">
+      <section className="py-[30px] md:py-[50px] lg:py-[80px] bg-slate-50 border-b border-border/50">
         <div className="container-wide px-5 md:px-[30px] lg:px-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Timeline */}
             <div>
-              <h2 className="text-3xl font-display font-bold text-navy-900 mb-8">
+              <h2 className="text-3xl font-display font-bold text-navy-900 mb-8 border-b pb-4">
                 Deep Cleaning Timeline
               </h2>
-              <p className="text-muted-foreground mb-8 text-lg">
+              <p className="text-muted-foreground mb-6 text-lg">
                 How long does deep cleaning take? It depends on facility size and condition, but
-                here is what to expect:
+                here's what to expect:
               </p>
               <div className="space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-white border border-border/50 rounded-xl hover:shadow-sm transition">
@@ -318,38 +398,37 @@ export default function DeepCleaningPage() {
 
             {/* Included */}
             <div>
-              <h2 className="text-3xl font-display font-bold text-navy-900 mb-8">
+              <h2 className="text-3xl font-display font-bold text-navy-900 mb-8 border-b pb-4">
                 What's Included
               </h2>
 
               <div className="mb-8">
                 <h4 className="font-bold text-primary mb-4 text-lg">Always Included</h4>
                 <ul className="grid sm:grid-cols-2 gap-3">
-                  <li className="flex items-center gap-2 text-muted-foreground">
+                  <li className="flex items-center gap-2 text-muted-foreground text-sm">
                     <Check className="h-5 w-5 text-green-500 shrink-0" /> High dusting
                     (ceilings/vents)
                   </li>
-                  <li className="flex items-center gap-2 text-muted-foreground">
+                  <li className="flex items-center gap-2 text-muted-foreground text-sm">
                     <Check className="h-5 w-5 text-green-500 shrink-0" /> Light fixture cleaning
                   </li>
-                  <li className="flex items-center gap-2 text-muted-foreground">
+                  <li className="flex items-center gap-2 text-muted-foreground text-sm">
                     <Check className="h-5 w-5 text-green-500 shrink-0" /> Baseboard & trim detail
                   </li>
-                  <li className="flex items-center gap-2 text-muted-foreground">
+                  <li className="flex items-center gap-2 text-muted-foreground text-sm">
                     <Check className="h-5 w-5 text-green-500 shrink-0" /> Interior window & glass
                   </li>
-                  <li className="flex items-center gap-2 text-muted-foreground">
-                    <Check className="h-5 w-5 text-green-500 shrink-0" /> Carpet extraction / floor
-                    strip
+                  <li className="flex items-center gap-2 text-muted-foreground text-sm">
+                    <Check className="h-5 w-5 text-green-500 shrink-0" /> Deep carpet extraction
                   </li>
-                  <li className="flex items-center gap-2 text-muted-foreground">
+                  <li className="flex items-center gap-2 text-muted-foreground text-sm">
                     <Check className="h-5 w-5 text-green-500 shrink-0" /> Appliance interior
                     cleaning
                   </li>
-                  <li className="flex items-center gap-2 text-muted-foreground">
+                  <li className="flex items-center gap-2 text-muted-foreground text-sm">
                     <Check className="h-5 w-5 text-green-500 shrink-0" /> Grout & tile restoration
                   </li>
-                  <li className="flex items-center gap-2 text-muted-foreground">
+                  <li className="flex items-center gap-2 text-muted-foreground text-sm">
                     <Check className="h-5 w-5 text-green-500 shrink-0" /> Facility assessment &
                     scope
                   </li>
@@ -357,29 +436,29 @@ export default function DeepCleaningPage() {
               </div>
 
               <div>
-                <h4 className="font-bold text-primary mb-4 text-lg text-slate-500">
+                <h4 className="font-bold text-slate-500 mb-4 text-lg">
                   Optional Add-Ons (Discussed During Assessment)
                 </h4>
                 <ul className="grid sm:grid-cols-2 gap-3">
-                  <li className="flex items-center gap-2 text-muted-foreground">
+                  <li className="flex items-center gap-2 text-muted-foreground text-sm">
                     <Sparkles className="h-5 w-5 text-slate-300 shrink-0" /> Exterior pressure
                     washing
                   </li>
-                  <li className="flex items-center gap-2 text-muted-foreground">
+                  <li className="flex items-center gap-2 text-muted-foreground text-sm">
                     <Sparkles className="h-5 w-5 text-slate-300 shrink-0" /> Equipment area
                     degreasing
                   </li>
-                  <li className="flex items-center gap-2 text-muted-foreground">
+                  <li className="flex items-center gap-2 text-muted-foreground text-sm">
                     <Sparkles className="h-5 w-5 text-slate-300 shrink-0" /> Concrete
                     sealing/polishing
                   </li>
-                  <li className="flex items-center gap-2 text-muted-foreground">
+                  <li className="flex items-center gap-2 text-muted-foreground text-sm">
                     <Sparkles className="h-5 w-5 text-slate-300 shrink-0" /> Hardwood restoration
                   </li>
-                  <li className="flex items-center gap-2 text-muted-foreground">
+                  <li className="flex items-center gap-2 text-muted-foreground text-sm">
                     <Sparkles className="h-5 w-5 text-slate-300 shrink-0" /> Paint touch-ups
                   </li>
-                  <li className="flex items-center gap-2 text-muted-foreground">
+                  <li className="flex items-center gap-2 text-muted-foreground text-sm">
                     <Sparkles className="h-5 w-5 text-slate-300 shrink-0" /> HVAC vent & duct
                     cleaning
                   </li>
@@ -390,7 +469,7 @@ export default function DeepCleaningPage() {
         </div>
       </section>
 
-      {/* Facility Types & Areas */}
+      {/* Facility Types & Service Areas */}
       <section className="py-[30px] md:py-[50px] lg:py-[80px] bg-white">
         <div className="container-wide px-5 md:px-[30px] lg:px-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
@@ -435,7 +514,7 @@ export default function DeepCleaningPage() {
                 </h4>
                 <p className="text-sm text-muted-foreground">
                   $2M liability coverage. Your facility is protected. Any issues are covered. You
-                  can trust us with your space. Quality is non-negotiable.
+                  can trust us with your space.
                 </p>
               </div>
             </div>
@@ -454,7 +533,8 @@ export default function DeepCleaningPage() {
                   </div>
                   <p className="text-sm text-muted-foreground">
                     Post-construction cleanup so your facility is move-in ready. Safety compliance
-                    reset. Equipment areas deep cleaned safely.
+                    reset. Equipment areas deep cleaned safely. Floor restoration for safe
+                    operations.
                   </p>
                 </div>
 
@@ -465,7 +545,7 @@ export default function DeepCleaningPage() {
                   </div>
                   <p className="text-sm text-muted-foreground">
                     Before major client events or office move-ins. Annual deep clean to reset common
-                    areas. Carpet and floor restoration included.
+                    areas. Carpet and floor restoration. All surfaces detailed and polished.
                   </p>
                 </div>
 
@@ -497,7 +577,7 @@ export default function DeepCleaningPage() {
       </section>
 
       {/* FAQs */}
-      <section className="py-[30px] md:py-[50px] lg:py-[80px] bg-slate-50">
+      <section className="py-[30px] md:py-[50px] lg:py-[80px] bg-slate-50 border-y border-border/50">
         <div className="container-wide px-5 md:px-[30px] lg:px-10 max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-navy-900 mb-10 text-center">
             Common Questions About Deep Cleaning
@@ -557,6 +637,24 @@ export default function DeepCleaningPage() {
               <AccordionContent className="text-muted-foreground text-base leading-relaxed">
                 Yes. Every deep cleaning includes photos and a completion report. You have proof of
                 what was done.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-7">
+              <AccordionTrigger className="text-left font-bold text-lg">
+                Is deep cleaning the same as regular cleaning?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-base leading-relaxed">
+                No. Deep cleaning is comprehensive restoration. Regular/daily cleaning maintains
+                surfaces. Both are important. Deep cleaning resets everything.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-8">
+              <AccordionTrigger className="text-left font-bold text-lg">
+                How do we schedule deep cleaning?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-base leading-relaxed">
+                Call (855) 664-1144 or email info@northernfacilitiesgroup.ca. We assess your
+                facility, provide a detailed quote, and schedule based on your timeline.
               </AccordionContent>
             </AccordionItem>
           </Accordion>

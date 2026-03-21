@@ -6,33 +6,80 @@ import { motion, useReducedMotion } from 'framer-motion';
 const steps = [
   {
     title: 'Complete Facility Assessment',
-    description:
-      "We start by understanding your facility's scope, condition, and specific needs. We evaluate facility size and layout, surface types, current condition, access challenges, and timelines. The output is a detailed scope document and timeline so you know exactly what's happening and when.",
+    description: "We start by understanding your facility's scope, condition, and specific needs.",
+    bullets: [
+      'Facility size and layout (square footage, number of areas)',
+      'Surface types (carpet, tile, concrete, hardwood, equipment areas)',
+      'Current condition (dust levels, debris, contamination)',
+      'Access challenges (equipment placement, obstacles, tight spaces)',
+      'Specific problem areas (noted by you or discovered by us)',
+      'Timeline and scheduling (how soon, how long it will take)',
+    ],
+    keyPoint:
+      'Output: Detailed scope document and timeline so you know exactly what is happening and when.',
   },
   {
     title: 'Area Preparation and Furniture Moving',
-    description:
-      'Before we clean, we prepare the space. All moveable furniture is carefully moved to clear floor space, equipment areas are prepped for access, protective coverings placed where needed, and work zones established to minimize disruption. Client approval before any deep work begins.',
+    description: 'Before we clean, we prepare the space.',
+    bullets: [
+      'All moveable furniture is carefully moved to clear floor space',
+      'Equipment areas are prepped for access',
+      'Protective coverings placed where needed',
+      'Work zones established to minimize disruption',
+      'Client approval before any deep work begins',
+    ],
+    keyPoint: "Key point: You don't manage furniture. We do. Your team focuses on operations.",
   },
   {
     title: 'Top-to-Bottom Systematic Cleaning',
-    description:
-      'This is where deep cleaning actually happens. High surfaces and ceilings, walls and trim, equipment areas, floors and surfaces, restrooms and kitchens, windows and glass - all systematically detailed.',
+    description: 'This is where deep cleaning actually happens.',
+    bullets: [
+      'High surfaces and ceilings: light fixtures, vents, ceiling tiles, high shelving, HVAC returns',
+      'Walls and trim: baseboards detailed, marks and stains removed, trim wiped down',
+      'Equipment areas: machinery exteriors cleaned, dust removed, safety areas cleared',
+      'Floors: deep carpet extraction, hard floor stripping, grout and tile restoration',
+      'Restrooms and kitchens: full sanitization, fixture polishing, appliance interiors cleaned',
+      'Windows and glass: interior cleaning, frames and sills detailed, glass restored to clarity',
+    ],
+    keyPoint: null,
   },
   {
     title: 'Specialized Surface Treatments',
     description:
-      "Different surfaces need different approaches. We apply treatments matched to your facility's specific needs, including professional carpet extraction, hard floor treatment (VCT stripping/waxing, concrete sealing/polishing, hardwood restoration), equipment area degreasing/restoration, and wall/trim paint touch-ups.",
+      "Different surfaces need different approaches. We apply treatments matched to your facility's specific needs.",
+    bullets: [
+      'Carpet: professional extraction, stain treatment, deodorization, protection coating',
+      'Hard floors: VCT stripping and waxing, concrete sealing, hardwood restoration, grout restoration',
+      'Equipment areas: degreasing, rust removal and protection, safety surface restoration',
+      'Walls and trim: paint touch-up where needed, stain removal, protection coating',
+    ],
+    keyPoint: null,
   },
   {
     title: 'Final Inspection and Touch-Ups',
-    description:
-      "Before we're done, we inspect everything. Every detail is verified against our comprehensive checklist. Any missed spots are corrected immediately, final details refined, quality verification complete, followed by a final client walkthrough and approval.",
+    description: "Before we're done, we inspect everything. Every detail is verified.",
+    bullets: [
+      'All surfaces cleaned to specification',
+      'No areas missed or overlooked',
+      'All equipment areas accessible and safe',
+      'All surfaces protected and finished',
+      'Facility ready for occupancy or operations',
+      'No damage to existing equipment or property',
+    ],
+    keyPoint:
+      'Touch-ups: Any missed spots corrected immediately, quality verified, client walkthrough and approval.',
   },
   {
     title: 'Documentation and Handoff',
-    description:
-      'You receive complete documentation of what was done, including before and after photos showing the transformation, a detailed completion report spanning all areas covered and treatments applied, a timeline of work performed, recommendations for ongoing maintenance, and warranty on work performed (if applicable).',
+    description: 'You receive complete documentation of what was done.',
+    bullets: [
+      'Before and after photos (showing the transformation)',
+      'Detailed completion report (all areas covered, treatments applied)',
+      'Timeline of work performed',
+      'Recommendations for ongoing maintenance',
+      'Warranty on work performed (if applicable)',
+    ],
+    keyPoint: null,
   },
 ];
 
@@ -49,7 +96,6 @@ export function AnimatedDeepCleaningProcess() {
     }
   }, []);
 
-  // Timings identical to Window Cleaning / Floor Care
   const duration = isMobile ? 0.4 : 0.6;
   const stagger = isMobile ? 0.1 : 0.15;
   const viewportAmount = isMobile ? 0.5 : 0.8;
@@ -99,20 +145,50 @@ export function AnimatedDeepCleaningProcess() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true, amount: viewportAmount }}
                   transition={{ duration: 0.4, ease: 'easeOut', delay: currentDelay + 0.2 }}
-                  className="text-lg md:text-xl font-bold text-navy-900 mb-3 md:mb-4 flex items-center gap-2 leading-tight"
+                  className="text-lg md:text-xl font-bold text-navy-900 mb-2 md:mb-3 leading-tight"
                 >
                   {step.title}
                 </motion.h3>
 
-                <motion.div
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, amount: viewportAmount }}
+                  transition={{ duration: 0.4, ease: 'easeOut', delay: currentDelay + 0.25 }}
+                  className="text-muted-foreground text-[14px] md:text-[15px] leading-relaxed mb-3"
+                >
+                  {step.description}
+                </motion.p>
+
+                <motion.ul
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true, amount: viewportAmount }}
                   transition={{ duration: 0.4, ease: 'easeOut', delay: currentDelay + 0.3 }}
-                  className="text-muted-foreground text-[14px] md:text-[16px] leading-relaxed mb-1"
+                  className="space-y-1.5 mb-3"
                 >
-                  {step.description}
-                </motion.div>
+                  {step.bullets.map((bullet, bi) => (
+                    <li
+                      key={bi}
+                      className="flex items-start gap-2 text-[13px] md:text-[14px] text-muted-foreground"
+                    >
+                      <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+                      {bullet}
+                    </li>
+                  ))}
+                </motion.ul>
+
+                {step.keyPoint && (
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true, amount: viewportAmount }}
+                    transition={{ duration: 0.4, ease: 'easeOut', delay: currentDelay + 0.4 }}
+                    className="text-[13px] md:text-[14px] text-navy-900/80 font-medium italic border-l-2 border-primary pl-3 mt-3"
+                  >
+                    {step.keyPoint}
+                  </motion.p>
+                )}
               </div>
             </motion.div>
           );
